@@ -27,12 +27,12 @@ class EditCompilationTest : BehaviorSpec({
 
     given("an EditCompilation instance") {
 
-        val compilationId = Id("compilation123")
+        val compilationId = Id(1)
         val compilationName = Name("Compilation 123")
         val soundList = listOf(
-            Sound(Id("sound1"), true),
-            Sound(Id("sound2"), true),
-            Sound(Id("sound3"), true)
+            Sound(Id(1), true),
+            Sound(Id(2), true),
+            Sound(Id(3), true)
         )
         val params = EditCompilation.Params(compilationId, compilationName, soundList)
 

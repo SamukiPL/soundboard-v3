@@ -26,7 +26,7 @@ class PlayCompilationTest : BehaviorSpec({
 
     given("a PlayCompilation instance") {
         val compilation = Playable.Compilation(
-            id = Id("compilation123"),
+            id = Id(1),
             name = Name("Compilation Name"),
             sounds = listOf()
         )

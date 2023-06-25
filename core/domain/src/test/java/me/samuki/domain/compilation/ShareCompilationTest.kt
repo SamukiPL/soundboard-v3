@@ -26,7 +26,7 @@ class ShareCompilationTest : BehaviorSpec({
 
     given("a ShareCompilation instance") {
         val compilation = Playable.Compilation(
-            id = Id("compilation123"),
+            id = Id(1),
             name = Name("Compilation Name"),
             sounds = listOf()
         )

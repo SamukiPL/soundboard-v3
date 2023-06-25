@@ -24,7 +24,7 @@ class ShareSoundTest : BehaviorSpec({
     }
 
     given("a ShareSound instance") {
-        val sound = Playable.Sound(Id("sound123"), false)
+        val sound = Playable.Sound(Id(1), false)
 
         `when`("invoking shareSound and shareRepository returns success") {
             coEvery { mockShareRepository.shareSound(sound) } returns Result.success(NoAnswer)

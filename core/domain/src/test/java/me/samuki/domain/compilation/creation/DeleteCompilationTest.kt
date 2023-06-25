@@ -25,7 +25,7 @@ class DeleteCompilationTest : BehaviorSpec({
 
     given("a DeleteCompilation instance") {
 
-        val compilationId = Id("compilation123")
+        val compilationId = Id(1)
 
         `when`("deleting the compilation and compilationRepository.deleteCompilation() returns success") {
             coEvery { mockCompilationRepository.deleteCompilation(compilationId) } returns Result.success(

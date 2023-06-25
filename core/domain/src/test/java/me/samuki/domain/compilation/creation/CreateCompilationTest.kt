@@ -29,9 +29,9 @@ class CreateCompilationTest : BehaviorSpec({
 
         val compilationName = Name("My Compilation")
         val soundList = listOf(
-            Playable.Sound(Id("sound1"), true),
-            Playable.Sound(Id("sound2"), true),
-            Playable.Sound(Id("sound3"), true)
+            Playable.Sound(Id(1), true),
+            Playable.Sound(Id(2), true),
+            Playable.Sound(Id(3), true)
         )
         val params = CreateCompilation.Params(compilationName, soundList)
 

@@ -24,7 +24,7 @@ class SetSoundAsNotificationTest : BehaviorSpec({
     }
 
     given("a SetSoundAsNotification instance") {
-        val sound = Playable.Sound(Id("sound123"), false)
+        val sound = Playable.Sound(Id(1), false)
 
         `when`("invoking setSoundAsNotification and setSoundRepository returns success") {
             coEvery { mockSetSoundRepository.setAsNotification(sound) } returns Result.success(NoAnswer)
