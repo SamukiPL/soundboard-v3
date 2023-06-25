@@ -24,7 +24,7 @@ class PlaySoundTest : BehaviorSpec({
     }
 
     given("a PlaySound instance") {
-        val sound = Playable.Sound(Id("sound123"), false)
+        val sound = Playable.Sound(Id(1), false)
 
         `when`("invoking playSound and playRepository returns success") {
             coEvery { mockPlayRepository.playSound(sound) } returns Result.success(NoAnswer)

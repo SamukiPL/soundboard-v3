@@ -33,7 +33,7 @@ class SetCompilationTest : BehaviorSpec({
 
     given("a SetCompilation instance") {
         val compilation = Playable.Compilation(
-            id = Id("compilation123"),
+            id = Id(1),
             name = Name("Compilation Name"),
             sounds = listOf()
         )

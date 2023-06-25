@@ -40,8 +40,8 @@ class SharePlayableTest : BehaviorSpec({
     }
 
     given("a SharePlayable instance") {
-        val sound = Playable.Sound(Id(""), true)
-        val compilation = Playable.Compilation(Id(""), Name(""), emptyList())
+        val sound = Playable.Sound(Id(1), true)
+        val compilation = Playable.Compilation(Id(2), Name(""), emptyList())
 
         val coEveryCorrectMock = { playable: Playable ->
             coEvery {

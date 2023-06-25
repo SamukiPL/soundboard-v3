@@ -24,7 +24,7 @@ class SetSoundAsRingtoneTest : BehaviorSpec({
     }
 
     given("a SetSoundAsRingtone instance") {
-        val sound = Playable.Sound(Id("sound123"), false)
+        val sound = Playable.Sound(Id(1), false)
 
         `when`("invoking setSoundAsRingtone and setSoundRepository returns success") {
             coEvery { mockSetSoundRepository.setAsRingtone(sound) } returns Result.success(NoAnswer)
