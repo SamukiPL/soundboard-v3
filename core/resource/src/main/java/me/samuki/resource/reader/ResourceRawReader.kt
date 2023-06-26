@@ -1,4 +1,4 @@
-package me.samuki.resource.provider
+package me.samuki.resource.reader
 
 import android.net.Uri
 import kotlinx.coroutines.CoroutineDispatcher
@@ -13,23 +13,21 @@ import me.samuki.core.model.R
 import me.samuki.model.values.Id
 import me.samuki.model.values.PackageName
 import me.samuki.model.values.Path
-import me.samuki.resource.model.ResourceSound
+import me.samuki.resource.model.ResourceRaw
 import java.lang.Integer.min
 import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-internal class ResourceSoundsProvider @Inject constructor(
+internal class ResourceRawReader @Inject constructor(
     packageName: PackageName,
     @DispatcherIO ioCoroutineContext: CoroutineDispatcher,
     private val getSoundName: GetSoundName
-) : SoundsProvider {
+) {
 
     private val soundPath = "android.resource://${packageName.value}/raw/sound"
 
     private val scope = CoroutineScope(ioCoroutineContext)
 
-    override val soundFlow = MutableSharedFlow<List<ResourceSound>>(1)
+    internal val resourceRawFlow = MutableSharedFlow<List<ResourceRaw>>(1)
 
     private val soundsCount: Int by lazy {
         R.raw::class.java.fields.size - 1
@@ -38,17 +36,17 @@ internal class ResourceSoundsProvider @Inject constructor(
     private fun getSoundPath(id: Int) = Uri.parse(soundPath + id)
 
     init {
-        val tmpList = mutableListOf<ResourceSound>()
+        val tmpList = mutableListOf<ResourceRaw>()
         scope.launch {
             val jobs = mutableListOf<Job>()
             (0 until soundsCount step 10).forEach { step ->
                 jobs += async {
-                    val mutableList = mutableListOf<ResourceSound>()
+                    val mutableList = mutableListOf<ResourceRaw>()
                     (step until min((step + 10), soundsCount)).forEach { id ->
                         val soundPath = getSoundPath(id)
                         val soundName = getSoundName(id, soundPath)
                         mutableList.add(
-                            ResourceSound(
+                            ResourceRaw(
                                 id = Id(id),
                                 name = soundName,
                                 path = Path(soundPath)
@@ -60,7 +58,7 @@ internal class ResourceSoundsProvider @Inject constructor(
             }
             jobs.forEach { it.join() }
             tmpList.sortBy { model -> model.id.value }
-            soundFlow.emit(tmpList.toList())
+            resourceRawFlow.emit(tmpList.toList())
             scope.cancel()
         }
     }
