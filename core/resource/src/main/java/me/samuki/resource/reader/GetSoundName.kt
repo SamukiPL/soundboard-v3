@@ -1,4 +1,4 @@
-package me.samuki.resource.provider
+package me.samuki.resource.reader
 
 import android.content.Context
 import android.media.MediaMetadataRetriever
@@ -29,5 +29,6 @@ internal class GetSoundName @Inject constructor(
         }
         .map {
             Name(it)
-        }.getOrThrow()
+        }
+        .getOrThrow()
 }
