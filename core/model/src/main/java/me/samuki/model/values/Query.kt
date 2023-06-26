@@ -1,8 +1,12 @@
 package me.samuki.model.values
 
-@JvmInline
-value class Query(
-    val value: String
-) {
-    val isEmpty get() = value.isEmpty()
+
+sealed interface Query {
+
+    object Empty : Query
+
+    @JvmInline
+    value class Text(
+        val value: String
+    ): Query
 }

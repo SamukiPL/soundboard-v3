@@ -6,7 +6,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import me.samuki.common.di.DispatcherIO
 import me.samuki.core.model.R
@@ -27,7 +27,7 @@ internal class ResourceRawReader @Inject constructor(
 
     private val scope = CoroutineScope(ioCoroutineContext)
 
-    internal val resourceRawFlow = MutableSharedFlow<List<ResourceRaw>>(1)
+    internal val resourceRawFlow = MutableStateFlow<List<ResourceRaw>>(emptyList())
 
     private val soundsCount: Int by lazy {
         R.raw::class.java.fields.size - 1
