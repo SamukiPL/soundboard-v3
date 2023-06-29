@@ -13,3 +13,7 @@ dependencies {
 
     testImplementation(project(":core:testing"))
 }
+
+dependencies {
+    implementation(project(":core:model"))
+}

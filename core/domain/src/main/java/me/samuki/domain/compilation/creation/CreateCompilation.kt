@@ -4,8 +4,8 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import me.samuki.common.di.DispatcherIO
 import me.samuki.domain.compilation.CompilationRepository
+import me.samuki.model.Sound
 import me.samuki.model.values.Name
-import me.samuki.model.Playable
 import javax.inject.Inject
 
 class CreateCompilation @Inject constructor(
@@ -19,6 +19,6 @@ class CreateCompilation @Inject constructor(
 
     data class Params(
         val name: Name,
-        val list: List<Playable.Sound>
+        val list: List<Sound>
     )
 }
