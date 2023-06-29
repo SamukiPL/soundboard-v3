@@ -5,7 +5,9 @@ import kotlinx.coroutines.withContext
 import me.samuki.common.di.DispatcherIO
 import me.samuki.domain.compilation.ShareCompilation
 import me.samuki.domain.sound.ShareSound
+import me.samuki.model.Compilation
 import me.samuki.model.Playable
+import me.samuki.model.Sound
 import javax.inject.Inject
 
 class SharePlayable @Inject constructor(
@@ -15,8 +17,8 @@ class SharePlayable @Inject constructor(
 ) {
     suspend operator fun invoke(playable: Playable) = withContext(coroutineDispatcher) {
         when (playable) {
-            is Playable.Compilation -> shareCompilation(playable)
-            is Playable.Sound -> shareSound(playable)
+            is Compilation -> shareCompilation(playable)
+            is Sound -> shareSound(playable)
         }
     }
 }

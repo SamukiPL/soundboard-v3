@@ -3,7 +3,7 @@ package me.samuki.domain.compilation.set
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import me.samuki.common.di.DispatcherIO
-import me.samuki.model.Playable
+import me.samuki.model.Compilation
 import javax.inject.Inject
 
 class SetCompilationAsNotification @Inject constructor(
@@ -11,7 +11,7 @@ class SetCompilationAsNotification @Inject constructor(
     @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
-    suspend operator fun invoke(compilation: Playable.Compilation) =
+    suspend operator fun invoke(compilation: Compilation) =
         withContext(coroutineDispatcher) {
             setCompilationRepository.setAsNotification(compilation)
         }

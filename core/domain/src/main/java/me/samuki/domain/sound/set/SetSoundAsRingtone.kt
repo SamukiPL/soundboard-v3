@@ -3,7 +3,7 @@ package me.samuki.domain.sound.set
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import me.samuki.common.di.DispatcherIO
-import me.samuki.model.Playable
+import me.samuki.model.Sound
 import javax.inject.Inject
 
 class SetSoundAsRingtone @Inject constructor(
@@ -11,7 +11,7 @@ class SetSoundAsRingtone @Inject constructor(
     @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
-    suspend operator fun invoke(sound: Playable.Sound) = withContext(coroutineDispatcher) {
+    suspend operator fun invoke(sound: Sound) = withContext(coroutineDispatcher) {
         setSoundRepository.setAsRingtone(sound)
     }
 }

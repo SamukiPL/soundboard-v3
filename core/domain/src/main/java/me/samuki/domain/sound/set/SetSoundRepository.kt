@@ -1,11 +1,11 @@
 package me.samuki.domain.sound.set
 
 import me.samuki.model.NoAnswer
-import me.samuki.model.Playable
+import me.samuki.model.Sound
 
 interface SetSoundRepository {
 
-    suspend fun setAsNotification(sound: Playable.Sound): Result<NoAnswer>
+    suspend fun setAsNotification(sound: Sound): Result<NoAnswer>
 
-    suspend fun setAsRingtone(sound: Playable.Sound): Result<NoAnswer>
+    suspend fun setAsRingtone(sound: Sound): Result<NoAnswer>
 }

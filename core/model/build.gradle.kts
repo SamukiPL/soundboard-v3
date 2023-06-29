@@ -6,7 +6,3 @@ plugins {
 android {
     namespace = "me.samuki.core.model"
 }
-
-dependencies {
-    implementation(project(":core:common"))
-}
