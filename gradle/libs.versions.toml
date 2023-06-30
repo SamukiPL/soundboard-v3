@@ -6,6 +6,7 @@ androidxComposeBom = "2023.06.01"
 androidxComposeCompiler = "1.4.5"
 androidxComposeMaterial3 = "1.1.1"
 androidxComposeRuntimeTracing = "1.0.0-alpha01"
+androidxComposeDestinations = "1.9.42-beta"
 androidxCore = "1.10.1"
 androidxSplashscreen = "1.0.1"
 androidxLifecycle = "2.6.1"
@@ -34,6 +35,8 @@ accompanist-pager = { group = "com.google.accompanist", name = "accompanist-page
 accompanist-pager-indicators = { group = "com.google.accompanist", name = "accompanist-pager-indicators", version.ref = "accompanist" }
 androidx-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+androidx-compose-destinations-core = { group = "io.github.raamcosta.compose-destinations", name = "animations-core", version.ref = "androidxComposeDestinations" }
+androidx-compose-destinations-ksp = { group = "io.github.raamcosta.compose-destinations", name = "ksp", version.ref = "androidxComposeDestinations" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout" }
 androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }

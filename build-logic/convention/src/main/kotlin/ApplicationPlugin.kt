@@ -7,6 +7,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
+import java.io.File
 
 @Suppress("unused")
 class ApplicationPlugin : Plugin<Project> {
@@ -16,6 +17,7 @@ class ApplicationPlugin : Plugin<Project> {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
                 apply("org.jetbrains.kotlin.kapt")
+                apply("com.google.devtools.ksp")
             }
 
             extensions.configure<BaseAppModuleExtension> {
@@ -27,6 +29,12 @@ class ApplicationPlugin : Plugin<Project> {
                     buildTypes.getByName("debug") {
                         enableUnitTestCoverage = true
                     }
+                }
+
+                applicationVariants.all {
+                    addJavaSourceFoldersToModel(
+                        File(buildDir, "generated/ksp/$name/kotlin")
+                    )
                 }
             }
 
