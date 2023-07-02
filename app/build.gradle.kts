@@ -38,5 +38,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.splashscreen)
 
+    implementation(libs.androidx.compose.destinations.core)
+    ksp(libs.androidx.compose.destinations.ksp)
+
     implementation(libs.settings.multiplatform)
 }
