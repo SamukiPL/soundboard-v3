@@ -11,11 +11,13 @@ import me.samuki.model.Sound
 import javax.inject.Inject
 
 class PlayPlayable @Inject constructor(
+    private val stopPlaying: StopPlaying,
     private val playCompilation: PlayCompilation,
     private val playSound: PlaySound,
     @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
     suspend operator fun invoke(playable: Playable) = withContext(coroutineDispatcher) {
+        stopPlaying()
         when (playable) {
             is Compilation -> playCompilation(playable)
             is Sound -> playSound(playable)

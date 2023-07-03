@@ -1,6 +1,6 @@
 package me.samuki.model.values
 
-@JvmInline
-value class PackageName(
+//TODO hilt doesn't like value classes, check why
+data class PackageName(
     val value: String
 )

@@ -5,6 +5,7 @@ import me.samuki.buildlogic.utils.ignoreVariants
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import java.io.File
 
 class LibraryPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -13,6 +14,7 @@ class LibraryPlugin : Plugin<Project> {
                 apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
                 apply("org.jetbrains.kotlin.kapt")
+                apply("com.google.devtools.ksp")
             }
 
             extensions.configure<LibraryExtension> {
@@ -24,6 +26,12 @@ class LibraryPlugin : Plugin<Project> {
                     buildTypes.getByName("debug") {
                         enableUnitTestCoverage = true
                     }
+                }
+
+                libraryVariants.all {
+                    addJavaSourceFoldersToModel(
+                        File(buildDir, "generated/ksp/$name/kotlin")
+                    )
                 }
             }
 
