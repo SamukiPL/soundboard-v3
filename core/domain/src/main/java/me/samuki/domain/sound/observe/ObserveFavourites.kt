@@ -10,11 +10,11 @@ import me.samuki.model.Playable
 import me.samuki.model.values.LikeState
 import javax.inject.Inject
 
-class ObserveFavourites @Inject constructor(
+public class ObserveFavourites @Inject constructor(
     private val soundRepository: SoundRepository,
     @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
-    suspend operator fun invoke(): Flow<List<Playable>> = withContext(coroutineDispatcher) {
+    public suspend operator fun invoke(): Flow<List<Playable>> = withContext(coroutineDispatcher) {
         soundRepository.observeSounds()
             .filterList { it.likeState == LikeState.Favourite }
     }

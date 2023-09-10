@@ -1,6 +1,7 @@
 package me.samuki.domain.search
 
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.withContext
 import me.samuki.common.di.DispatcherIO
@@ -8,12 +9,12 @@ import me.samuki.model.values.Query
 import javax.inject.Inject
 import kotlin.time.Duration.Companion.seconds
 
-class GetSearchQuery @Inject constructor(
+public class GetSearchQuery @Inject constructor(
     private val searchRepository: SearchRepository,
     @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
-    suspend operator fun invoke() = withContext(coroutineDispatcher) {
+    public suspend operator fun invoke(): Flow<Query> = withContext(coroutineDispatcher) {
         searchRepository.queryFlow
             .debounce {
                 when (it) {

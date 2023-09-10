@@ -11,8 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun ListScreen(
-    navigation: ListNavigation
+public fun ListScreen(
+    @Suppress("UNUSED_PARAMETER") navigation: ListNavigation
 ) {
     val viewModel: ListViewModel = hiltViewModel()
 

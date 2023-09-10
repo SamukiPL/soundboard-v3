@@ -1,8 +1,8 @@
 package me.samuki.model.values
 
-sealed interface LikeState {
+public sealed interface LikeState {
 
-    object Favourite : LikeState
+    public data object Favourite : LikeState
 
-    object Normal : LikeState
+    public data object Normal : LikeState
 }

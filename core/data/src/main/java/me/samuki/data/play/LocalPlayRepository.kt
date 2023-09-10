@@ -8,7 +8,7 @@ import me.samuki.model.Sound
 import me.samuki.resource.player.Player
 import javax.inject.Inject
 
-class LocalPlayRepository @Inject constructor(
+internal class LocalPlayRepository @Inject constructor(
     private val player: Player
 ) : PlayRepository {
 

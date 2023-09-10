@@ -5,6 +5,6 @@ import com.ramcosta.composedestinations.DestinationsNavHost
 import me.samuki.navigation.destinations.NavGraphs
 
 @Composable
-fun NavigationBuilder() {
+public fun NavigationBuilder() {
     DestinationsNavHost(navGraph = NavGraphs.root)
 }

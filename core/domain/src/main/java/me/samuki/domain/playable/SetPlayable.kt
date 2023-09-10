@@ -7,16 +7,17 @@ import me.samuki.domain.compilation.set.SetCompilation
 import me.samuki.domain.params.SetType
 import me.samuki.domain.sound.set.SetSound
 import me.samuki.model.Compilation
+import me.samuki.model.NoAnswer
 import me.samuki.model.Playable
 import me.samuki.model.Sound
 import javax.inject.Inject
 
-class SetPlayable @Inject constructor(
+public class SetPlayable @Inject constructor(
     private val setCompilation: SetCompilation,
     private val setSound: SetSound,
     @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher,
 ) {
-    suspend operator fun invoke(playable: Playable, setType: SetType) =
+    public suspend operator fun invoke(playable: Playable, setType: SetType): Result<NoAnswer> =
         withContext(coroutineDispatcher) {
             when (playable) {
                 is Compilation -> setCompilation(playable, setType)

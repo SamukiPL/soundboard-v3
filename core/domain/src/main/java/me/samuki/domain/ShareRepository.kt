@@ -4,9 +4,9 @@ import me.samuki.model.Compilation
 import me.samuki.model.NoAnswer
 import me.samuki.model.Sound
 
-interface ShareRepository {
+public interface ShareRepository {
 
-    suspend fun shareSound(sound: Sound): Result<NoAnswer>
+    public suspend fun shareSound(sound: Sound): Result<NoAnswer>
 
-    suspend fun shareCompilation(compilation: Compilation): Result<NoAnswer>
+    public suspend fun shareCompilation(compilation: Compilation): Result<NoAnswer>
 }

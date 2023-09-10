@@ -8,17 +8,17 @@ import me.samuki.model.values.Name
 import me.samuki.model.NoAnswer
 import me.samuki.model.Sound
 
-interface CompilationRepository {
+public interface CompilationRepository {
 
-    suspend fun observeCompilations(): Flow<List<Compilation>>
+    public suspend fun observeCompilations(): Flow<List<Compilation>>
 
-    suspend fun searchByQuery(query: Query): Result<NoAnswer>
+    public suspend fun searchByQuery(query: Query): Result<NoAnswer>
 
-    suspend fun clearSearch(): Result<NoAnswer>
+    public suspend fun clearSearch(): Result<NoAnswer>
 
-    suspend fun createCompilation(name: Name, list: List<Sound>): Result<NoAnswer>
+    public suspend fun createCompilation(name: Name, list: List<Sound>): Result<NoAnswer>
 
-    suspend fun deleteCompilation(id: Id): Result<NoAnswer>
+    public suspend fun deleteCompilation(id: Id): Result<NoAnswer>
 
-    suspend fun editCompilation(id: Id, name: Name, list: List<Sound>): Result<NoAnswer>
+    public suspend fun editCompilation(id: Id, name: Name, list: List<Sound>): Result<NoAnswer>
 }

@@ -3,11 +3,11 @@ package me.samuki.resource.player
 import me.samuki.model.Compilation
 import me.samuki.model.Sound
 
-interface Player {
+public interface Player {
 
-    suspend fun stopPlaying()
+    public suspend fun stopPlaying()
 
-    suspend fun playSound(sound: Sound)
+    public suspend fun playSound(sound: Sound)
 
-    suspend fun playCompilation(compilation: Compilation)
+    public suspend fun playCompilation(compilation: Compilation)
 }

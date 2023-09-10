@@ -1,12 +1,12 @@
 package me.samuki.model.values
 
 
-sealed interface Query {
+public sealed interface Query {
 
-    object Empty : Query
+    public data object Empty : Query
 
     @JvmInline
-    value class Text(
-        val value: String
+    public value class Text(
+        public val value: String
     ): Query
 }

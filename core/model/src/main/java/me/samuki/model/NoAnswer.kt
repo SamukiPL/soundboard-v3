@@ -1,3 +1,3 @@
 package me.samuki.model
 
-object NoAnswer
+public object NoAnswer

@@ -1,6 +1,6 @@
 package me.samuki.model.values
 
 @JvmInline
-value class Id(
-    val value: Int
+public value class Id(
+    public val value: Int
 )
