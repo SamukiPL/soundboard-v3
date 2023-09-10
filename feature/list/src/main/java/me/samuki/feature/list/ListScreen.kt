@@ -9,6 +9,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import me.samuki.model.Sound
 
 @Composable
 public fun ListScreen(
@@ -24,9 +25,10 @@ public fun ListScreen(
 
     LazyColumn {
         items(playables) {
-            Text(it.name.value, modifier = Modifier.clickable {
-                viewModel.onEvent(ListContract.Event.Play(it))
-            })
+            if (it is Sound)
+                Text("${it.name}   ${it.likeState}", modifier = Modifier.clickable {
+                    viewModel.onEvent(ListContract.Event.Play(it))
+                })
         }
     }
 }
