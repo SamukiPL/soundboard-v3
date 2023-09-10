@@ -1,4 +1,4 @@
 package me.samuki.model
 
-sealed interface Combinable
+public sealed interface Combinable
 

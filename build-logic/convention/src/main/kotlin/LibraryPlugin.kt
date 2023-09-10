@@ -1,5 +1,6 @@
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
+import me.samuki.buildlogic.config.AndroidVersions
 import me.samuki.buildlogic.utils.configureKotlinAndroid
 import me.samuki.buildlogic.utils.ignoreVariants
 import org.gradle.api.Plugin
@@ -20,7 +21,7 @@ class LibraryPlugin : Plugin<Project> {
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
                 defaultConfig.apply {
-                    targetSdk = 33
+                    targetSdk = AndroidVersions.targetSdk
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     consumerProguardFile("consumer-rules.pro")
                     buildTypes.getByName("debug") {

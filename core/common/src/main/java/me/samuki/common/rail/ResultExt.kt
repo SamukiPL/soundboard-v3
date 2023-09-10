@@ -2,9 +2,9 @@ package me.samuki.common.rail
 
 import me.samuki.model.NoAnswer
 
-typealias ListResult<T> = Result<List<T>>
+public typealias ListResult<T> = Result<List<T>>
 
-inline fun runNoAnswer(block: () -> Unit): Result<NoAnswer> {
+public inline fun runNoAnswer(block: () -> Unit): Result<NoAnswer> {
     return try {
         block()
         Result.success(NoAnswer)

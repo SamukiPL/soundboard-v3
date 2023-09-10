@@ -1,5 +1,6 @@
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import me.samuki.buildlogic.config.AndroidVersions
 import me.samuki.buildlogic.utils.configureKotlinAndroid
 import me.samuki.buildlogic.utils.ignoreVariants
 import me.samuki.buildlogic.utils.implementation
@@ -22,9 +23,9 @@ class ApplicationPlugin : Plugin<Project> {
 
             extensions.configure<BaseAppModuleExtension> {
                 configureKotlinAndroid(this)
-                compileSdk = 33
+                compileSdk = AndroidVersions.compileSdk
                 defaultConfig {
-                    targetSdk = 33
+                    targetSdk = AndroidVersions.targetSdk
 
                     buildTypes.getByName("debug") {
                         enableUnitTestCoverage = true

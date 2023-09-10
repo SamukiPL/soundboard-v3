@@ -8,12 +8,12 @@ import me.samuki.domain.compilation.CompilationRepository
 import me.samuki.model.Playable
 import javax.inject.Inject
 
-class ObserveAllCompilations @Inject constructor(
+public class ObserveAllCompilations @Inject constructor(
     private val compilationRepository: CompilationRepository,
     @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
-    suspend operator fun invoke(): Flow<List<Playable>> = withContext(coroutineDispatcher) {
+    public suspend operator fun invoke(): Flow<List<Playable>> = withContext(coroutineDispatcher) {
         compilationRepository.observeCompilations()
     }
 }

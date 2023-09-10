@@ -14,14 +14,14 @@ import me.samuki.model.Playable
 import me.samuki.model.values.Query
 import javax.inject.Inject
 
-class ObservePlayables @Inject constructor(
+public class ObservePlayables @Inject constructor(
     private val observeAllSounds: ObserveAllSounds,
     private val observeFavourites: ObserveFavourites,
     private val observeCompilations: ObserveAllCompilations,
     private val getSearchQuery: GetSearchQuery,
     @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
-    suspend operator fun invoke(listType: ListType): Flow<List<Playable>> =
+    public suspend operator fun invoke(listType: ListType): Flow<List<Playable>> =
         withContext(coroutineDispatcher) {
             when (listType) {
                 ListType.All -> observeAllSounds()

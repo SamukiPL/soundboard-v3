@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 
 @Module
 @InstallIn(SingletonComponent::class)
-object CoroutinesModule {
+internal object CoroutinesModule {
 
     @Provides
     @DispatcherIO

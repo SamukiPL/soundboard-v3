@@ -1,5 +1,5 @@
 package me.samuki.domain.params
 
-enum class SetType {
+public enum class SetType {
     Notification, Ringtone
 }

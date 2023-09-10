@@ -4,14 +4,15 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import me.samuki.common.di.DispatcherIO
 import me.samuki.model.Compilation
+import me.samuki.model.NoAnswer
 import javax.inject.Inject
 
-class SetCompilationAsNotification @Inject constructor(
+public class SetCompilationAsNotification @Inject constructor(
     private val setCompilationRepository: SetCompilationRepository,
     @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
-    suspend operator fun invoke(compilation: Compilation) =
+    public suspend operator fun invoke(compilation: Compilation): Result<NoAnswer> =
         withContext(coroutineDispatcher) {
             setCompilationRepository.setAsNotification(compilation)
         }

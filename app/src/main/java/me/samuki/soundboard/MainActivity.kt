@@ -12,7 +12,7 @@ import me.samuki.navigation.NavigationBuilder
 import me.samuki.soundboard.ui.theme.Soundboardv3Theme
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+internal class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

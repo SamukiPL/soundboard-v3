@@ -6,8 +6,12 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import me.samuki.resource.player.AndroidMediaPlayer
 import me.samuki.resource.player.Player
-import me.samuki.resource.sounds.favourite.PreferencesFavouriteProvider
+import me.samuki.resource.set.CompilationSetter
+import me.samuki.resource.set.CompilationSettingsSetter
+import me.samuki.resource.set.SoundSetter
+import me.samuki.resource.set.SoundSettingsSetter
 import me.samuki.resource.sounds.favourite.FavouriteProvider
+import me.samuki.resource.sounds.favourite.PreferencesFavouriteProvider
 import me.samuki.resource.sounds.provider.ResourceSoundsDataSource
 import me.samuki.resource.sounds.provider.SoundsDataSource
 
@@ -23,4 +27,10 @@ internal abstract class ResourceModule {
 
     @Binds
     abstract fun player(androidMediaPlayer: AndroidMediaPlayer): Player
+
+    @Binds
+    abstract fun soundSettingsSetter(soundSettingsSetter: SoundSettingsSetter): SoundSetter
+
+    @Binds
+    abstract fun compilationSettingsSetter(compilationSettingsSetter: CompilationSettingsSetter): CompilationSetter
 }

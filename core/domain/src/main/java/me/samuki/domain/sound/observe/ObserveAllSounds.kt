@@ -8,11 +8,11 @@ import me.samuki.domain.sound.SoundRepository
 import me.samuki.model.Playable
 import javax.inject.Inject
 
-class ObserveAllSounds @Inject constructor(
+public class ObserveAllSounds @Inject constructor(
     private val soundRepository: SoundRepository,
     @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
-    suspend operator fun invoke(): Flow<List<Playable>> = withContext(coroutineDispatcher) {
+    public suspend operator fun invoke(): Flow<List<Playable>> = withContext(coroutineDispatcher) {
         soundRepository.observeSounds()
     }
 }

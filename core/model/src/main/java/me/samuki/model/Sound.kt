@@ -5,7 +5,7 @@ import me.samuki.model.values.LikeState
 import me.samuki.model.values.Name
 import me.samuki.model.values.Path
 
-data class Sound(
+public data class Sound(
     val id: Id,
     override val name: Name,
     val path: Path,

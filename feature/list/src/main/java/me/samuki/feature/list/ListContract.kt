@@ -3,7 +3,7 @@ package me.samuki.feature.list
 import me.samuki.domain.params.ListType
 import me.samuki.model.Playable
 
-interface ListContract {
+internal interface ListContract {
 
     data class State(
         val itemsType: ListType = ListType.All,
@@ -11,7 +11,7 @@ interface ListContract {
     )
 
     sealed interface Event {
-        object Init : Event
+        data object Init : Event
         data class Play(
             val playable: Playable
         ) : Event

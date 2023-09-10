@@ -3,6 +3,6 @@ package me.samuki.model.values
 import android.net.Uri
 
 @JvmInline
-value class Path(
-    val value: Uri
+public value class Path(
+    public val value: Uri
 )

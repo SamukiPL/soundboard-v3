@@ -10,7 +10,7 @@ import me.samuki.model.values.Name
 import me.samuki.model.values.Query
 import javax.inject.Inject
 
-class LocalCompilationRepository @Inject constructor() : CompilationRepository {
+internal class LocalCompilationRepository @Inject constructor() : CompilationRepository {
     override suspend fun observeCompilations(): Flow<List<Compilation>> {
         TODO("Not yet implemented")
     }
