@@ -8,7 +8,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import me.samuki.common.di.DispatcherIO
+import me.samuki.common.di.DispatcherDefault
 import me.samuki.core.model.R
 import me.samuki.model.values.Id
 import me.samuki.model.values.PackageName
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 internal class ResourceRawReader @Inject constructor(
     packageName: PackageName,
-    @DispatcherIO ioCoroutineContext: CoroutineDispatcher,//TODO clean Coroutines
+    @DispatcherDefault ioCoroutineContext: CoroutineDispatcher,
     private val getSoundName: GetSoundName
 ) {
 
