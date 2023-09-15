@@ -4,7 +4,7 @@ import me.samuki.model.Compilation
 
 public interface CompilationSetter {
 
-    public fun setAsNotification(compilation: Compilation)
+    public suspend fun setAsNotification(compilation: Compilation)
 
-    public fun setAsRingtone(compilation: Compilation)
+    public suspend fun setAsRingtone(compilation: Compilation)
 }

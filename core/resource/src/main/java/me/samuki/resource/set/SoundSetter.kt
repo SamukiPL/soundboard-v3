@@ -4,7 +4,7 @@ import me.samuki.model.Sound
 
 public interface SoundSetter {
 
-    public fun setAsNotification(sound: Sound)
+    public suspend fun setAsNotification(sound: Sound)
 
-    public fun setAsRingtone(sound: Sound)
+    public suspend fun setAsRingtone(sound: Sound)
 }

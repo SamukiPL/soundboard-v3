@@ -22,6 +22,7 @@ import me.samuki.model.Pause
 import me.samuki.model.Sound
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.time.Duration.Companion.milliseconds
 
 @Singleton
 internal class AndroidMediaPlayer @Inject constructor(
@@ -89,6 +90,10 @@ internal class AndroidMediaPlayer @Inject constructor(
     }
 
     private suspend fun delayForPause(pause: Pause) {
-        delay(pause.duration)
+        delay((pause.repeats * repeatsMultiplier).milliseconds)
+    }
+
+    private companion object {
+        const val repeatsMultiplier = 100
     }
 }

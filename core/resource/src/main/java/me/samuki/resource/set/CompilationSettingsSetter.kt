@@ -7,7 +7,7 @@ import javax.inject.Inject
 internal class CompilationSettingsSetter @Inject constructor(
     setterDelegate: SetterDelegate
 ) : CompilationSetter, Setter by setterDelegate {
-    override fun setAsNotification(compilation: Compilation) {
+    override suspend fun setAsNotification(compilation: Compilation) {
         setCombinables(
             compilation.name,
             RingtoneManager.TYPE_NOTIFICATION,
@@ -15,7 +15,7 @@ internal class CompilationSettingsSetter @Inject constructor(
         )
     }
 
-    override fun setAsRingtone(compilation: Compilation) {
+    override suspend fun setAsRingtone(compilation: Compilation) {
         setCombinables(
             compilation.name,
             RingtoneManager.TYPE_NOTIFICATION,
