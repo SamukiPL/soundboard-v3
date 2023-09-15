@@ -1,23 +1,22 @@
-package me.samuki.resource.set.files
+package me.samuki.resource.set.steps
 
 import android.content.ContentResolver
-import androidx.core.net.toFile
+import me.samuki.model.values.Name
 import me.samuki.model.values.Path
+import me.samuki.resource.di.DefaultName
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import javax.inject.Inject
 
-internal interface SaveAudioToFile {
+internal class WriteAudioToFile @Inject constructor(
+    private val externalFileDir: Path,
+    private val contentResolver: ContentResolver,
+    @DefaultName private val defaultName: String,
+) {
 
-}
-
-internal class SaveAudioToFileImpl @Inject constructor(
-    private val contentResolver: ContentResolver
-) : SaveAudioToFile {
-
-    operator fun invoke(filePath: Path, audioPaths: List<Path>): File =
-        filePath.value.toFile().apply {
+    fun writeCombinables(fileName: Name, audioPaths: List<Path>): File =
+        createFile(fileName).apply {
             outputStream().use { outputStream ->
                 audioPaths.forEach { path ->
                     writeFromPathToOutput(path, outputStream)
@@ -25,15 +24,20 @@ internal class SaveAudioToFileImpl @Inject constructor(
             }
         }
 
+    private fun createFile(combinablesName: Name): File = File(
+        "${externalFileDir.value}/$defaultName",
+        "$defaultName${combinablesName.value}.mp3"
+    )
+
     private fun writeFromPathToOutput(path: Path, outputStream: FileOutputStream) {
         contentResolver.openAssetFileDescriptor(path.value, READ_MODE)?.use { fileDescriptor ->
             fileDescriptor.createInputStream().use { inputStream ->
-                writeToOutput(inputStream, outputStream)
+                writeInputToOutput(inputStream, outputStream)
             }
         }
     }
 
-    private fun writeToOutput(inputStream: FileInputStream, outputStream: FileOutputStream) {
+    fun writeInputToOutput(inputStream: FileInputStream, outputStream: FileOutputStream) {
         val bArr = ByteArray(BUFFER_SIZE)
         var read = inputStream.read(bArr)
         while (read != -1) {
