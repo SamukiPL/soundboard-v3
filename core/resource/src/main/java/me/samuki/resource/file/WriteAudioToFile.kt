@@ -1,18 +1,17 @@
-package me.samuki.resource.set.steps
+package me.samuki.resource.file
 
 import android.content.ContentResolver
 import me.samuki.model.values.Name
 import me.samuki.model.values.Path
-import me.samuki.resource.di.DefaultName
+import me.samuki.resource.di.FilesDir
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import javax.inject.Inject
 
 internal class WriteAudioToFile @Inject constructor(
-    private val externalFileDir: Path,
+    @FilesDir private val externalFile: File,
     private val contentResolver: ContentResolver,
-    @DefaultName private val defaultName: String,
 ) {
 
     fun writeCombinables(fileName: Name, audioPaths: List<Path>): File =
@@ -25,9 +24,12 @@ internal class WriteAudioToFile @Inject constructor(
         }
 
     private fun createFile(combinablesName: Name): File = File(
-        "${externalFileDir.value}/$defaultName",
-        "$defaultName${combinablesName.value}.mp3"
-    )
+        externalFile,
+        "${combinablesName.value}.mp3"
+    ).also {
+        it.parentFile?.mkdirs()
+        it.createNewFile()
+    }
 
     private fun writeFromPathToOutput(path: Path, outputStream: FileOutputStream) {
         contentResolver.openAssetFileDescriptor(path.value, READ_MODE)?.use { fileDescriptor ->
