@@ -7,11 +7,17 @@ import dagger.hilt.android.components.ActivityRetainedComponent
 import me.samuki.data.compilation.LocalCompilationRepository
 import me.samuki.data.play.LocalPlayRepository
 import me.samuki.data.search.LocalSearchRepository
+import me.samuki.data.set.LocalSetCompilationRepository
+import me.samuki.data.set.LocalSetSoundRepository
+import me.samuki.data.share.LocalShareRepository
 import me.samuki.data.sound.LocalSoundRepository
 import me.samuki.domain.PlayRepository
+import me.samuki.domain.ShareRepository
 import me.samuki.domain.compilation.CompilationRepository
+import me.samuki.domain.compilation.set.SetCompilationRepository
 import me.samuki.domain.search.SearchRepository
 import me.samuki.domain.sound.SoundRepository
+import me.samuki.domain.sound.set.SetSoundRepository
 
 @Module
 @InstallIn(ActivityRetainedComponent::class)
@@ -27,4 +33,13 @@ internal abstract class DataModule {
 
     @Binds
     abstract fun playRepository(localPlayRepository: LocalPlayRepository): PlayRepository
+
+    @Binds
+    abstract fun setSoundRepository(localSetSoundRepository: LocalSetSoundRepository): SetSoundRepository
+
+    @Binds
+    abstract fun setCompilationRepository(localSetCompilationRepository: LocalSetCompilationRepository): SetCompilationRepository
+
+    @Binds
+    abstract fun shareRepository(localShareRepository: LocalShareRepository): ShareRepository
 }

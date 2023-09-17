@@ -1,4 +1,4 @@
-package me.samuki.resource.set.steps
+package me.samuki.resource.file
 
 import me.samuki.model.Combinable
 import me.samuki.model.Pause

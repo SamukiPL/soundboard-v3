@@ -2,7 +2,6 @@ package me.samuki.resource.set
 
 import android.media.RingtoneManager
 import me.samuki.model.Sound
-import me.samuki.model.values.Name
 import javax.inject.Inject
 
 internal class SoundSettingsSetter @Inject constructor(
@@ -11,7 +10,7 @@ internal class SoundSettingsSetter @Inject constructor(
 
     override suspend fun setAsNotification(sound: Sound) {
         setCombinables(
-            sound.idAsName(),
+            sound.name,
             RingtoneManager.TYPE_NOTIFICATION,
             sound
         )
@@ -19,11 +18,9 @@ internal class SoundSettingsSetter @Inject constructor(
 
     override suspend fun setAsRingtone(sound: Sound) {
         setCombinables(
-            sound.idAsName(),
+            sound.name,
             RingtoneManager.TYPE_RINGTONE,
             sound
         )
     }
-
-    private fun Sound.idAsName() = Name(id.value.toString())
 }
