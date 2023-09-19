@@ -10,6 +10,8 @@ import me.samuki.resource.set.CompilationSetter
 import me.samuki.resource.set.CompilationSettingsSetter
 import me.samuki.resource.set.SoundSetter
 import me.samuki.resource.set.SoundSettingsSetter
+import me.samuki.resource.set.premissions.WriteSettingsPermissionChecker
+import me.samuki.resource.set.premissions.WriteSettingsPermissionCheckerImpl
 import me.samuki.resource.share.AndroidShareHub
 import me.samuki.resource.share.ShareHub
 import me.samuki.resource.sounds.favourite.FavouriteProvider
@@ -38,4 +40,7 @@ internal abstract class ResourceModule {
 
     @Binds
     abstract fun shareHub(androidShareHub: AndroidShareHub): ShareHub
+
+    @Binds
+    abstract fun writeSettingsPermissionChecker(writeSettingsPermissionCheckerImpl: WriteSettingsPermissionCheckerImpl): WriteSettingsPermissionChecker
 }

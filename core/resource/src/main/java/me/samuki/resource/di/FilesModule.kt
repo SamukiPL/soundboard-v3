@@ -2,6 +2,9 @@ package me.samuki.resource.di
 
 import android.content.ContentResolver
 import android.content.Context
+import android.net.Uri
+import android.os.Build
+import android.provider.MediaStore
 import androidx.core.net.toUri
 import dagger.Module
 import dagger.Provides
@@ -28,4 +31,12 @@ internal object FilesModule {
     @Provides
     fun contentResolver(@ApplicationContext context: Context): ContentResolver =
         context.contentResolver
+
+    @Provides
+    @ExternalContentUri
+    fun externalContentUri(): Uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+
+    @Provides
+    @SdkVersion
+    fun sdkVersion(): Int = Build.VERSION.SDK_INT
 }

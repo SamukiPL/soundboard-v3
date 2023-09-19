@@ -3,12 +3,12 @@ package me.samuki.resource.set.steps
 import android.content.ContentResolver
 import android.content.ContentValues
 import android.net.Uri
-import android.provider.MediaStore
+import me.samuki.resource.di.ExternalContentUri
 import javax.inject.Inject
 
 internal class InsertToResolver @Inject constructor(
     private val contentResolver: ContentResolver,
-    private val audioCollection: Uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+    @ExternalContentUri private val audioCollection: Uri
 ) {
 
     fun insert(contentValues: ContentValues): Uri {

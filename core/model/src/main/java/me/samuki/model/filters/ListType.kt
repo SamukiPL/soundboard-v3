@@ -1,4 +1,4 @@
-package me.samuki.domain.params
+package me.samuki.model.filters
 
 public enum class ListType {
     All,

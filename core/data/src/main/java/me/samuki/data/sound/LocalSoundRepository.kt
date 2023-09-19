@@ -7,7 +7,9 @@ import me.samuki.model.NoAnswer
 import me.samuki.model.Sound
 import me.samuki.resource.sounds.provider.SoundsDataSource
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 internal class LocalSoundRepository @Inject constructor(
     private val soundProvider: SoundsDataSource
 ) : SoundRepository {
