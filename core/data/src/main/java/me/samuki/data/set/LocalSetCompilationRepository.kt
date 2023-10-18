@@ -5,8 +5,9 @@ import me.samuki.domain.compilation.set.SetCompilationRepository
 import me.samuki.model.Compilation
 import me.samuki.model.NoAnswer
 import me.samuki.resource.set.CompilationSetter
+import javax.inject.Inject
 
-internal class LocalSetCompilationRepository(
+internal class LocalSetCompilationRepository @Inject constructor(
     private val compilationSetter: CompilationSetter
 ) : SetCompilationRepository {
 

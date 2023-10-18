@@ -10,3 +10,8 @@ public sealed interface Query {
         public val value: String
     ): Query
 }
+
+public fun Query.getQueryValue(): String = when (this) {
+    Query.Empty -> ""
+    is Query.Text -> value
+}

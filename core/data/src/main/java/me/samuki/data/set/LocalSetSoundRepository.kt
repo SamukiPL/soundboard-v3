@@ -5,8 +5,9 @@ import me.samuki.domain.sound.set.SetSoundRepository
 import me.samuki.model.NoAnswer
 import me.samuki.model.Sound
 import me.samuki.resource.set.SoundSetter
+import javax.inject.Inject
 
-internal class LocalSetSoundRepository(
+internal class LocalSetSoundRepository @Inject constructor(
     private val soundSetter: SoundSetter
 ) : SetSoundRepository {
 

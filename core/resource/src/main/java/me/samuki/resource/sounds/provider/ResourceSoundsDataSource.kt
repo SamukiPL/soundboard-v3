@@ -12,12 +12,12 @@ import javax.inject.Singleton
 
 @Singleton
 internal class ResourceSoundsDataSource @Inject constructor(
-    private val resourceRawReader: ResourceRawReader,
+    resourceRawReader: ResourceRawReader,
     private val favouriteProvider: FavouriteProvider
 ) : SoundsDataSource {
 
-    override val soundFlow: Flow<List<Sound>>
-        get() = resourceRawReader.resourceRawFlow.combine(favouriteProvider.favouriteProvider) { raws, favourites ->
+    override val soundFlow: Flow<List<Sound>> =
+        resourceRawReader.resourceRawFlow.combine(favouriteProvider.favouriteProvider) { raws, favourites ->
             raws.map {
                 Sound(
                     id = it.id,

@@ -8,6 +8,7 @@ android {
 
 dependencies {
     implementation(project(":feature:list"))
+    implementation(project(":feature:rationale"))
 
     implementation(libs.androidx.compose.destinations.core)
     ksp(libs.androidx.compose.destinations.ksp)

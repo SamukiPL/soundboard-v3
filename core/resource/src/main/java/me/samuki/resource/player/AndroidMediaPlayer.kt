@@ -6,6 +6,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -45,7 +46,11 @@ internal class AndroidMediaPlayer @Inject constructor(
         awaitClose()
     }
 
-    private val combinableFlow = MutableSharedFlow<Combinable>()
+    private val combinableFlow = MutableSharedFlow<Combinable>(
+        replay = 1,
+        extraBufferCapacity = 0,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST
+    )
 
     private lateinit var playingJob: Job
 
@@ -78,7 +83,6 @@ internal class AndroidMediaPlayer @Inject constructor(
     }
 
     private fun prepareForPlay() {
-        mediaPlayer.stop()
         mediaPlayer.reset()
     }
 

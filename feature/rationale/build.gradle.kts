@@ -1,0 +1,11 @@
+plugins {
+    id("me.samuki.layers.presentation")
+}
+
+android {
+    namespace = "me.samuki.feature.rationale"
+}
+
+dependencies {
+    testImplementation(project(":core:testing"))
+}

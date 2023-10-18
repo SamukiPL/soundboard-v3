@@ -5,19 +5,20 @@ import android.os.Build
 import android.provider.MediaStore
 import me.samuki.model.values.AppName
 import me.samuki.model.values.Name
+import me.samuki.resource.di.SdkVersion
 import java.io.File
 import javax.inject.Inject
 
 internal class ContentValuesBuilder @Inject constructor(
     private val appName: AppName,
-    private val sdkVersionProvider: () -> Int = { Build.VERSION.SDK_INT },
+    @SdkVersion private val sdkVersion: Int,
 ) {
 
     fun build(
         soundFile: File,
         combinablesName: Name
     ): ContentValues = ContentValues().apply {
-        if (sdkVersionProvider() < Build.VERSION_CODES.Q)
+        if (sdkVersion < Build.VERSION_CODES.Q)
             put(MediaStore.MediaColumns.DATA, soundFile.absolutePath)
         else
             put(MediaStore.Audio.Media.IS_PENDING, 1)

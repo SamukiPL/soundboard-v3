@@ -6,7 +6,9 @@ import me.samuki.domain.search.SearchRepository
 import me.samuki.model.NoAnswer
 import me.samuki.model.values.Query
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 internal class LocalSearchRepository @Inject constructor() : SearchRepository {
 
     override val queryFlow = MutableStateFlow<Query>(Query.Empty)

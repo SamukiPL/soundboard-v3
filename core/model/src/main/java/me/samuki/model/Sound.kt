@@ -1,12 +1,14 @@
 package me.samuki.model
 
+import kotlinx.serialization.Serializable
 import me.samuki.model.values.Id
 import me.samuki.model.values.LikeState
 import me.samuki.model.values.Name
 import me.samuki.model.values.Path
 
+@Serializable
 public data class Sound(
-    val id: Id,
+    override val id: Id,
     override val name: Name,
     val path: Path,
     val likeState: LikeState
