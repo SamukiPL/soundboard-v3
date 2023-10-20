@@ -1,9 +1,13 @@
+@file:OptIn(InternalDomainApi::class)
+
 package me.samuki.domain.playable
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import me.samuki.common.di.DispatcherIO
+import me.samuki.common.rail.andThen
 import me.samuki.domain.compilation.set.SetCompilation
+import me.samuki.domain.lint.InternalDomainApi
 import me.samuki.domain.params.SetType
 import me.samuki.domain.permissions.CheckWriteSettingsPermissionStateAndThrowOnRefused
 import me.samuki.domain.sound.set.SetSound
@@ -21,11 +25,11 @@ public class SetPlayable @Inject constructor(
 ) {
     public suspend operator fun invoke(playable: Playable, setType: SetType): Result<NoAnswer> =
         withContext(coroutineDispatcher) {
-            checkWriteSettingsPermissionStateAndThrowOnRefused()
-
-            when (playable) {
-                is Compilation -> setCompilation(playable, setType)
-                is Sound -> setSound(playable, setType)
+            checkWriteSettingsPermissionStateAndThrowOnRefused().andThen {
+                when (playable) {
+                    is Compilation -> setCompilation(playable, setType)
+                    is Sound -> setSound(playable, setType)
+                }
             }
         }
 }

@@ -1,5 +1,6 @@
 package me.samuki.feature.list
 
+import me.samuki.domain.params.SetType
 import me.samuki.feature.list.items.ListItem
 import me.samuki.feature.list.toolbar.ToolbarState
 import me.samuki.feature.list.toolbar.filters.FilterItem
@@ -62,7 +63,8 @@ internal interface ListContract {
     sealed interface Effect {
 
         data class GoToSettingsRationale(
-            val playable: Playable
+            val playable: Playable,
+            val setType: SetType
         ) : Effect
     }
 }

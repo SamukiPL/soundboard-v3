@@ -89,7 +89,8 @@ internal class ListViewModel @Inject constructor(
             when (it) {
                 is WriteSettingsPermissionNotGrantedException -> eventChannel.send(
                     ListContract.Effect.GoToSettingsRationale(
-                        playable
+                        playable,
+                        setType
                     )
                 )
             }

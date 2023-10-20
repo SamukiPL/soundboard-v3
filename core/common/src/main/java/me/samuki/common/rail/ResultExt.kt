@@ -12,3 +12,8 @@ public inline fun runNoAnswer(block: () -> Unit): Result<NoAnswer> {
         Result.failure(e)
     }
 }
+
+public inline infix fun <T, R> Result<T>.andThen(transform: (T) -> Result<R>): Result<R> =
+    runCatching {
+        return transform(getOrThrow())
+    }
