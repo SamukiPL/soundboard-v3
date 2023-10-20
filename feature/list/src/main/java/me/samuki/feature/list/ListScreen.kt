@@ -31,7 +31,8 @@ public fun ListScreen(
         viewModel.eventsFlow.collect {
             when (it) {
                 is ListContract.Effect.GoToSettingsRationale -> navigation.goToSettingsRationale(
-                    it.playable
+                    it.playable,
+                    it.setType
                 )
             }
         }
