@@ -1,4 +1,4 @@
-package me.samuki.resource.set.premissions
+package me.samuki.resource.set.permissions
 
 import me.samuki.model.PermissionState
 

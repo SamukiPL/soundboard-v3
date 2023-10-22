@@ -9,12 +9,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import me.samuki.domain.permissions.OpenSettings
 import me.samuki.domain.playable.SetPlayable
 import javax.inject.Inject
 
 @HiltViewModel
 internal class RationaleViewModel @Inject constructor(
-    private val setPlayable: SetPlayable
+    private val setPlayable: SetPlayable,
+    private val openSettings: OpenSettings,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(RationaleContract.State())
@@ -36,7 +38,7 @@ internal class RationaleViewModel @Inject constructor(
             )
         }
         RationaleContract.Event.GoBack -> eventChannel.send(RationaleContract.Effect.GoBackToList)
-        RationaleContract.Event.OpenSettings -> TODO()
+        RationaleContract.Event.OpenSettings -> openSettings.invoke()
         RationaleContract.Event.SetPlayable -> setPlayable(state.value.playable!!, state.value.setType!!)
     }
 }
