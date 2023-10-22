@@ -1,4 +1,4 @@
-package me.samuki.rationale
+package me.samuki.rationale.logic
 
 import me.samuki.domain.params.SetType
 import me.samuki.model.Playable

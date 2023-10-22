@@ -1,4 +1,4 @@
-package me.samuki.rationale
+package me.samuki.rationale.logic
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

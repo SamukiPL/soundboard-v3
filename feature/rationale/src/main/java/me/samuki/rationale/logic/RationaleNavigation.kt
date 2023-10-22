@@ -1,4 +1,4 @@
-package me.samuki.rationale
+package me.samuki.rationale.logic
 
 public interface RationaleNavigation {
 

@@ -6,5 +6,7 @@ import me.samuki.navigation.destinations.NavGraphs
 
 @Composable
 public fun NavigationBuilder() {
-    DestinationsNavHost(navGraph = NavGraphs.root)
+    DestinationsNavHost(
+        navGraph = NavGraphs.root,
+    )
 }
