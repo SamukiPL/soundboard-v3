@@ -14,13 +14,13 @@ import javax.inject.Inject
 public class SettingsOpeningHandler @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
-    public fun openSettings(): NoAnswer {
+    public fun openSettings(): Result<NoAnswer> {
         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
         val uri = Uri.fromParts("package", context.packageName, null)
         intent.setData(uri)
-        Log.d("OPEN_SETTINGS", "Start activity open settings intent")
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent)
-        return NoAnswer
+        return Result.success(NoAnswer)
     }
 
 }

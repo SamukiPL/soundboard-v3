@@ -15,5 +15,5 @@ internal class LocalPermissionsRepository @Inject constructor(
         writeSettingsPermissionChecker()
     }
 
-    override fun openSettings(): Result<NoAnswer> = runCatching { settingsOpeningHandler.openSettings() }
+    override fun openSettings(): Result<NoAnswer> =  settingsOpeningHandler.openSettings()
 }
