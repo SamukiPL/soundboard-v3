@@ -62,7 +62,7 @@ private fun ListContent(
         LazyColumn(
             modifier = Modifier.fillMaxSize()
         ) {
-            items(state.items, key = { it.id.value }) { item ->
+            items(state.items, key = { it.key.toString() }) { item ->
                 when (item) {
                     is CompilationItem -> CompilationView(/*compilationItem = item, onEvent = onEvent*/)
                     is SoundItem -> SoundView(

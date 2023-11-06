@@ -2,18 +2,18 @@ package me.samuki.feature.list.items
 
 import androidx.compose.runtime.Stable
 import me.samuki.model.Compilation
+import me.samuki.model.Key
 import me.samuki.model.Sound
-import me.samuki.model.values.Id
 import me.samuki.model.values.LikeState
 import me.samuki.model.values.Name
 
 internal sealed interface ListItem {
-    val id: Id
+    val key: Key
 }
 
 @Stable
 internal data class SoundItem(
-    override val id: Id,
+    override val key: Key,
     val name: Name,
     val likeState: LikeState,
     val sound: Sound
@@ -21,7 +21,7 @@ internal data class SoundItem(
 
 @Stable
 internal data class CompilationItem(
-    override val id: Id,
+    override val key: Key,
     val name: Name,
     val compilation: Compilation
 ) : ListItem

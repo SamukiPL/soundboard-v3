@@ -18,11 +18,13 @@ import me.samuki.feature.list.ListContract
 import me.samuki.feature.list.items.SoundItem
 import me.samuki.feature.list.items.options.OptionsChooser
 import me.samuki.feature.list.items.options.OptionsState
+import me.samuki.model.Key
 import me.samuki.model.Sound
 import me.samuki.model.values.Id
 import me.samuki.model.values.LikeState
 import me.samuki.model.values.Name
 import me.samuki.model.values.Path
+import me.samuki.model.values.Supplement
 
 @Composable
 internal fun SoundView(
@@ -74,10 +76,10 @@ private fun OptionsState.isClosed(): Boolean = when (this) {
 private fun SoundViewPreview() {
     SoundView(
         soundItem = SoundItem(
-            Id(1),
+            Key(Id(1), Supplement("")),
             Name("Test Name For Test"),
             LikeState.Normal,
-            Sound(Id(1), Name(""), Path(Uri.EMPTY), LikeState.Normal)
+            Sound(Id(1), Supplement(""), Name(""), Path(Uri.EMPTY), LikeState.Normal)
         ),
         onEvent = {},
         modifier = Modifier.height(64.dp)

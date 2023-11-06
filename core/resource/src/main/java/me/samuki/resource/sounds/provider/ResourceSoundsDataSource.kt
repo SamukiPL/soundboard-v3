@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.combine
 import me.samuki.model.Sound
 import me.samuki.model.values.Id
 import me.samuki.model.values.LikeState
+import me.samuki.model.values.Supplement
 import me.samuki.resource.sounds.favourite.FavouriteProvider
 import me.samuki.resource.sounds.reader.ResourceRawReader
 import javax.inject.Inject
@@ -21,6 +22,7 @@ internal class ResourceSoundsDataSource @Inject constructor(
             raws.map {
                 Sound(
                     id = it.id,
+                    supplement = Supplement(it.packageName.value),
                     name = it.name,
                     path = it.path,
                     likeState = favourites.getOrDefault(it.id, LikeState.Normal)
