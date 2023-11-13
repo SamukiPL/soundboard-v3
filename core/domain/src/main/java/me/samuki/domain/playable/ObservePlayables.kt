@@ -20,6 +20,7 @@ import javax.inject.Inject
 public class ObservePlayables @Inject constructor(
     private val observeActiveListType: ObserveActiveListType,
     private val observeSearchQuery: ObserveSearchQuery,
+    private val observeAllMergedPlayables: ObserveAllMergedPlayables,
     private val observeAllSounds: ObserveAllSounds,
     private val observeFavourites: ObserveFavourites,
     private val observeCompilations: ObserveAllCompilations,
@@ -29,7 +30,8 @@ public class ObservePlayables @Inject constructor(
         withContext(coroutineDispatcher) {
             observeActiveListType().flatMapLatest { listType ->
                 when (listType) {
-                    ListType.All -> observeAllSounds()
+                    ListType.All -> observeAllMergedPlayables()
+                    ListType.Sounds -> observeAllSounds()
                     ListType.Favourites -> observeFavourites()
                     ListType.Compilations -> observeCompilations()
                 }.flatMapLatest { playables ->

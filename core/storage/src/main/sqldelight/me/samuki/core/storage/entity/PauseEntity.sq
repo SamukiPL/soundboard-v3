@@ -1,0 +1,18 @@
+CREATE TABLE PauseEntity(
+   id Text AS me.samuki.core.storage.model.StorageCombinableId NOT NULL PRIMARY KEY,
+   compilation_id INTEGER AS me.samuki.model.values.Id NOT NULL,
+   next_combinable_id TEXT AS me.samuki.core.storage.model.StorageCombinableId,
+   repeats INTEGER NOT NULL
+);
+
+selectAll:
+SELECT *
+FROM PauseEntity;
+
+insertPause:
+INSERT INTO PauseEntity
+VALUES ?;
+
+deleteAllForCompilation:
+DELETE FROM PauseEntity
+WHERE compilation_id = :compilationId;

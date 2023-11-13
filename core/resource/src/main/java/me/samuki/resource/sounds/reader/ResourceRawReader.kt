@@ -3,13 +3,13 @@ package me.samuki.resource.sounds.reader
 import android.net.Uri
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import me.samuki.common.di.DispatcherDefault
-import me.samuki.core.model.R
+import me.samuki.core.resource.R
 import me.samuki.model.values.Id
 import me.samuki.model.values.PackageName
 import me.samuki.model.values.Path
@@ -19,13 +19,13 @@ import javax.inject.Inject
 
 internal class ResourceRawReader @Inject constructor(
     packageName: PackageName,
-    @DispatcherDefault ioCoroutineContext: CoroutineDispatcher,
+    @DispatcherDefault coroutineDispatcher: CoroutineDispatcher,
     private val getSoundName: GetSoundName
 ) {
 
     private val soundPath = "android.resource://${packageName.value}/raw/sound"
 
-    private val scope = CoroutineScope(ioCoroutineContext)
+    private val scope = CoroutineScope(coroutineDispatcher)
 
     internal val resourceRawFlow = MutableStateFlow<List<ResourceRaw>>(emptyList())
 
@@ -34,30 +34,28 @@ internal class ResourceRawReader @Inject constructor(
     private fun getSoundPath(id: Int) = Uri.parse(soundPath + id)
 
     init {
-        val tmpList = mutableListOf<ResourceRaw>()
         scope.launch {
-            val jobs = mutableListOf<Job>()
-            (0 until soundsCount step 10).forEach { step ->
-                jobs += async {
-                    val mutableList = mutableListOf<ResourceRaw>()
-                    (step until min((step + 10), soundsCount)).forEach { id ->
+            (0 until soundsCount step 10).map { step ->
+                async {
+                    (step until min((step + 10), soundsCount)).map { id ->
                         val soundPath = getSoundPath(id)
                         val soundName = getSoundName(id, soundPath)
-                        mutableList.add(
-                            ResourceRaw(
-                                id = Id(id),
-                                name = soundName,
-                                path = Path(soundPath)
-                            )
+                        ResourceRaw(
+                            id = Id(id),
+                            packageName = packageName,
+                            name = soundName,
+                            path = Path(soundPath)
                         )
                     }
-                    tmpList += (mutableList)
                 }
             }
-            jobs.forEach { it.join() }
-            tmpList.sortBy { model -> model.id.value }
-            resourceRawFlow.emit(tmpList.toList())
-            scope.cancel()
+                .awaitAll()
+                .flatten()
+                .sortedBy { model -> model.id.value }
+                .run {
+                    resourceRawFlow.emit(this.toList())
+                    scope.cancel()
+                }
         }
     }
 }

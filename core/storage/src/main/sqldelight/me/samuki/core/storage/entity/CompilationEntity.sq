@@ -1,0 +1,19 @@
+CREATE TABLE CompilationEntity(
+  id INTEGER AS me.samuki.model.values.Id NOT NULL PRIMARY KEY AUTOINCREMENT,
+  name TEXT AS me.samuki.model.values.Name NOT NULL
+);
+
+selectAll:
+SELECT *
+FROM CompilationEntity;
+
+insertCompilation:
+INSERT INTO CompilationEntity
+VALUES (?, ?);
+
+lastInsertRowId:
+SELECT last_insert_rowid();
+
+deleteCompilation:
+DELETE FROM CompilationEntity
+WHERE id = :id;

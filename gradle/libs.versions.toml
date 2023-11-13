@@ -2,7 +2,7 @@
 accompanist = "0.26.5-rc"
 androidGradlePlugin = "8.1.2"
 androidxActivityCompose = "1.8.0"
-androidxComposeBom = "2023.10.00"
+androidxComposeBom = "2023.10.01"
 androidxComposeCompiler = "1.5.3"
 androidxComposeMaterial3 = "1.1.2"
 androidxComposeRuntimeTracing = "1.0.0-alpha01"
@@ -23,13 +23,14 @@ kspGradlePlugin = "1.9.10-1.0.13"
 ktor = "2.2.1"
 lottie = "5.2.0"
 mockk = "1.13.3"
+napier = "2.6.1"
 settings = "1.0.0-RC"
-sqldelight = "1.5.4"
+sqldelight = "2.0.0"
 junit = "4.13.2"
 androidx-test-ext-junit = "1.1.5"
 espresso-core = "3.5.1"
 appcompat = "1.6.1"
-material = "1.9.0"
+material = "1.10.0"
 
 [libraries]
 accompanist-pager = { group = "com.google.accompanist", name = "accompanist-pager", version.ref = "accompanist" }
@@ -68,10 +69,11 @@ ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging", version
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 lottie = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+napier-logger = { group = "io.github.aakira", name = "napier", version.ref = "napier" }
 settings-multiplatform = { group = "com.russhwolf", name = "multiplatform-settings", version.ref = "settings" }
 settings-no-arg = { group = "com.russhwolf", name = "multiplatform-settings-no-arg", version.ref = "settings" }
-sqldelight-android-driver = { group = "com.squareup.sqldelight", name = "android-driver", version.ref = "sqldelight" }
-sqldelight-coroutines-extensions = { group = "com.squareup.sqldelight", name = "coroutines-extensions", version.ref = "sqldelight" }
+sqldelight-android-driver = { group = "app.cash.sqldelight", name = "android-driver", version.ref = "sqldelight" }
+sqldelight-coroutines-extensions = { group = "app.cash.sqldelight", name = "coroutines-extensions", version.ref = "sqldelight" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
@@ -85,4 +87,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinGra
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinGradlePlugin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "kspGradlePlugin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-sqldelight = { id = "com.squareup.sqldelight", version.ref = "sqldelight" }
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }

@@ -10,6 +10,7 @@ android {
 dependencies {
     api(libs.kotlinx.datetime)
     api(libs.kotlinx.serialization.json)
+    api(libs.napier.logger)
 
     testImplementation(project(":core:testing"))
 }

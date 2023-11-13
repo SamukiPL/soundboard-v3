@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.core.app.ShareCompat
 import androidx.core.content.FileProvider
 import dagger.hilt.android.qualifiers.ApplicationContext
-import me.samuki.core.model.R
+import me.samuki.core.resource.R
 import java.io.File
 import javax.inject.Inject
 

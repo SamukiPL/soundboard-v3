@@ -1,0 +1,19 @@
+CREATE TABLE SoundEntity(
+   id Text AS me.samuki.core.storage.model.StorageCombinableId NOT NULL PRIMARY KEY,
+   compilation_id INTEGER AS me.samuki.model.values.Id NOT NULL,
+   next_combinable_id TEXT AS me.samuki.core.storage.model.StorageCombinableId,
+   resource_id INTEGER AS me.samuki.model.values.Id NOT NULL,
+   supplement TEXT AS me.samuki.model.values.Supplement NOT NULL
+);
+
+selectAll:
+SELECT *
+FROM SoundEntity;
+
+insertSound:
+INSERT INTO SoundEntity
+VALUES ?;
+
+deleteAllForCompilation:
+DELETE FROM SoundEntity
+WHERE compilation_id = :compilationId;
