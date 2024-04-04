@@ -4,6 +4,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import me.samuki.common.di.DispatcherIO
 import me.samuki.domain.compilation.CompilationRepository
+import me.samuki.model.Combinable
 import me.samuki.model.NoAnswer
 import me.samuki.model.Sound
 import me.samuki.model.values.Name
@@ -20,6 +21,6 @@ public class CreateCompilation @Inject constructor(
 
     public data class Params(
         val name: Name,
-        val list: List<Sound>
+        val list: List<Combinable>
     )
 }

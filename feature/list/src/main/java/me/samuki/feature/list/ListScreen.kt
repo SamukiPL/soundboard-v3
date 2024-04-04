@@ -13,6 +13,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import me.samuki.core.presentation.events.ObserveAsEvents
 import me.samuki.feature.list.items.CompilationItem
 import me.samuki.feature.list.items.CompilationView
 import me.samuki.feature.list.items.SoundItem
@@ -27,17 +28,17 @@ public fun ListScreen(
 
     LaunchedEffect(Unit) {
         viewModel.onEvent(ListContract.Event.Init)
-
-        viewModel.eventsFlow.collect {
-            when (it) {
-                is ListContract.Effect.GoToSettingsRationale -> navigation.goToSettingsRationale(
-                    it.playable,
-                    it.setType
-                )
-            }
-        }
     }
 
+    ObserveAsEvents(viewModel.eventsFlow) {
+        when (it) {
+            is ListContract.Effect.GoToSettingsRationale -> navigation.goToSettingsRationale(
+                it.playable,
+                it.setType
+            )
+        }
+    }
+    
     val state = viewModel.state.collectAsState().value
 
     ListContent(

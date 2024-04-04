@@ -1,5 +1,7 @@
 package me.samuki.model.values
 
+import me.samuki.common.util.EMPTY_STRING
+
 
 public sealed interface Query {
 
@@ -12,6 +14,6 @@ public sealed interface Query {
 }
 
 public fun Query.getQueryValue(): String = when (this) {
-    Query.Empty -> ""
+    Query.Empty -> EMPTY_STRING
     is Query.Text -> value
 }

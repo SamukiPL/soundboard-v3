@@ -14,6 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import me.samuki.common.util.EMPTY_STRING
 import me.samuki.feature.list.ListContract
 import me.samuki.feature.list.items.SoundItem
 import me.samuki.feature.list.items.options.OptionsChooser
@@ -43,7 +44,7 @@ internal fun SoundView(
                 if (optionsState.isClosed()) it else -it
             })
         },
-        label = ""
+        label = EMPTY_STRING
     ) {
         when (it) {
             OptionsState.Closed -> DefaultSound(
@@ -76,10 +77,10 @@ private fun OptionsState.isClosed(): Boolean = when (this) {
 private fun SoundViewPreview() {
     SoundView(
         soundItem = SoundItem(
-            Key(Id(1), Supplement("")),
+            Key(Id(1), Supplement(EMPTY_STRING)),
             Name("Test Name For Test"),
             LikeState.Normal,
-            Sound(Id(1), Supplement(""), Name(""), Path(Uri.EMPTY), LikeState.Normal)
+            Sound(Id(1), Supplement(EMPTY_STRING), Name(EMPTY_STRING), Path(Uri.EMPTY), LikeState.Normal)
         ),
         onEvent = {},
         modifier = Modifier.height(64.dp)

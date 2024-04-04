@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import me.samuki.common.rail.runNoAnswer
+import me.samuki.common.util.EMPTY_STRING
 import me.samuki.core.storage.CompilationsDataSource
 import me.samuki.core.storage.model.StoragePause
 import me.samuki.core.storage.model.StorageSound
@@ -39,7 +40,7 @@ internal class LocalCompilationRepository @Inject constructor(
             compilations.map { compilation ->
                 Compilation(
                     id = compilation.id,
-                    supplement = Supplement(""),
+                    supplement = Supplement(EMPTY_STRING),
                     name = compilation.name,
                     sounds = compilation.combinables.mapNotNull { combinable ->
                         when (combinable) {

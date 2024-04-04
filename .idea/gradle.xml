@@ -35,6 +35,10 @@
             <option value="$PROJECT_DIR$/core/testing" />
             <option value="$PROJECT_DIR$/core/ui" />
             <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/compilation" />
+            <option value="$PROJECT_DIR$/feature/compilation/data" />
+            <option value="$PROJECT_DIR$/feature/compilation/domain" />
+            <option value="$PROJECT_DIR$/feature/compilation/presentation" />
             <option value="$PROJECT_DIR$/feature/list" />
             <option value="$PROJECT_DIR$/feature/rationale" />
             <option value="$PROJECT_DIR$/navigation" />
