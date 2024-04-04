@@ -26,6 +26,7 @@ fun Project.configureCompose(
         implementation(libs.findLibrary("androidx-compose-runtime").get())
         implementation(libs.findLibrary("androidx-compose-runtime-livedata").get())
         implementation(libs.findLibrary("androidx-compose-ui").get())
+        implementation(libs.findLibrary("androidx-lifecycle-runtime-compose").get())
         debugImplementation(libs.findLibrary("androidx-compose-ui-tooling").get())
         debugImplementation(libs.findLibrary("androidx-compose-ui-test-manifest").get())
 

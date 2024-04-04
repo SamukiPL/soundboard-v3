@@ -4,6 +4,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import me.samuki.domain.params.SetType
 import me.samuki.feature.list.ListNavigation
 import me.samuki.model.Playable
+import me.samuki.navigation.destinations.destinations.CompilationCreationDestination
 import me.samuki.navigation.destinations.destinations.RationaleDestination
 
 internal class ProvidedListNavigation(
@@ -16,6 +17,12 @@ internal class ProvidedListNavigation(
                 playable,
                 setType
             )
+        )
+    }
+
+    override fun goToCompilationCreation() {
+        navigate(
+            CompilationCreationDestination()
         )
     }
 }

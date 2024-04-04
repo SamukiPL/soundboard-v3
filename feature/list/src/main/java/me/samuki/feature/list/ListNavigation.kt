@@ -6,4 +6,6 @@ import me.samuki.model.Playable
 public interface ListNavigation {
 
     public fun goToSettingsRationale(playable: Playable, setType: SetType)
+
+    public fun goToCompilationCreation()
 }

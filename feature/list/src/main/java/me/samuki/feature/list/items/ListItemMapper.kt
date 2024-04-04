@@ -1,9 +1,9 @@
 package me.samuki.feature.list.items
 
 import me.samuki.model.Compilation
-import me.samuki.model.Key
 import me.samuki.model.Playable
 import me.samuki.model.Sound
+import me.samuki.model.mapper.key
 
 internal fun Playable.toListItem(): ListItem = when (this) {
     is Compilation -> toListItem()
@@ -22,9 +22,3 @@ private fun Compilation.toListItem(): ListItem = CompilationItem(
     name = name,
     compilation = this
 )
-
-private val Playable.key
-    get() = Key(
-        id = id,
-        supplement = supplement
-    )

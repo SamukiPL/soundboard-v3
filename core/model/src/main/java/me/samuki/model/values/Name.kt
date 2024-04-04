@@ -6,4 +6,9 @@ import kotlinx.serialization.Serializable
 @JvmInline
 public value class Name(
     public val value: String
-)
+) {
+
+    public fun isNotEmpty(): Boolean = value.isNotEmpty()
+
+    public fun isEmpty(): Boolean = value.isEmpty()
+}
