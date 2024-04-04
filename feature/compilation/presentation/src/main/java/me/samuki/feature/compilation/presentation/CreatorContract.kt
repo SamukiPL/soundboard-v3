@@ -1,6 +1,6 @@
 package me.samuki.feature.compilation.presentation
 
-import me.samuki.common.util.emptyName
+import me.samuki.model.util.emptyName
 import me.samuki.feature.compilation.domain.model.CombinedCombinable
 import me.samuki.feature.compilation.presentation.items.creator.CompilationCreatorItem
 import me.samuki.feature.compilation.presentation.items.sounds.CompilationCreatorSoundItem

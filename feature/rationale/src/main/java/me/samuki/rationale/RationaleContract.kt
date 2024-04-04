@@ -1,6 +1,6 @@
 package me.samuki.rationale
 
-import me.samuki.common.util.EMPTY_STRING
+import me.samuki.model.util.EMPTY_STRING
 import me.samuki.domain.params.SetType
 import me.samuki.model.Playable
 import me.samuki.model.values.Name

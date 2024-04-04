@@ -1,6 +1,6 @@
 package me.samuki.data.set
 
-import me.samuki.common.rail.runNoAnswer
+import me.samuki.domain.rail.runNoAnswer
 import me.samuki.domain.sound.set.SetSoundRepository
 import me.samuki.model.NoAnswer
 import me.samuki.model.Sound

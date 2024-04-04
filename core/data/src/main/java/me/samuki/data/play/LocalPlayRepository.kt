@@ -1,6 +1,6 @@
 package me.samuki.data.play
 
-import me.samuki.common.rail.runNoAnswer
+import me.samuki.domain.rail.runNoAnswer
 import me.samuki.domain.PlayRepository
 import me.samuki.model.Compilation
 import me.samuki.model.NoAnswer

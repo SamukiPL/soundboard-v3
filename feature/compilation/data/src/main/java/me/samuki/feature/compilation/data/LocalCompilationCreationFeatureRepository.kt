@@ -1,7 +1,7 @@
 package me.samuki.feature.compilation.data
 
 import kotlinx.coroutines.flow.MutableSharedFlow
-import me.samuki.common.rail.runNoAnswer
+import me.samuki.domain.rail.runNoAnswer
 import me.samuki.domain.compilation.creation.CreateCompilation
 import me.samuki.feature.compilation.domain.CompilationCreationFeatureRepository
 import me.samuki.feature.compilation.domain.model.CombinedCombinable

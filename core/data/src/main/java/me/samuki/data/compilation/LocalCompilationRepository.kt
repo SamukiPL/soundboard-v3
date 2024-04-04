@@ -5,8 +5,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import me.samuki.common.rail.runNoAnswer
-import me.samuki.common.util.EMPTY_STRING
+import me.samuki.domain.rail.runNoAnswer
+import me.samuki.model.util.EMPTY_STRING
 import me.samuki.core.storage.CompilationsDataSource
 import me.samuki.core.storage.model.StoragePause
 import me.samuki.core.storage.model.StorageSound
