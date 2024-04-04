@@ -1,6 +1,6 @@
 package me.samuki.model.values
 
-import me.samuki.common.util.EMPTY_STRING
+import me.samuki.model.util.EMPTY_STRING
 
 
 public sealed interface Query {

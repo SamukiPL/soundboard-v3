@@ -14,7 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import me.samuki.common.util.EMPTY_STRING
+import me.samuki.model.util.EMPTY_STRING
 import me.samuki.feature.list.ListContract
 import me.samuki.feature.list.items.SoundItem
 import me.samuki.feature.list.items.options.OptionsChooser

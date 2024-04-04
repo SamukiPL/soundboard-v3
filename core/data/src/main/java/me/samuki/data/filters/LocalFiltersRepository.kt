@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
-import me.samuki.common.rail.runNoAnswer
+import me.samuki.domain.rail.runNoAnswer
 import me.samuki.data.filters.listType.ListTypeFiltersDataSource
 import me.samuki.data.filters.query.QueryFilterDataSource
 import me.samuki.domain.filters.FiltersRepository

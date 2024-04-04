@@ -5,7 +5,7 @@ package me.samuki.domain.playable
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import me.samuki.common.di.DispatcherIO
-import me.samuki.common.rail.andThen
+import me.samuki.domain.rail.andThen
 import me.samuki.domain.compilation.set.SetCompilation
 import me.samuki.domain.lint.InternalDomainApi
 import me.samuki.domain.params.SetType

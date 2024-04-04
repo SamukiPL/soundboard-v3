@@ -1,4 +1,4 @@
-package me.samuki.common.rail
+package me.samuki.domain.rail
 
 import me.samuki.model.NoAnswer
 

@@ -1,4 +1,4 @@
-package me.samuki.common.util
+package me.samuki.model.util
 
 import me.samuki.model.values.Name
 
