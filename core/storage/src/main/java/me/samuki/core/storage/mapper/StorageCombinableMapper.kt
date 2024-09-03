@@ -21,8 +21,8 @@ internal fun List<StorageCombinable>.toEntities(compilationId: Id): EntitiesToSa
         )
     }.let { combinables ->
         EntitiesToSave(
-            pauses = combinables.filterIsInstance(PauseEntity::class.java),
-            sounds = combinables.filterIsInstance(SoundEntity::class.java)
+            pauses = combinables.filterIsInstance<PauseEntity>(),
+            sounds = combinables.filterIsInstance<SoundEntity>()
         )
     }
 }

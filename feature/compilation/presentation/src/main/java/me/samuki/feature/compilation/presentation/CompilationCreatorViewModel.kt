@@ -11,23 +11,30 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import me.samuki.domain.playable.ObservePlayables
+import me.samuki.domain.search.SearchByQuery
 import me.samuki.feature.compilation.domain.logic.AddPause
 import me.samuki.feature.compilation.domain.logic.AddSound
 import me.samuki.feature.compilation.domain.logic.EndCreation
 import me.samuki.feature.compilation.domain.logic.ObserveCompilationCreation
+import me.samuki.feature.compilation.domain.logic.PlayTemporaryCompilation
 import me.samuki.feature.compilation.domain.logic.RemoveCombinable
+import me.samuki.feature.compilation.domain.logic.ShareTemporaryCompilation
 import me.samuki.feature.compilation.presentation.items.creator.toItem
 import me.samuki.feature.compilation.presentation.items.sounds.toItem
 import me.samuki.model.Sound
+import me.samuki.model.values.Query
 import javax.inject.Inject
 
 @HiltViewModel
 internal class CompilationCreatorViewModel @Inject constructor(
     private val observePlayables: ObservePlayables,
     private val observeCompilationCreation: ObserveCompilationCreation,
+    private val playTemporaryCompilation: PlayTemporaryCompilation,
+    private val shareTemporaryCompilation: ShareTemporaryCompilation,
     private val addPause: AddPause,
     private val addSound: AddSound,
     private val removeCombinable: RemoveCombinable,
+    private val searchByQuery: SearchByQuery,
     private val endCreation: EndCreation,
 ) : ViewModel() {
 
@@ -49,11 +56,13 @@ internal class CompilationCreatorViewModel @Inject constructor(
         is CreatorContract.Event.AddSound -> addSound(event.sound)
         is CreatorContract.Event.AddPause -> addPause(event.pause)
         is CreatorContract.Event.RemoveCombinable -> removeCombinable(event.combinedCombinable)
-        CreatorContract.Event.RemoveQuery -> TODO()
-        is CreatorContract.Event.SetQuery -> TODO()
+        is CreatorContract.Event.SetQuery -> searchByQuery(event.query)
+        CreatorContract.Event.RemoveQuery -> searchByQuery(Query.Empty)
         CreatorContract.Event.StartSettingName -> startSettingName()
         is CreatorContract.Event.SetName -> _state.update { state -> state.copy(name = event.name) }
         CreatorContract.Event.EndCreation -> endCompilationCreation()
+        CreatorContract.Event.PlayCompilation -> playTemporaryCompilation
+        CreatorContract.Event.ShareCompilation -> shareTemporaryCompilation()
     }
 
     private suspend fun init() {

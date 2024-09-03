@@ -94,10 +94,10 @@ internal class AndroidMediaPlayer @Inject constructor(
     }
 
     private suspend fun delayForPause(pause: Pause) {
-        delay((pause.repeats * repeatsMultiplier).milliseconds)
+        delay((pause.repeats * REPEATS_MULTIPLIER).milliseconds)
     }
 
     private companion object {
-        const val repeatsMultiplier = 100
+        const val REPEATS_MULTIPLIER = 100
     }
 }

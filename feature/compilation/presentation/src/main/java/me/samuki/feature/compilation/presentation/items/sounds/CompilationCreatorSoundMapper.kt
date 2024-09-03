@@ -5,9 +5,9 @@ import me.samuki.model.Playable
 import me.samuki.model.Sound
 import me.samuki.model.mapper.key
 
-internal fun Playable.toItem(): CompilationCreatorSoundItem? = when (this) {
+internal fun Playable.toItem(): CompilationCreatorSound? = when (this) {
     is Compilation -> null
-    is Sound -> CompilationCreatorSoundItem(
+    is Sound -> CompilationCreatorSound(
         key = key,
         name = name,
         sound = this,

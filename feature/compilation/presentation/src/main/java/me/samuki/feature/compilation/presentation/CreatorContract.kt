@@ -1,11 +1,11 @@
 package me.samuki.feature.compilation.presentation
 
-import me.samuki.model.util.emptyName
 import me.samuki.feature.compilation.domain.model.CombinedCombinable
 import me.samuki.feature.compilation.presentation.items.creator.CompilationCreatorItem
-import me.samuki.feature.compilation.presentation.items.sounds.CompilationCreatorSoundItem
+import me.samuki.feature.compilation.presentation.items.sounds.CompilationCreatorSound
 import me.samuki.model.Pause
 import me.samuki.model.Sound
+import me.samuki.model.util.emptyName
 import me.samuki.model.values.Name
 import me.samuki.model.values.Query
 
@@ -15,7 +15,7 @@ internal typealias SetNameDialogVisible = Boolean
 internal interface CreatorContract {
 
     data class State(
-        val sounds: List<CompilationCreatorSoundItem> = emptyList(),
+        val sounds: List<CompilationCreatorSound> = emptyList(),
         val list: List<CompilationCreatorItem> = emptyList(),
         val showCreateButton: CreateButtonVisible = false,
         val query: Query = Query.Empty,
@@ -28,6 +28,10 @@ internal interface CreatorContract {
         data object Init : Event
 
         data object GoBack : Event
+
+        data object PlayCompilation : Event
+
+        data object ShareCompilation : Event
 
         data class AddSound(
             val sound: Sound,
