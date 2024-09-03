@@ -7,6 +7,9 @@ import org.gradle.kotlin.dsl.configure
 class LibraryComposePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
+            with(pluginManager) {
+                apply("org.jetbrains.kotlin.plugin.compose")
+            }
             extensions.configure<LibraryExtension> {
                 configureCompose(this)
             }

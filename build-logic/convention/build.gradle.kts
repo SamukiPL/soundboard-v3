@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     `kotlin-dsl`
 }
@@ -9,9 +11,15 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+    }
+}
+
 dependencies {
-    compileOnly("com.android.tools.build:gradle:8.0.1")
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.20")
+    compileOnly(libs.gradle)
+    compileOnly(libs.kotlin.gradle.plugin)
     implementation(kotlin("script-runtime"))
 }
 gradlePlugin {

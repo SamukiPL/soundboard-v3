@@ -13,8 +13,6 @@ fun Project.configureCompose(
 
     commonExtension.apply {
         buildFeatures.compose = true
-        composeOptions.kotlinCompilerExtensionVersion =
-            libs.findVersion("androidxComposeCompiler").get().toString()
     }
 
     dependencies {
@@ -29,7 +27,5 @@ fun Project.configureCompose(
         implementation(libs.findLibrary("androidx-lifecycle-runtime-compose").get())
         debugImplementation(libs.findLibrary("androidx-compose-ui-tooling").get())
         debugImplementation(libs.findLibrary("androidx-compose-ui-test-manifest").get())
-
-        implementation("com.github.SamukiPL:composable-event:1.0.1")
     }
 }

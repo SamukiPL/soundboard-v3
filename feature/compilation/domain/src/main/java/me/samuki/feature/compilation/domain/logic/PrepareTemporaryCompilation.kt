@@ -10,8 +10,9 @@ import me.samuki.model.Compilation
 import me.samuki.model.util.emptyName
 import me.samuki.model.util.emptySupplement
 import me.samuki.model.util.temporaryId
+import javax.inject.Inject
 
-public class PrepareTemporaryCompilation(
+public class PrepareTemporaryCompilation @Inject constructor(
     private val repository: CompilationCreationFeatureRepository,
     @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
