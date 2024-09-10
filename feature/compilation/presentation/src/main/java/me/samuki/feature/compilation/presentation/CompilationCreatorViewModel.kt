@@ -7,6 +7,8 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -66,21 +68,15 @@ internal class CompilationCreatorViewModel @Inject constructor(
     }
 
     private suspend fun init() {
-        observePlayables().collect { playables ->
+        observePlayables().combine(observeCompilationCreation()) { playables, newList ->
             _state.update { state ->
                 state.copy(
-                    sounds = playables.mapNotNull { it.toItem() }
-                )
-            }
-        }
-        observeCompilationCreation().collect { newList ->
-            _state.update { state ->
-                state.copy(
+                    sounds = playables.mapNotNull { it.toItem() },
                     list = newList.map { it.toItem() },
                     showCreateButton = newList.any { it.combinable is Sound },
                 )
             }
-        }
+        }.collect()
     }
 
     private suspend fun handleBack() = when (state.value.showSetNameDialog) {

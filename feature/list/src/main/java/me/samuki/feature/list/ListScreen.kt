@@ -10,10 +10,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.currentCompositeKeyHash
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.util.fastFlatMap
 import androidx.hilt.navigation.compose.hiltViewModel
 import me.samuki.core.presentation.events.ObserveAsEvents
 import me.samuki.feature.list.items.CompilationItem
@@ -21,7 +19,6 @@ import me.samuki.feature.list.items.CompilationView
 import me.samuki.feature.list.items.SoundItem
 import me.samuki.feature.list.items.sound.SoundView
 import me.samuki.feature.list.toolbar.ListToolbar
-import java.util.StringJoiner
 
 @Composable
 public fun ListScreen(
@@ -39,9 +36,10 @@ public fun ListScreen(
                 it.playable,
                 it.setType
             )
+            ListContract.Effect.GoToCompilationCreation -> navigation.goToCompilationCreation()
         }
     }
-    
+
     val state = viewModel.state.collectAsState().value
 
     ListContent(
@@ -72,7 +70,7 @@ private fun ListContent(
                     is SoundItem -> SoundView(
                         soundItem = item,
                         onEvent = onEvent,
-                        modifier = Modifier.animateItemPlacement()
+                        modifier = Modifier.animateItem()
                     )
                 }
             }

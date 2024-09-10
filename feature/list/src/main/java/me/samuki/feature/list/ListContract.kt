@@ -66,5 +66,7 @@ internal interface ListContract {
             val playable: Playable,
             val setType: SetType
         ) : Effect
+
+        object GoToCompilationCreation : Effect
     }
 }

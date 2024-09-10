@@ -33,7 +33,7 @@ dependencies {
 androidComponents {
     onVariants(selector().all()) { variant ->
         afterEvaluate {
-            val variantName = variant.name.capitalize()
+            val variantName = variant.name.replaceFirstChar { it.uppercaseChar() }
             tasks.getByName<KotlinCompile>("ksp${variantName}Kotlin") {
                 setSource(tasks.getByName("generate${variantName}DatabaseInterface").outputs)
             }
