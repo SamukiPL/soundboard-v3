@@ -1,11 +1,13 @@
-package me.samuki.feature.list.toolbar.query
+package me.samuki.feature.list.toolbar
 
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
@@ -16,42 +18,48 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import me.samuki.feature.list.ListContract
-import me.samuki.feature.list.toolbar.AcceptQueryEnable
-import me.samuki.feature.list.toolbar.ToolbarState
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import me.samuki.core.ui.composables.QueryViewState
 import me.samuki.model.values.Query
 import me.samuki.model.values.getQueryValue
 
-@Composable
-internal fun QueryView(
-    state: ToolbarState,
-    onEvent: (ListContract.Event) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    val focusRequester = remember {
-        FocusRequester()
-    }
+public typealias QueryButtonVisible = Boolean
+public typealias AcceptQueryEnable = Boolean
+public typealias ShowPlaceholder = Boolean
 
+private fun Modifier.nullableFocusRequester(focusRequester: FocusRequester?): Modifier {
+    return this then if (focusRequester != null)
+        Modifier.focusRequester(focusRequester)
+    else
+        Modifier
+}
+
+@Composable
+public fun QueryView(
+    state: QueryViewState,
+    onQueryChange: (Query.Text) -> Unit,
+    modifier: Modifier = Modifier,
+    acceptQuery: (() -> Unit)? = null,
+    removeQuery: (() -> Unit)? = null,
+    focusRequester: FocusRequester? = null,
+): Unit = with(state) {
     Row(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        LeadingIcon(state.acceptQueryEnable, onEvent)
+        acceptQuery?.run { LeadingIcon(acceptQueryEnable, acceptQuery) }
         Box(modifier = Modifier.weight(1f)) {
             BasicTextField(
-                value = state.query.getQueryValue(),
+                value = query.getQueryValue(),
                 onValueChange = { input ->
-                    onEvent(
-                        ListContract.Event.SetQuery(
-                            Query.Text(input)
-                        )
+                    onQueryChange(
+                        Query.Text(input)
                     )
                 },
                 textStyle = MaterialTheme.typography.titleMedium,
@@ -60,10 +68,10 @@ internal fun QueryView(
                 modifier = Modifier
                     .fillMaxWidth()
                     .align(Alignment.CenterStart)
-                    .focusRequester(focusRequester)
+                    .nullableFocusRequester(focusRequester)
             )
             androidx.compose.animation.AnimatedVisibility(
-                visible = state.showQueryPlaceholder,
+                visible = showQueryPlaceholder,
                 modifier = Modifier.align(
                     Alignment.CenterStart
                 ),
@@ -73,22 +81,18 @@ internal fun QueryView(
                 Text(text = "Search...")
             }
         }
-        TrailingIcon(onEvent)
-    }
-
-    LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
+        removeQuery?.run { TrailingIcon(removeQuery) }
     }
 }
 
 @Composable
 private fun LeadingIcon(
     acceptQueryEnable: AcceptQueryEnable,
-    onEvent: (ListContract.Event) -> Unit,
+    acceptQuery: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     IconButton(
-        onClick = { onEvent(ListContract.Event.AcceptQuery) },
+        onClick = acceptQuery,
         enabled = acceptQueryEnable,
     ) {
         Icon(
@@ -102,10 +106,10 @@ private fun LeadingIcon(
 
 @Composable
 private fun TrailingIcon(
-    onEvent: (ListContract.Event) -> Unit,
+    removeQuery: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    IconButton(onClick = { onEvent(ListContract.Event.RemoveQuery) }) {
+    IconButton(onClick = removeQuery) {
         Icon(
             imageVector = Icons.Filled.Clear,
             contentDescription = "Clear",
@@ -113,4 +117,19 @@ private fun TrailingIcon(
                 .clip(CircleShape)
         )
     }
+}
+
+@Preview
+@Composable
+private fun QueryViewPreview() {
+    QueryView(
+        state = QueryViewState(),
+        onQueryChange = {},
+        acceptQuery = {},
+        removeQuery = {},
+        modifier = Modifier
+            .height(48.dp)
+            .background(MaterialTheme.colorScheme.inversePrimary),
+        focusRequester = null,
+    )
 }

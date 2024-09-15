@@ -1,7 +1,10 @@
 package me.samuki.feature.compilation.presentation.preview
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import me.samuki.core.ui.composables.QueryViewState
 import me.samuki.feature.compilation.presentation.CreatorContract
+import me.samuki.feature.compilation.presentation.bottom.BottomBarState
+import me.samuki.feature.compilation.presentation.bottom.BottomBarType
 import me.samuki.model.util.emptyName
 import me.samuki.model.values.Id
 import me.samuki.model.values.Query
@@ -26,7 +29,7 @@ internal class PreviewCreatorContractStateProvider(
                     .shuffled()
                     .toList(),
                 showCreateButton = true,
-                query = Query.Empty,
+                bottomBarState = BottomBarState(),
                 showSetNameDialog = false,
                 name = emptyName()
             ),
@@ -34,7 +37,13 @@ internal class PreviewCreatorContractStateProvider(
                 sounds = listOf(),
                 list = listOf(),
                 showCreateButton = false,
-                query = Query.Empty,
+                bottomBarState = BottomBarState(
+                    queryViewState = QueryViewState(
+                        query = Query.Text("Searching..."),
+                        acceptQueryEnable = true,
+                        showQueryPlaceholder = false,
+                    ),
+                ),
                 showSetNameDialog = false,
                 name = emptyName()
             )

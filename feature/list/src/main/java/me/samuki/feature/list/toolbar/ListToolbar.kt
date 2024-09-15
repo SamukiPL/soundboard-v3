@@ -3,6 +3,7 @@ package me.samuki.feature.list.toolbar
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -10,7 +11,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import me.samuki.feature.list.ListContract
 import me.samuki.feature.list.toolbar.filters.PlayableFilters
-import me.samuki.feature.list.toolbar.query.QueryView
+import me.samuki.feature.list.toolbar.query.ToolbarQueryView
 
 @Composable
 internal fun ListToolbar(
@@ -31,7 +32,7 @@ internal fun ListToolbar(
                 state = toolbarState,
                 onEvent = onEvent
             )
-            ToolbarType.QueryInput -> QueryView(
+            ToolbarType.QueryInput -> ToolbarQueryView(
                 state = toolbarState,
                 onEvent = onEvent
             )

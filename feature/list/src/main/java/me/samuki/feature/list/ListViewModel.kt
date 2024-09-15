@@ -1,13 +1,13 @@
 package me.samuki.feature.list
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import me.samuki.domain.filters.ChangeFilterSelectionState
 import me.samuki.domain.filters.ObserveAllFilters
@@ -37,13 +37,13 @@ internal class ListViewModel @Inject constructor(
     private val changeFilterSelectionState: ChangeFilterSelectionState
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(ListContract.State())
-    val state: StateFlow<ListContract.State> = _state
+    internal var state: ListContract.State by mutableStateOf(ListContract.State())
+        private set
 
     private val eventChannel = Channel<ListContract.Effect>(Channel.BUFFERED)
     val eventsFlow = eventChannel.receiveAsFlow()
 
-    private val listStateCombiner = ListStateCombiner(_state::update)
+    private val listStateCombiner = ListStateCombiner(state)
 
     fun onEvent(event: ListContract.Event) {
         viewModelScope.launch {

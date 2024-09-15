@@ -1,16 +1,16 @@
 package me.samuki.feature.compilation.presentation
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import me.samuki.domain.playable.ObservePlayables
 import me.samuki.domain.search.SearchByQuery
@@ -40,8 +40,8 @@ internal class CompilationCreatorViewModel @Inject constructor(
     private val endCreation: EndCreation,
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(CreatorContract.State())
-    val state: StateFlow<CreatorContract.State> = _state
+    internal var state: CreatorContract.State by mutableStateOf(CreatorContract.State())
+        private set
 
     private val eventChannel = Channel<CreatorContract.Effect>(Channel.BUFFERED)
     val eventsFlow: Flow<CreatorContract.Effect> = eventChannel.receiveAsFlow()
@@ -61,7 +61,7 @@ internal class CompilationCreatorViewModel @Inject constructor(
         is CreatorContract.Event.SetQuery -> searchByQuery(event.query)
         CreatorContract.Event.RemoveQuery -> searchByQuery(Query.Empty)
         CreatorContract.Event.StartSettingName -> startSettingName()
-        is CreatorContract.Event.SetName -> _state.update { state -> state.copy(name = event.name) }
+        is CreatorContract.Event.SetName -> state.name = event.name
         CreatorContract.Event.EndCreation -> endCompilationCreation()
         CreatorContract.Event.PlayCompilation -> playTemporaryCompilation
         CreatorContract.Event.ShareCompilation -> shareTemporaryCompilation()
@@ -69,32 +69,22 @@ internal class CompilationCreatorViewModel @Inject constructor(
 
     private suspend fun init() {
         observePlayables().combine(observeCompilationCreation()) { playables, newList ->
-            _state.update { state ->
-                state.copy(
-                    sounds = playables.mapNotNull { it.toItem() },
-                    list = newList.map { it.toItem() },
-                    showCreateButton = newList.any { it.combinable is Sound },
-                )
-            }
+            state.sounds = playables.mapNotNull { it.toItem() }
+            state.list = newList.map { it.toItem() }
+            state.showCreateButton = newList.any { it.combinable is Sound }
         }.collect()
     }
 
-    private suspend fun handleBack() = when (state.value.showSetNameDialog) {
+    private suspend fun handleBack() = when (state.showSetNameDialog) {
         false -> eventChannel.send(CreatorContract.Effect.GoBackToList)
-        true -> _state.update { state ->
-            state.copy(
-                showSetNameDialog = false
-            )
-        }
+        true -> state.showSetNameDialog = false
     }
 
-    private fun startSettingName() = _state.update { state ->
-        state.copy(
-            showSetNameDialog = true
-        )
+    private fun startSettingName() {
+        state.showSetNameDialog = true
     }
 
-    private suspend fun endCompilationCreation() = with(state.value) {
+    private suspend fun endCompilationCreation() = with(state) {
         if (list.isEmpty() || name.isEmpty()) return@with
 
         endCreation(name)
