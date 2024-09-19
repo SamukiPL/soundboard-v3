@@ -21,6 +21,7 @@ import me.samuki.feature.compilation.domain.logic.ObserveCompilationCreation
 import me.samuki.feature.compilation.domain.logic.PlayTemporaryCompilation
 import me.samuki.feature.compilation.domain.logic.RemoveCombinable
 import me.samuki.feature.compilation.domain.logic.ShareTemporaryCompilation
+import me.samuki.feature.compilation.presentation.bottom.pause.pause
 import me.samuki.feature.compilation.presentation.items.creator.toItem
 import me.samuki.feature.compilation.presentation.items.sounds.toItem
 import me.samuki.model.Sound
@@ -55,15 +56,16 @@ internal class CompilationCreatorViewModel @Inject constructor(
     private suspend fun eventDispatcher(event: CreatorContract.Event): Any = when (event) {
         CreatorContract.Event.Init -> init()
         CreatorContract.Event.GoBack -> handleBack()
+        CreatorContract.Event.ChangeVolume -> state.volumeEnabled = state.volumeEnabled.not()
         is CreatorContract.Event.AddSound -> addSound(event.sound)
-        is CreatorContract.Event.AddPause -> addPause(event.pause)
+        is CreatorContract.Event.AddPause -> addPause(event.item.pause)
         is CreatorContract.Event.RemoveCombinable -> removeCombinable(event.combinedCombinable)
-        is CreatorContract.Event.SetQuery -> searchByQuery(event.query)
-        CreatorContract.Event.RemoveQuery -> searchByQuery(Query.Empty)
+        is CreatorContract.Event.SetQuery -> updateQuery(event.query)
+        CreatorContract.Event.RemoveQuery -> updateQuery(Query.Empty)
         CreatorContract.Event.StartSettingName -> startSettingName()
         is CreatorContract.Event.SetName -> state.name = event.name
         CreatorContract.Event.EndCreation -> endCompilationCreation()
-        CreatorContract.Event.PlayCompilation -> playTemporaryCompilation
+        CreatorContract.Event.PlayCompilation -> playTemporaryCompilation()
         CreatorContract.Event.ShareCompilation -> shareTemporaryCompilation()
     }
 
@@ -78,6 +80,14 @@ internal class CompilationCreatorViewModel @Inject constructor(
     private suspend fun handleBack() = when (state.showSetNameDialog) {
         false -> eventChannel.send(CreatorContract.Effect.GoBackToList)
         true -> state.showSetNameDialog = false
+    }
+
+    private suspend fun updateQuery(newQuery: Query) {
+        searchByQuery(newQuery)
+        state.bottomBarState.queryViewState.apply {
+            this.query = newQuery
+            showQueryPlaceholder = newQuery == Query.Empty
+        }
     }
 
     private fun startSettingName() {

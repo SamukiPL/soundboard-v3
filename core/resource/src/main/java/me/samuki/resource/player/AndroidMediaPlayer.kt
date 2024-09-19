@@ -3,12 +3,12 @@ package me.samuki.resource.player
 import android.content.Context
 import android.media.MediaPlayer
 import dagger.hilt.android.qualifiers.ApplicationContext
+import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asFlow
@@ -21,15 +21,17 @@ import me.samuki.model.Combinable
 import me.samuki.model.Compilation
 import me.samuki.model.Pause
 import me.samuki.model.Sound
+import me.samuki.resource.player.pause.PauseDelayer
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.time.Duration.Companion.milliseconds
 
 @Singleton
 internal class AndroidMediaPlayer @Inject constructor(
     @ApplicationContext private val context: Context,
+    pauseDelayer: PauseDelayer,
     @DispatcherIO private val coroutinesDispatcher: CoroutineDispatcher//TODO clean Coroutines
-) : Player {
+) : Player,
+    PauseDelayer by pauseDelayer {
 
     private val playerScope = CoroutineScope(coroutinesDispatcher)
 
@@ -43,12 +45,15 @@ internal class AndroidMediaPlayer @Inject constructor(
             it.reset()
             trySend(ReadyToPlay)
         }
+        setOnDelayFinishedListener {
+            trySend(ReadyToPlay)
+        }
         awaitClose()
     }
 
     private val combinableFlow = MutableSharedFlow<Combinable>(
-        replay = 1,
-        extraBufferCapacity = 0,
+        replay = 999,
+        extraBufferCapacity = 999,
         onBufferOverflow = BufferOverflow.DROP_OLDEST
     )
 
@@ -91,13 +96,5 @@ internal class AndroidMediaPlayer @Inject constructor(
             setDataSource(context, sound.path.value)
             prepareAsync()
         }
-    }
-
-    private suspend fun delayForPause(pause: Pause) {
-        delay((pause.repeats * REPEATS_MULTIPLIER).milliseconds)
-    }
-
-    private companion object {
-        const val REPEATS_MULTIPLIER = 100
     }
 }

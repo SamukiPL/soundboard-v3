@@ -69,6 +69,7 @@ private fun CompilationCreatorContent(
         }
         CompilationCreatorControlsView(
             showCreateButton = state.showCreateButton,
+            volumeEnabled = state.volumeEnabled,
             onEvent = onEvent,
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.primaryContainer)

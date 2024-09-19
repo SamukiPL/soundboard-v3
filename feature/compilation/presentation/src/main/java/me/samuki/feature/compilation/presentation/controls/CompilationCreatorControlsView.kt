@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.VolumeOff
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Share
@@ -29,10 +31,12 @@ import androidx.compose.ui.unit.dp
 import me.samuki.core.ui.previews.PreviewBooleanProvider
 import me.samuki.feature.compilation.presentation.CreateButtonVisible
 import me.samuki.feature.compilation.presentation.CreatorContract
+import me.samuki.feature.compilation.presentation.VolumeEnabled
 
 @Composable
 internal fun CompilationCreatorControlsView(
     showCreateButton: CreateButtonVisible,
+    volumeEnabled: VolumeEnabled,
     onEvent: (CreatorContract.Event) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -58,7 +62,24 @@ internal fun CompilationCreatorControlsView(
                 tint = MaterialTheme.colorScheme.onPrimary,
             )
         }
-        Box(modifier = Modifier.aspectRatio(1f))
+        IconButton(
+            onClick = { onEvent(CreatorContract.Event.ChangeVolume) },
+            modifier = Modifier
+                .padding(4.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.primary)
+                .aspectRatio(1f),
+        ) {
+            Icon(
+                imageVector = if (volumeEnabled)
+                    Icons.AutoMirrored.Filled.VolumeUp
+                else
+                    Icons.AutoMirrored.Filled.VolumeOff,
+                contentDescription = "Volume",
+                modifier = Modifier.size(16.dp),
+                tint = MaterialTheme.colorScheme.onPrimary,
+            )
+        }
         IconButton(
             onClick = { onEvent(CreatorContract.Event.PlayCompilation) },
             modifier = Modifier
@@ -68,7 +89,7 @@ internal fun CompilationCreatorControlsView(
         ) {
             Icon(
                 imageVector = Icons.Filled.PlayArrow,
-                contentDescription = "Close",
+                contentDescription = "Play",
                 modifier = Modifier.size(24.dp),
                 tint = MaterialTheme.colorScheme.onPrimary,
             )
@@ -83,7 +104,7 @@ internal fun CompilationCreatorControlsView(
         ) {
             Icon(
                 imageVector = Icons.Filled.Share,
-                contentDescription = "Close",
+                contentDescription = "Share",
                 modifier = Modifier.size(16.dp),
                 tint = MaterialTheme.colorScheme.onPrimary,
             )
@@ -103,7 +124,7 @@ internal fun CompilationCreatorControlsView(
                 ) {
                     Icon(
                         imageVector = Icons.Filled.Check,
-                        contentDescription = "Close",
+                        contentDescription = "Create",
                         modifier = Modifier.size(24.dp),
                         tint = MaterialTheme.colorScheme.onPrimary,
                     )
@@ -117,10 +138,11 @@ internal fun CompilationCreatorControlsView(
 @Preview
 @Composable
 private fun PreviewCompilationCreatorControlsView(
-    @PreviewParameter(PreviewBooleanProvider::class) showCreateButton: Boolean
+    @PreviewParameter(PreviewBooleanProvider::class) flag: Boolean,
 ) {
     CompilationCreatorControlsView(
-        showCreateButton,
+        flag,
+        flag,
         {}
     )
 }

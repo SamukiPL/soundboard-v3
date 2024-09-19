@@ -1,7 +1,6 @@
 package me.samuki.feature.compilation.domain.logic
 
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.single
 import me.samuki.common.di.DispatcherIO
 import me.samuki.domain.rail.runCatchingWithContext
 import me.samuki.feature.compilation.domain.CompilationCreationFeatureRepository
@@ -19,7 +18,7 @@ public class PrepareTemporaryCompilation @Inject constructor(
 
     public suspend operator fun invoke(): Result<Compilation> =
         runCatchingWithContext(coroutineDispatcher) {
-            val combinables = repository.items.single().combinables
+            val combinables = repository.items.value.combinables
 
             if (combinables.isEmpty()) {
                 throw IllegalStateException(EMPTY_LIST_MESSAGE)
@@ -30,6 +29,8 @@ public class PrepareTemporaryCompilation @Inject constructor(
                 name = emptyName(),
                 sounds = combinables,
             )
+        }.onFailure {
+            println("XYZ $it")
         }
 
     private companion object {

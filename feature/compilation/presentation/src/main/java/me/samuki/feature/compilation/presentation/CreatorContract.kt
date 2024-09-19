@@ -7,15 +7,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import me.samuki.feature.compilation.domain.model.CombinedCombinable
 import me.samuki.feature.compilation.presentation.bottom.BottomBarState
+import me.samuki.feature.compilation.presentation.bottom.pause.PausePickerItem
 import me.samuki.feature.compilation.presentation.items.creator.CompilationCreatorItem
 import me.samuki.feature.compilation.presentation.items.sounds.CompilationCreatorSound
-import me.samuki.model.Pause
 import me.samuki.model.Sound
 import me.samuki.model.util.emptyName
 import me.samuki.model.values.Name
 import me.samuki.model.values.Query
 
 internal typealias CreateButtonVisible = Boolean
+internal typealias VolumeEnabled = Boolean
 internal typealias SetNameDialogVisible = Boolean
 
 internal interface CreatorContract {
@@ -25,6 +26,7 @@ internal interface CreatorContract {
         sounds: List<CompilationCreatorSound> = mutableStateListOf(),
         list: List<CompilationCreatorItem> = mutableStateListOf(),
         showCreateButton: CreateButtonVisible = false,
+        volumeEnabled: VolumeEnabled = true,
         bottomBarState: BottomBarState = BottomBarState(),
         showSetNameDialog: SetNameDialogVisible = false, //TODO change to enum
         name: Name = emptyName(),
@@ -32,6 +34,7 @@ internal interface CreatorContract {
         var sounds: List<CompilationCreatorSound> by mutableStateOf(sounds)
         var list: List<CompilationCreatorItem> by mutableStateOf(list)
         var showCreateButton: CreateButtonVisible by mutableStateOf(showCreateButton)
+        var volumeEnabled: VolumeEnabled by mutableStateOf(volumeEnabled)
         var bottomBarState: BottomBarState by mutableStateOf(bottomBarState)
         var showSetNameDialog: SetNameDialogVisible by mutableStateOf(showSetNameDialog) //TODO change to enum
         var name: Name by mutableStateOf(name)
@@ -43,6 +46,8 @@ internal interface CreatorContract {
 
         data object GoBack : Event
 
+        data object ChangeVolume : Event
+
         data object PlayCompilation : Event
 
         data object ShareCompilation : Event
@@ -52,7 +57,7 @@ internal interface CreatorContract {
         ) : Event
 
         data class AddPause(
-            val pause: Pause,
+            val item: PausePickerItem,
         ) : Event
 
         data class RemoveCombinable(

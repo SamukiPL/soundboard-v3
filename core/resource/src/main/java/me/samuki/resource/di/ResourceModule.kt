@@ -6,6 +6,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import me.samuki.resource.player.AndroidMediaPlayer
 import me.samuki.resource.player.Player
+import me.samuki.resource.player.pause.PauseDelayer
+import me.samuki.resource.player.pause.PauseDelayerImpl
 import me.samuki.resource.set.CompilationSetter
 import me.samuki.resource.set.CompilationSettingsSetter
 import me.samuki.resource.set.SoundSetter
@@ -31,6 +33,9 @@ internal abstract class ResourceModule {
 
     @Binds
     abstract fun player(androidMediaPlayer: AndroidMediaPlayer): Player
+
+    @Binds
+    abstract fun pauseDelayer(pauseDelayer: PauseDelayerImpl): PauseDelayer
 
     @Binds
     abstract fun soundSettingsSetter(soundSettingsSetter: SoundSettingsSetter): SoundSetter

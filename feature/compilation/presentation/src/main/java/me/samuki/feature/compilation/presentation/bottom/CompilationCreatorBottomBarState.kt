@@ -4,6 +4,8 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import me.samuki.core.ui.composables.QueryViewState
+import me.samuki.feature.compilation.presentation.bottom.pause.PausePickerItem
+import me.samuki.feature.compilation.presentation.bottom.pause.generatePauseItems
 
 internal enum class BottomBarType {
     Pause, Query
@@ -11,7 +13,9 @@ internal enum class BottomBarType {
 
 @Stable
 internal class BottomBarState(
+    pauseItems: List<PausePickerItem> = generatePauseItems(),
     queryViewState: QueryViewState = QueryViewState()
 ) {
+    val pauseItems: List<PausePickerItem> by mutableStateOf(pauseItems)
     val queryViewState: QueryViewState by mutableStateOf(queryViewState)
 }

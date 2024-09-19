@@ -48,7 +48,7 @@ internal fun CompilationCreatorQueryView(
                 .padding(end = 8.dp)
                 .clip(RoundedCornerShape(topEnd = 100.dp, bottomEnd = 100.dp))
                 .background(MaterialTheme.colorScheme.primary),
-            ) {
+        ) {
             Icon(
                 painter = painterResource(R.drawable.ic_add_pause),
                 contentDescription = "Accept",
@@ -57,8 +57,16 @@ internal fun CompilationCreatorQueryView(
         }
         QueryView(
             state = queryViewState,
-            onQueryChange = {},
-            removeQuery = {},
+            onQueryChange = {
+                onEvent(
+                    CreatorContract.Event.SetQuery(it)
+                )
+            },
+            removeQuery = {
+                onEvent(
+                    CreatorContract.Event.RemoveQuery
+                )
+            },
         )
     }
 }

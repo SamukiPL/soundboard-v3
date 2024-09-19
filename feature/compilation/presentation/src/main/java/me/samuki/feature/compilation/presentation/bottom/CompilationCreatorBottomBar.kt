@@ -9,6 +9,7 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -18,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.samuki.feature.compilation.presentation.CreatorContract
+import me.samuki.feature.compilation.presentation.bottom.pause.CompilationCreatorPauseBar
 
 @Composable
 internal fun CompilationCreatorBottomBar(
@@ -26,6 +28,7 @@ internal fun CompilationCreatorBottomBar(
     modifier: Modifier = Modifier
 ) {
     var type by remember { mutableStateOf(BottomBarType.Pause) }
+    val listState = rememberLazyListState()
     SharedTransitionLayout {
         AnimatedContent(
             targetState = type,
@@ -43,6 +46,8 @@ internal fun CompilationCreatorBottomBar(
         ) {
             when (it) {
                 BottomBarType.Pause -> CompilationCreatorPauseBar(
+                    pauseItems = state.pauseItems,
+                    listState = listState,
                     onEvent = onEvent,
                     changeBar = { type = BottomBarType.Query }
                 )
