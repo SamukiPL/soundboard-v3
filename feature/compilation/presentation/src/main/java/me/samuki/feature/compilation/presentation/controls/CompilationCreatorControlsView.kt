@@ -1,6 +1,13 @@
+@file:OptIn(ExperimentalSharedTransitionApi::class)
+
 package me.samuki.feature.compilation.presentation.controls
 
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.AnimatedVisibilityScope
+import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.animation.SharedTransitionLayout
+import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -33,6 +40,7 @@ import me.samuki.feature.compilation.presentation.CreateButtonVisible
 import me.samuki.feature.compilation.presentation.CreatorContract
 import me.samuki.feature.compilation.presentation.VolumeEnabled
 
+context(SharedTransitionScope, AnimatedVisibilityScope)
 @Composable
 internal fun CompilationCreatorControlsView(
     showCreateButton: CreateButtonVisible,
@@ -42,9 +50,9 @@ internal fun CompilationCreatorControlsView(
 ) {
     Row(
         modifier = modifier
+            .padding(2.dp)
             .fillMaxWidth()
-            .height(48.dp)
-            .padding(2.dp),
+            .height(48.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceAround
     ) {
@@ -116,11 +124,16 @@ internal fun CompilationCreatorControlsView(
                 .clip(CircleShape)
                 .aspectRatio(1f)
         ) {
-            when (it) {
-                true -> IconButton(
-                    onClick = { onEvent(CreatorContract.Event.EndCreation) },
+            if (it) {
+                IconButton(
+                    onClick = { onEvent(CreatorContract.Event.StartSettingName) },
                     modifier = Modifier
                         .background(MaterialTheme.colorScheme.primary)
+                        .sharedBounds(
+                            sharedContentState = rememberSharedContentState(key = "Dialog Bounds"),
+                            animatedVisibilityScope = this@AnimatedVisibilityScope,
+                        )
+                        .animateEnterExit()
                 ) {
                     Icon(
                         imageVector = Icons.Filled.Check,
@@ -129,7 +142,8 @@ internal fun CompilationCreatorControlsView(
                         tint = MaterialTheme.colorScheme.onPrimary,
                     )
                 }
-                false -> Box {}
+            } else {
+                Box {}
             }
         }
     }
@@ -140,9 +154,13 @@ internal fun CompilationCreatorControlsView(
 private fun PreviewCompilationCreatorControlsView(
     @PreviewParameter(PreviewBooleanProvider::class) flag: Boolean,
 ) {
-    CompilationCreatorControlsView(
-        flag,
-        flag,
-        {}
-    )
+    SharedTransitionLayout {
+        AnimatedVisibility(true) {
+            CompilationCreatorControlsView(
+                flag,
+                flag,
+                {},
+            )
+        }
+    }
 }

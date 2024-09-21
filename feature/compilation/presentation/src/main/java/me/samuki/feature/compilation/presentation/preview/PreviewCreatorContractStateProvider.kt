@@ -29,9 +29,9 @@ internal class PreviewCreatorContractStateProvider(
                     .shuffled()
                     .toList(),
                 showCreateButton = true,
+                volumeEnabled = false,
                 bottomBarState = BottomBarState(),
                 showSetNameDialog = false,
-                name = emptyName()
             ),
             CreatorContract.State(
                 sounds = listOf(),
@@ -45,7 +45,6 @@ internal class PreviewCreatorContractStateProvider(
                     ),
                 ),
                 showSetNameDialog = false,
-                name = emptyName()
             )
         )
 }

@@ -10,6 +10,7 @@ import androidx.compose.animation.SharedTransitionScope
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -37,6 +38,8 @@ internal fun CompilationCreatorQueryView(
     Row(
         modifier = modifier
             .background(MaterialTheme.colorScheme.inversePrimary)
+            .navigationBarsPadding()
+            .height(48.dp),
     ) {
         IconButton(
             onClick = changeBar,

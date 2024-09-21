@@ -8,6 +8,7 @@ import androidx.compose.runtime.setValue
 import me.samuki.feature.compilation.domain.model.CombinedCombinable
 import me.samuki.feature.compilation.presentation.bottom.BottomBarState
 import me.samuki.feature.compilation.presentation.bottom.pause.PausePickerItem
+import me.samuki.feature.compilation.presentation.dialog.FinishDialogState
 import me.samuki.feature.compilation.presentation.items.creator.CompilationCreatorItem
 import me.samuki.feature.compilation.presentation.items.sounds.CompilationCreatorSound
 import me.samuki.model.Sound
@@ -29,15 +30,15 @@ internal interface CreatorContract {
         volumeEnabled: VolumeEnabled = true,
         bottomBarState: BottomBarState = BottomBarState(),
         showSetNameDialog: SetNameDialogVisible = false, //TODO change to enum
-        name: Name = emptyName(),
+        finishDialogState: FinishDialogState = FinishDialogState(),
     ) {
         var sounds: List<CompilationCreatorSound> by mutableStateOf(sounds)
         var list: List<CompilationCreatorItem> by mutableStateOf(list)
         var showCreateButton: CreateButtonVisible by mutableStateOf(showCreateButton)
         var volumeEnabled: VolumeEnabled by mutableStateOf(volumeEnabled)
-        var bottomBarState: BottomBarState by mutableStateOf(bottomBarState)
+        val bottomBarState: BottomBarState by mutableStateOf(bottomBarState)
         var showSetNameDialog: SetNameDialogVisible by mutableStateOf(showSetNameDialog) //TODO change to enum
-        var name: Name by mutableStateOf(name)
+        val finishDialogState: FinishDialogState by mutableStateOf(finishDialogState)
     }
 
     sealed interface Event {

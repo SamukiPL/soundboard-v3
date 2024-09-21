@@ -9,6 +9,7 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -42,7 +43,7 @@ internal fun CompilationCreatorBottomBar(
                     )
                 )
             },
-            modifier = modifier.height(48.dp),
+            modifier = modifier,
         ) {
             when (it) {
                 BottomBarType.Pause -> CompilationCreatorPauseBar(

@@ -25,6 +25,7 @@ import me.samuki.feature.compilation.presentation.bottom.pause.pause
 import me.samuki.feature.compilation.presentation.items.creator.toItem
 import me.samuki.feature.compilation.presentation.items.sounds.toItem
 import me.samuki.model.Sound
+import me.samuki.model.values.Name
 import me.samuki.model.values.Query
 import javax.inject.Inject
 
@@ -63,7 +64,7 @@ internal class CompilationCreatorViewModel @Inject constructor(
         is CreatorContract.Event.SetQuery -> updateQuery(event.query)
         CreatorContract.Event.RemoveQuery -> updateQuery(Query.Empty)
         CreatorContract.Event.StartSettingName -> startSettingName()
-        is CreatorContract.Event.SetName -> state.name = event.name
+        is CreatorContract.Event.SetName -> updateName(event.name)
         CreatorContract.Event.EndCreation -> endCompilationCreation()
         CreatorContract.Event.PlayCompilation -> playTemporaryCompilation()
         CreatorContract.Event.ShareCompilation -> shareTemporaryCompilation()
@@ -94,9 +95,17 @@ internal class CompilationCreatorViewModel @Inject constructor(
         state.showSetNameDialog = true
     }
 
-    private suspend fun endCompilationCreation() = with(state) {
-        if (list.isEmpty() || name.isEmpty()) return@with
+    private fun updateName(name: Name) {
+        state.finishDialogState.apply {
+            this.name = name
+            showNamePlaceholder = name.isEmpty()
+            finishDialogState = name.isNotEmpty()
+        }
+    }
 
-        endCreation(name)
+    private suspend fun endCompilationCreation() = with(state) {
+        if (list.isEmpty() || finishDialogState.name.isEmpty()) return@with
+
+        endCreation(finishDialogState.name)
     }
 }

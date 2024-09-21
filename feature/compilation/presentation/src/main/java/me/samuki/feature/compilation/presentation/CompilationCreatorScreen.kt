@@ -1,11 +1,18 @@
+@file:OptIn(ExperimentalSharedTransitionApi::class)
+
 package me.samuki.feature.compilation.presentation
 
+import androidx.activity.compose.BackHandler
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -24,6 +31,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import me.samuki.core.presentation.events.ObserveAsEvents
 import me.samuki.feature.compilation.presentation.bottom.CompilationCreatorBottomBar
 import me.samuki.feature.compilation.presentation.controls.CompilationCreatorControlsView
+import me.samuki.feature.compilation.presentation.dialog.CompilationCreatorFinishDialog
 import me.samuki.feature.compilation.presentation.items.creator.CompilationCreatorItemView
 import me.samuki.feature.compilation.presentation.items.sounds.CompilationCreatorSoundView
 import me.samuki.feature.compilation.presentation.preview.PreviewCreatorContractStateProvider
@@ -40,6 +48,10 @@ public fun CompilationCreatorScreen(navigation: CompilationCreatorNavigation) {
         }
     }
 
+    BackHandler {
+        viewModel.onEvent(CreatorContract.Event.GoBack)
+    }
+
     val state = remember { viewModel.state }
     val onEvent by remember { mutableStateOf(viewModel::onEvent) }
 
@@ -51,43 +63,63 @@ private fun CompilationCreatorContent(
     state: CreatorContract.State,
     onEvent: (CreatorContract.Event) -> Unit
 ) {
-    Column {
-        LazyRow(
-            modifier =
-            Modifier
-                .padding(horizontal = 16.dp, vertical = 4.dp)
-                .fillMaxWidth()
-                .height(48.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            items(state.list, key = { it.id.toString() }) {
-                CompilationCreatorItemView(
-                    combinedItem = it,
-                    onEvent = onEvent,
+    SharedTransitionLayout(modifier = Modifier.statusBarsPadding()) {
+        AnimatedContent(
+            targetState = state.showSetNameDialog,
+            label = "Dialog animation"
+        ) { showSetNameDialog ->
+            if (!showSetNameDialog) {
+                Column(
+                    modifier = Modifier
+                ) {
+                    LazyRow(
+                        modifier =
+                        Modifier
+                            .padding(horizontal = 16.dp, vertical = 4.dp)
+                            .fillMaxWidth()
+                            .height(48.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        items(state.list, key = { it.id.toString() }) {
+                            CompilationCreatorItemView(
+                                combinedItem = it,
+                                onEvent = onEvent,
+                            )
+                        }
+                    }
+                    CompilationCreatorControlsView(
+                        showCreateButton = state.showCreateButton,
+                        volumeEnabled = state.volumeEnabled,
+                        onEvent = onEvent,
+                        modifier = Modifier
+                            .background(MaterialTheme.colorScheme.primaryContainer)
+                    )
+                    LazyColumn(
+                        modifier = Modifier
+                            .padding(horizontal = 8.dp)
+                            .weight(1f),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        items(state.sounds, key = { it.key.toString() }) {
+                            CompilationCreatorSoundView(
+                                compilationCreatorSound = it,
+                                onEvent = onEvent
+                            )
+                        }
+                    }
+                    CompilationCreatorBottomBar(
+                        state = state.bottomBarState,
+                        onEvent = onEvent
+                    )
+                }
+            } else {
+                CompilationCreatorFinishDialog(
+                    combinables = state.list,
+                    state = state.finishDialogState,
+                    onEvent = onEvent
                 )
             }
         }
-        CompilationCreatorControlsView(
-            showCreateButton = state.showCreateButton,
-            volumeEnabled = state.volumeEnabled,
-            onEvent = onEvent,
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.primaryContainer)
-        )
-        LazyColumn(
-            modifier = Modifier
-                .padding(horizontal = 8.dp)
-                .weight(1f),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            items(state.sounds, key = { it.key.toString() }) {
-                CompilationCreatorSoundView(compilationCreatorSound = it, onEvent = onEvent)
-            }
-        }
-        CompilationCreatorBottomBar(
-            state = state.bottomBarState,
-            onEvent = onEvent
-        )
     }
 }
 
