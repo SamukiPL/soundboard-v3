@@ -7,6 +7,8 @@ import androidx.compose.runtime.setValue
 import me.samuki.core.ui.composables.QueryViewState
 import me.samuki.feature.list.toolbar.filters.FilterItem
 
+public typealias QueryButtonVisible = Boolean
+
 internal enum class ToolbarType {
     Filters, QueryInput
 }

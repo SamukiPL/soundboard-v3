@@ -15,7 +15,7 @@ internal class PreviewCompilationCreatorItemProvider(
             CompilationCreatorItem(
                 id = Id(index),
                 combinedCombinable = CombinedCombinable(
-                    id = Id(0),
+                    id = Id(index),
                     combinable = combinable
                 )
             )

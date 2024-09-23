@@ -5,7 +5,6 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.CircleShape
@@ -25,13 +24,10 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import me.samuki.core.ui.composables.AcceptQueryEnable
 import me.samuki.core.ui.composables.QueryViewState
 import me.samuki.model.values.Query
 import me.samuki.model.values.getQueryValue
-
-public typealias QueryButtonVisible = Boolean
-public typealias AcceptQueryEnable = Boolean
-public typealias ShowPlaceholder = Boolean
 
 private fun Modifier.nullableFocusRequester(focusRequester: FocusRequester?): Modifier {
     return this then if (focusRequester != null)

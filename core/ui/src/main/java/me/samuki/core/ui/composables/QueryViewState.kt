@@ -6,11 +6,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import me.samuki.model.values.Query
 
+public typealias AcceptQueryEnable = Boolean
+public typealias ShowPlaceholder = Boolean
+
 @Stable
 public class QueryViewState(
     query: Query = Query.Empty,
-    acceptQueryEnable: Boolean = false,
-    showQueryPlaceholder: Boolean = true,
+    acceptQueryEnable: AcceptQueryEnable = false,
+    showQueryPlaceholder: ShowPlaceholder = true,
 ) {
     public var query: Query by mutableStateOf(query)
     public var acceptQueryEnable: Boolean by mutableStateOf(acceptQueryEnable)

@@ -25,7 +25,7 @@ internal class LocalCompilationCreationFeatureRepository @Inject constructor(
 
     override suspend fun addSound(sound: Sound): Result<NoAnswer> = runNoAnswer {
         items.update { list ->
-            list + sound.toCombinable(
+            list + sound.combineCombinable(
                 id = combinedTemporaryIdDataSource.generateId()
             )
         }
@@ -33,7 +33,7 @@ internal class LocalCompilationCreationFeatureRepository @Inject constructor(
 
     override suspend fun addPause(pause: Pause): Result<NoAnswer> = runNoAnswer {
         items.update { list ->
-            list + pause.toCombinable(
+            list + pause.combineCombinable(
                 id = combinedTemporaryIdDataSource.generateId()
             )
         }
@@ -58,12 +58,12 @@ internal class LocalCompilationCreationFeatureRepository @Inject constructor(
     }
 }
 
-private fun Pause.toCombinable(id: Id): CombinedCombinable = CombinedCombinable(
+private fun Pause.combineCombinable(id: Id): CombinedCombinable = CombinedCombinable(
     id,
     this
 )
 
-private fun Sound.toCombinable(id: Id): CombinedCombinable = CombinedCombinable(
+private fun Sound.combineCombinable(id: Id): CombinedCombinable = CombinedCombinable(
     id,
     this
 )

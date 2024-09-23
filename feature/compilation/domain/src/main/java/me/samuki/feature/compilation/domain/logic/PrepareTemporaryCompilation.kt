@@ -1,5 +1,6 @@
 package me.samuki.feature.compilation.domain.logic
 
+import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineDispatcher
 import me.samuki.common.di.DispatcherIO
 import me.samuki.domain.rail.runCatchingWithContext
@@ -30,7 +31,10 @@ public class PrepareTemporaryCompilation @Inject constructor(
                 sounds = combinables,
             )
         }.onFailure {
-            println("XYZ $it")
+            Napier.e(
+                message = "Something went wrong with temporary compilation creation",
+                throwable = it
+            )
         }
 
     private companion object {
