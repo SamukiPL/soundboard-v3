@@ -14,9 +14,9 @@ internal typealias FinishCreationEnabled = Boolean
 internal class FinishDialogState(
     name: Name = emptyName(),
     showNamePlaceholder: ShowNamePlaceholder = true,
-    finishDialogState: FinishCreationEnabled = false
+    finishCreationEnabled: FinishCreationEnabled = false
 ) {
     var name: Name by mutableStateOf(name)
     var showNamePlaceholder: ShowNamePlaceholder by mutableStateOf(showNamePlaceholder)
-    var finishDialogState: FinishCreationEnabled by mutableStateOf(finishDialogState)
+    var finishCreationEnabled: FinishCreationEnabled by mutableStateOf(finishCreationEnabled)
 }

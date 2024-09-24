@@ -95,12 +95,10 @@ internal class CompilationCreatorViewModel @Inject constructor(
         state.showSetNameDialog = true
     }
 
-    private fun updateName(name: Name) {
-        state.finishDialogState.apply {
-            this.name = name
-            showNamePlaceholder = name.isEmpty()
-            finishDialogState = name.isNotEmpty()
-        }
+    private fun updateName(name: Name) = state.finishDialogState.apply {
+        this.name = name
+        showNamePlaceholder = name.isEmpty()
+        finishCreationEnabled = name.isNotEmpty()
     }
 
     private suspend fun endCompilationCreation() = with(state) {
