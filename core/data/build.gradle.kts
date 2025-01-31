@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "me.samuki.core.model"
+    namespace = "me.samuki.core.data"
 }
 
 dependencies {

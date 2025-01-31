@@ -44,6 +44,7 @@ fun Project.configureKotlinAndroid(
 //                "-opt-in=kotlin.Experimental",
                 // Enable experimental kotlinx serialization APIs
 //                "-opt-in=kotlinx.serialization.ExperimentalSerializationApi"
+                "-Xcontext-receivers"
             )
 
             jvmTarget = JavaVersion.VERSION_17.toString()

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id("me.samuki.library")
     id("me.samuki.hilt")
@@ -25,4 +27,16 @@ dependencies {
     implementation(libs.sqldelight.coroutines.extensions)
 
     testImplementation(project(":core:testing"))
+}
+
+//SQLDelight + Hilt workaround
+androidComponents {
+    onVariants(selector().all()) { variant ->
+        afterEvaluate {
+            val variantName = variant.name.replaceFirstChar { it.uppercaseChar() }
+            tasks.getByName<KotlinCompile>("ksp${variantName}Kotlin") {
+                setSource(tasks.getByName("generate${variantName}DatabaseInterface").outputs)
+            }
+        }
+    }
 }

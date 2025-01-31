@@ -1,5 +1,6 @@
 package me.samuki.data.search
 
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.MutableStateFlow
 import me.samuki.domain.rail.runNoAnswer
 import me.samuki.domain.search.SearchRepository
@@ -8,7 +9,7 @@ import me.samuki.model.values.Query
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
+@ViewModelScoped
 internal class LocalSearchRepository @Inject constructor() : SearchRepository {
 
     override val queryFlow = MutableStateFlow<Query>(Query.Empty)

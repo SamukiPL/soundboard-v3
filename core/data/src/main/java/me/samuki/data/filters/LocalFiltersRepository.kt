@@ -1,5 +1,6 @@
 package me.samuki.data.filters
 
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
@@ -14,7 +15,7 @@ import me.samuki.model.values.FilterSelected
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
+@ViewModelScoped
 internal class LocalFiltersRepository @Inject constructor(
     listTypeFiltersDataSource: ListTypeFiltersDataSource,
     private val queryFilterDataSource: QueryFilterDataSource,

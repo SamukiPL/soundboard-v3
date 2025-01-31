@@ -8,3 +8,7 @@ android {
     namespace = "me.samuki.core.ui"
 }
 
+dependencies {
+    implementation(project(":core:model"))
+}
+

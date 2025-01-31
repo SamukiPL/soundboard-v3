@@ -10,7 +10,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import me.samuki.feature.list.ListContract
 import me.samuki.feature.list.toolbar.filters.PlayableFilters
-import me.samuki.feature.list.toolbar.query.QueryView
+import me.samuki.feature.list.toolbar.query.ToolbarQueryView
 
 @Composable
 internal fun ListToolbar(
@@ -31,7 +31,7 @@ internal fun ListToolbar(
                 state = toolbarState,
                 onEvent = onEvent
             )
-            ToolbarType.QueryInput -> QueryView(
+            ToolbarType.QueryInput -> ToolbarQueryView(
                 state = toolbarState,
                 onEvent = onEvent
             )

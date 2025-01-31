@@ -1,24 +1,38 @@
+@file:OptIn(ExperimentalSharedTransitionApi::class)
+
 package me.samuki.feature.compilation.presentation
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Text
+import androidx.activity.compose.BackHandler
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.ExperimentalSharedTransitionApi
+import androidx.compose.animation.SharedTransitionLayout
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.navigation.compose.hiltViewModel
 import me.samuki.core.presentation.events.ObserveAsEvents
+import me.samuki.feature.compilation.presentation.bottom.CompilationCreatorBottomBar
+import me.samuki.feature.compilation.presentation.controls.CompilationCreatorControlsView
+import me.samuki.feature.compilation.presentation.dialog.CompilationCreatorFinishDialog
+import me.samuki.feature.compilation.presentation.items.creator.CompilationCreatorItemsRow
+import me.samuki.feature.compilation.presentation.items.sounds.CompilationCreatorSoundsColumn
+import me.samuki.feature.compilation.presentation.preview.PreviewCreatorContractStateProvider
 
 @Composable
 public fun CompilationCreatorScreen(navigation: CompilationCreatorNavigation) {
     val viewModel: CompilationCreatorViewModel = hiltViewModel()
 
-    LaunchedEffect(Unit) {
-        viewModel.onEvent(CreatorContract.Event.Init)
-    }
+    LaunchedEffect(Unit) { viewModel.onEvent(CreatorContract.Event.Init) }
 
     ObserveAsEvents(viewModel.eventsFlow) {
         when (it) {
@@ -26,9 +40,14 @@ public fun CompilationCreatorScreen(navigation: CompilationCreatorNavigation) {
         }
     }
 
-    val state = viewModel.state.collectAsState().value
+    BackHandler {
+        viewModel.onEvent(CreatorContract.Event.GoBack)
+    }
 
-    CompilationCreatorContent(state) { viewModel.onEvent(it) }
+    val state = remember { viewModel.state }
+    val onEvent by remember { mutableStateOf(viewModel::onEvent) }
+
+    CompilationCreatorContent(state, onEvent)
 }
 
 @Composable
@@ -36,13 +55,49 @@ private fun CompilationCreatorContent(
     state: CreatorContract.State,
     onEvent: (CreatorContract.Event) -> Unit
 ) {
-    LazyColumn(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        items(state.list, key = { it.id.value }) {
-            Text(
-                text = "TEST TEST TEST TEST TEST",
-                modifier = Modifier.clickable { onEvent(CreatorContract.Event.EndCreation) })
+    SharedTransitionLayout(modifier = Modifier.statusBarsPadding()) {
+        AnimatedContent(
+            targetState = state.showSetNameDialog,
+            label = "Dialog animation"
+        ) { showSetNameDialog ->
+            if (!showSetNameDialog) {
+                Column {
+                    CompilationCreatorItemsRow(
+                        itemsList = state.list,
+                        onEvent = onEvent,
+                    )
+                    CompilationCreatorControlsView(
+                        showCreateButton = state.showCreateButton,
+                        volumeEnabled = state.volumeEnabled,
+                        onEvent = onEvent,
+                        modifier = Modifier
+                            .background(MaterialTheme.colorScheme.primaryContainer)
+                    )
+                    CompilationCreatorSoundsColumn(
+                        sounds = state.sounds,
+                        onEvent = onEvent,
+                        modifier = Modifier.weight(1f)
+                    )
+                    CompilationCreatorBottomBar(
+                        state = state.bottomBarState,
+                        onEvent = onEvent
+                    )
+                }
+            } else {
+                CompilationCreatorFinishDialog(
+                    combinables = state.list,
+                    state = state.finishDialogState,
+                    onEvent = onEvent
+                )
+            }
         }
     }
+}
+
+@Preview
+@Composable
+private fun PreviewCompilationCreatorContent(
+    @PreviewParameter(PreviewCreatorContractStateProvider::class) state: CreatorContract.State
+) {
+    Surface { CompilationCreatorContent(state = state) {} }
 }

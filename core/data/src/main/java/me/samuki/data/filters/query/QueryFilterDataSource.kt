@@ -1,5 +1,6 @@
 package me.samuki.data.filters.query
 
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import me.samuki.domain.search.ObserveSearchQuery
@@ -11,6 +12,7 @@ import me.samuki.model.values.Id
 import me.samuki.model.values.Query
 import javax.inject.Inject
 
+@ViewModelScoped
 internal class QueryFilterDataSource @Inject constructor(
     private val observeSearchQuery: ObserveSearchQuery
 ) {
