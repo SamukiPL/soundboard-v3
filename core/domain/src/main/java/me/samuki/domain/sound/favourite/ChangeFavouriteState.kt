@@ -3,8 +3,8 @@ package me.samuki.domain.sound.favourite
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import me.samuki.common.di.DispatcherIO
+import me.samuki.model.Likeable
 import me.samuki.model.NoAnswer
-import me.samuki.model.Sound
 import me.samuki.model.values.LikeState
 import javax.inject.Inject
 
@@ -14,11 +14,11 @@ public class ChangeFavouriteState @Inject constructor(
     @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
-    public suspend operator fun invoke(sound: Sound): Result<NoAnswer> =
+    public suspend operator fun invoke(likeable: Likeable): Result<NoAnswer> =
         withContext(coroutineDispatcher) {
-            when (sound.likeState) {
-                LikeState.Favourite -> makeSoundNormal(sound)
-                LikeState.Normal -> makeSoundFavourite(sound)
+            when (likeable.likeState) {
+                LikeState.Favourite -> makeSoundNormal(likeable)
+                LikeState.Normal -> makeSoundFavourite(likeable)
             }
         }
 }

@@ -1,8 +1,8 @@
 package me.samuki.feature.list
 
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -58,7 +58,7 @@ internal class ListViewModel @Inject constructor(
         )
         is ListContract.Event.Play -> playPlayable(event.playable)
         ListContract.Event.StopPlaying -> stopPlaying()
-        is ListContract.Event.ChangeFavouriteState -> favouriteState(event.sound)
+        is ListContract.Event.ChangeFavouriteState -> favouriteState(event.likeable)
         is ListContract.Event.Share -> sharePlayable(event.playable)
         is ListContract.Event.SetAsNotification -> setPlayableDispatcher(
             playable = event.playable,

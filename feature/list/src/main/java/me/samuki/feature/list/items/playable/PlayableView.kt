@@ -1,4 +1,4 @@
-package me.samuki.feature.list.items.sound
+package me.samuki.feature.list.items.playable
 
 import android.net.Uri
 import androidx.compose.animation.AnimatedContent
@@ -14,13 +14,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import me.samuki.model.util.EMPTY_STRING
 import me.samuki.feature.list.ListContract
-import me.samuki.feature.list.items.SoundItem
+import me.samuki.feature.list.items.PlayableItem
 import me.samuki.feature.list.items.options.OptionsChooser
 import me.samuki.feature.list.items.options.OptionsState
 import me.samuki.model.Key
 import me.samuki.model.Sound
+import me.samuki.model.util.EMPTY_STRING
 import me.samuki.model.values.Id
 import me.samuki.model.values.LikeState
 import me.samuki.model.values.Name
@@ -28,8 +28,8 @@ import me.samuki.model.values.Path
 import me.samuki.model.values.Supplement
 
 @Composable
-internal fun SoundView(
-    soundItem: SoundItem,
+internal fun PlayableView(
+    playableItem: PlayableItem,
     onEvent: (ListContract.Event) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -47,13 +47,13 @@ internal fun SoundView(
         label = EMPTY_STRING
     ) {
         when (it) {
-            OptionsState.Closed -> DefaultSound(
-                soundItem = soundItem,
+            OptionsState.Closed -> DefaultView(
+                playableItem,
                 onEvent = onEvent,
                 openOptions = { optionsState = OptionsState.Open }
             )
             OptionsState.Open -> OptionsChooser(
-                playable = soundItem.sound,
+                playable = playableItem.playable,
                 onEvent = onEvent,
                 closeOptions = { optionsState = OptionsState.Closed }
             )
@@ -74,13 +74,20 @@ private fun OptionsState.isClosed(): Boolean = when (this) {
 
 @Preview
 @Composable
-private fun SoundViewPreview() {
-    SoundView(
-        soundItem = SoundItem(
-            Key(Id(1), Supplement(EMPTY_STRING)),
-            Name("Test Name For Test"),
-            LikeState.Normal,
-            Sound(Id(1), Supplement(EMPTY_STRING), Name(EMPTY_STRING), Path(Uri.EMPTY), LikeState.Normal)
+private fun PlayableViewPreview() {
+    val playable = Sound(
+        id = Id(1),
+        supplement = Supplement(EMPTY_STRING),
+        name = Name(EMPTY_STRING),
+        likeState = LikeState.Normal,
+        path = Path(Uri.EMPTY),
+    )
+    PlayableView(
+        playableItem = PlayableItem(
+            key = Key(Id(1), Supplement(EMPTY_STRING)),
+            name = Name("Test Name For Test"),
+            playable = playable,
+            likeable = playable,
         ),
         onEvent = {},
         modifier = Modifier.height(64.dp)

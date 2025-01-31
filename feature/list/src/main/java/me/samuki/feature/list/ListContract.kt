@@ -2,13 +2,13 @@ package me.samuki.feature.list
 
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import me.samuki.domain.params.SetType
 import me.samuki.feature.list.items.ListItem
 import me.samuki.feature.list.toolbar.ToolbarState
+import me.samuki.model.Likeable
 import me.samuki.model.Playable
-import me.samuki.model.Sound
 import me.samuki.model.filters.Filter
 import me.samuki.model.values.Query
 
@@ -34,7 +34,7 @@ internal interface ListContract {
         data object StopPlaying : Event
 
         data class ChangeFavouriteState(
-            val sound: Sound
+            val likeable: Likeable
         ) : Event
 
         data class Share(

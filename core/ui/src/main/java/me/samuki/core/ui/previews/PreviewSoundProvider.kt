@@ -15,11 +15,11 @@ public class PreviewSoundProvider : PreviewParameterProvider<Sound> {
     override val values: Sequence<Sound>
         get() = List(10) {
             Sound(
-                Id(it),
-                Supplement(EMPTY_STRING),
-                Name("Preview Sound Name"),
-                Path(Uri.EMPTY),
-                LikeState.Normal
+                id = Id(it),
+                supplement = Supplement(EMPTY_STRING),
+                name = Name("Preview Sound Name"),
+                likeState = LikeState.Normal,
+                path = Path(Uri.EMPTY)
             )
         }.asSequence()
 }
