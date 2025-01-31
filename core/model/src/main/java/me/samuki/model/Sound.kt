@@ -12,6 +12,6 @@ public data class Sound(
     override val id: Id,
     override val supplement: Supplement,
     override val name: Name,
+    override val likeState: LikeState,
     val path: Path,
-    val likeState: LikeState,
-) : Playable, Combinable
+) : Playable, Combinable, Likeable

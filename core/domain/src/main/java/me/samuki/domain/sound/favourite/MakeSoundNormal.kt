@@ -4,16 +4,16 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import me.samuki.common.di.DispatcherIO
 import me.samuki.domain.sound.SoundRepository
+import me.samuki.model.Likeable
 import me.samuki.model.NoAnswer
-import me.samuki.model.Sound
 import javax.inject.Inject
 
 public class MakeSoundNormal @Inject constructor(
     private val soundRepository: SoundRepository,
     @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
-    public suspend operator fun invoke(sound: Sound): Result<NoAnswer> =
+    public suspend operator fun invoke(likeable: Likeable): Result<NoAnswer> =
         withContext(coroutineDispatcher) {
-            soundRepository.makeNormal(sound)
+            soundRepository.makeNormal(likeable)
         }
 }
