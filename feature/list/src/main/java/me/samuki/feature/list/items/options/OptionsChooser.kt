@@ -24,8 +24,8 @@ internal fun OptionsChooser(
 ) {
     val optionsAction: (Options) -> Unit = {
         when (it) {
-            Options.SetAsNotification -> onEvent(ListContract.Event.SetAsNotification(playable))
-            Options.SetAsRingtone -> onEvent(ListContract.Event.SetAsRingtone(playable))
+            Options.SetAsNotification -> onEvent(ListContract.Event.SetAs.notification(playable))
+            Options.SetAsRingtone -> onEvent(ListContract.Event.SetAs.ringtone(playable))
             Options.Share -> onEvent(ListContract.Event.Share(playable))
             Options.Close -> closeOptions()
         }

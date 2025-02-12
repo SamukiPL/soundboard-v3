@@ -41,13 +41,16 @@ internal interface ListContract {
             val playable: Playable
         ) : Event
 
-        data class SetAsNotification(
-            val playable: Playable
-        ) : Event
+        class SetAs private constructor(
+            val playable: Playable,
+            val setType: SetType,
+        ) : Event {
 
-        data class SetAsRingtone(
-            val playable: Playable
-        ) : Event
+            companion object {
+                fun notification(playable: Playable) = SetAs(playable, SetType.Notification)
+                fun ringtone(playable: Playable) = SetAs(playable, SetType.Ringtone)
+            }
+        }
 
         data class OpenQueryToolbar(
             val query: Query
@@ -64,6 +67,10 @@ internal interface ListContract {
         data class ChangeFilter(
             val filter: Filter
         ) : Event
+
+        data object AddCompilation : Event
+
+        data object GetMoreSoundboards : Event
     }
 
     sealed interface Effect {
@@ -73,6 +80,8 @@ internal interface ListContract {
             val setType: SetType
         ) : Effect
 
-        object GoToCompilationCreation : Effect
+        data object GoToCompilationCreation : Effect
+
+        data object GoToMoreSoundboards : Effect
     }
 }

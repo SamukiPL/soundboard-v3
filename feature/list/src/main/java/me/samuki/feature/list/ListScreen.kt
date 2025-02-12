@@ -1,5 +1,6 @@
 package me.samuki.feature.list
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,10 +13,12 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import me.samuki.core.presentation.events.ObserveAsEvents
+import me.samuki.feature.list.fab.ListFabView
 import me.samuki.feature.list.items.PlayableItem
 import me.samuki.feature.list.items.playable.PlayableView
 import me.samuki.feature.list.toolbar.ListToolbar
@@ -37,6 +40,7 @@ public fun ListScreen(
                 it.setType
             )
             ListContract.Effect.GoToCompilationCreation -> navigation.goToCompilationCreation()
+            ListContract.Effect.GoToMoreSoundboards -> navigation.goToMoreSoundboards()
         }
     }
 
@@ -53,9 +57,11 @@ public fun ListScreen(
 private fun ListContent(
     state: ListContract.State,
     onEvent: (ListContract.Event) -> Unit
-) {
+) = Box {
     Column(
-        modifier = Modifier.statusBarsPadding()
+        modifier = Modifier
+            .statusBarsPadding()
+            .align(Alignment.Center)
     ) {
         ListToolbar(
             toolbarState = state.toolbarState,
@@ -78,4 +84,9 @@ private fun ListContent(
             }
         }
     }
+    ListFabView(
+        onEvent = onEvent,
+        modifier = Modifier.align(Alignment.BottomEnd)
+            .padding(16.dp)
+    )
 }

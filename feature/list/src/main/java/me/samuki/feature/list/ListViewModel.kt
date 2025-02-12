@@ -60,13 +60,9 @@ internal class ListViewModel @Inject constructor(
         ListContract.Event.StopPlaying -> stopPlaying()
         is ListContract.Event.ChangeFavouriteState -> favouriteState(event.likeable)
         is ListContract.Event.Share -> sharePlayable(event.playable)
-        is ListContract.Event.SetAsNotification -> setPlayableDispatcher(
+        is ListContract.Event.SetAs -> setPlayableDispatcher(
             playable = event.playable,
-            setType = SetType.Notification
-        )
-        is ListContract.Event.SetAsRingtone -> setPlayableDispatcher(
-            playable = event.playable,
-            setType = SetType.Ringtone
+            setType = event.setType
         )
         is ListContract.Event.ChangeFilter -> changeFilterSelectionState(event.filter)
         is ListContract.Event.OpenQueryToolbar -> listStateCombiner.openQueryToolbar(
@@ -82,6 +78,8 @@ internal class ListViewModel @Inject constructor(
             listStateCombiner.updateQuery(event.query)
             searchByQuery(event.query)
         }
+        ListContract.Event.AddCompilation -> eventChannel.send(ListContract.Effect.GoToCompilationCreation)
+        ListContract.Event.GetMoreSoundboards -> eventChannel.send(ListContract.Effect.GoToMoreSoundboards)
     }
 
     private suspend fun setPlayableDispatcher(playable: Playable, setType: SetType) {

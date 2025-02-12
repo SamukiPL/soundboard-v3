@@ -43,7 +43,7 @@ internal class ListStateCombiner(
     }
 
     fun closeQueryToolbar(queryButtonVisible: QueryButtonVisible? = null) {
-        state.toolbarState.type = ToolbarType.QueryInput
+        state.toolbarState.type = ToolbarType.Filters
         state.toolbarState.queryViewState.showQueryPlaceholder = (queryButtonVisible
             ?: (state.toolbarState.queryViewState.query == Query.Empty))
     }
