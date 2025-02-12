@@ -25,4 +25,8 @@ internal class ProvidedListNavigation(
             CompilationCreationDestination()
         )
     }
+
+    override fun goToMoreSoundboards() {
+        TODO("Not yet implemented")
+    }
 }
