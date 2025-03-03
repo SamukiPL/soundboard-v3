@@ -4,7 +4,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import me.samuki.feature.promotion.list.PromotionItem
 import me.samuki.model.values.ImageUrl
 import me.samuki.model.values.Name
-import me.samuki.model.values.SoundboardUrl
+import me.samuki.model.values.StoreUrl
 
 internal class PreviewPromotionProvider : PreviewParameterProvider<PromotionItem> {
 
@@ -14,7 +14,7 @@ internal class PreviewPromotionProvider : PreviewParameterProvider<PromotionItem
                 fullName = Name("Preview Soundboard"),
                 image = ImageUrl("Url"),
                 name = Name("Preview"),
-                url = SoundboardUrl("Url")
+                url = StoreUrl("Url")
             )
         )
 }

@@ -8,6 +8,8 @@ import me.samuki.resource.player.AndroidMediaPlayer
 import me.samuki.resource.player.Player
 import me.samuki.resource.player.pause.PauseDelayer
 import me.samuki.resource.player.pause.PauseDelayerImpl
+import me.samuki.resource.promotion.PromotionLocalDataSource
+import me.samuki.resource.promotion.ResourcePromotionDataSource
 import me.samuki.resource.set.CompilationSetter
 import me.samuki.resource.set.CompilationSettingsSetter
 import me.samuki.resource.set.SoundSetter
@@ -48,4 +50,7 @@ internal abstract class ResourceModule {
 
     @Binds
     abstract fun writeSettingsPermissionChecker(writeSettingsPermissionCheckerImpl: WriteSettingsPermissionCheckerImpl): WriteSettingsPermissionChecker
+
+    @Binds
+    abstract fun promotionDataSource(resourcePromotionDataSource: ResourcePromotionDataSource): PromotionLocalDataSource
 }

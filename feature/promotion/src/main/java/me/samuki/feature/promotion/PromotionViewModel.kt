@@ -10,7 +10,10 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import me.samuki.domain.promotion.GetPromotions
+import me.samuki.feature.promotion.list.PromotionListState
 import me.samuki.feature.promotion.list.toItem
+import me.samuki.model.values.DataOrigin
+import me.samuki.model.values.StoreUrl
 import javax.inject.Inject
 
 @HiltViewModel
@@ -31,15 +34,39 @@ internal class PromotionViewModel @Inject constructor(
     }
 
     private suspend fun eventDispatcher(event: PromotionContract.Event): Any = when (event) {
-        PromotionContract.Event.Init -> getPromotions()
-            .onSuccess { promotions ->
-                state.promotions = promotions.map { it.toItem() }
-            }
+        PromotionContract.Event.AcceptAds -> {
+            state.listState = PromotionListState.Loading
+            getPromotions()
+                .onSuccess { result ->
+                    state.listState = when (result.type) {
+                        DataOrigin.ONLINE -> PromotionListState.Online(
+                            result.list.map { it.toItem() }
+                        )
+                        DataOrigin.OFFLINE -> PromotionListState.Offline(
+                            result.list.map { it.toItem() }
+                        )
+                    }
+                }
+                .onFailure {
+                    state.listState = PromotionListState.Error
+                }
+        }
+
         PromotionContract.Event.GoBack -> eventChannel.send(PromotionContract.Effect.GoBackToList)
         is PromotionContract.Event.ShowPromotedSoundboard -> eventChannel.send(
             PromotionContract.Effect.GoToPromotion(
                 event.url
             )
         )
+        PromotionContract.Event.ShowStoreProfile -> eventChannel.send(
+            PromotionContract.Effect.GoToPromotion(
+                StoreUrl(GOOGLE_PLAY_STORE_URL)
+            )
+        )
+    }
+
+    private companion object {
+        const val GOOGLE_PLAY_STORE_URL =
+            "https://play.google.com/store/apps/developer?id=Alpaka+Studio"
     }
 }

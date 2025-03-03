@@ -1,10 +1,10 @@
 package me.samuki.feature.promotion
 
-import me.samuki.model.values.SoundboardUrl
+import me.samuki.model.values.StoreUrl
 
 public interface PromotionNavigation {
 
     public fun goBackToList()
 
-    public fun goToSoundboard(url: SoundboardUrl)
+    public fun goToSoundboard(url: StoreUrl)
 }

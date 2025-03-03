@@ -2,8 +2,6 @@ package me.samuki.feature.promotion
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -14,7 +12,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import me.samuki.core.presentation.events.ObserveAsEvents
 import me.samuki.core.ui.composables.repeatable.SimpleToolbar
 import me.samuki.core.ui.value.Label
-import me.samuki.feature.promotion.list.PromotionView
+import me.samuki.feature.promotion.list.PromotionList
 
 @Composable
 public fun PromotionScreen(
@@ -23,7 +21,7 @@ public fun PromotionScreen(
     val viewModel: PromotionViewModel = hiltViewModel()
 
     LaunchedEffect(Unit) {
-        viewModel.onEvent(PromotionContract.Event.Init)
+        viewModel.onEvent(PromotionContract.Event.AcceptAds)
     }
 
     ObserveAsEvents(viewModel.eventsFlow) {
@@ -52,16 +50,9 @@ private fun PromotionContent(
             title = Label("TODO"),
             goBack = { onEvent(PromotionContract.Event.GoBack) }
         )
-        LazyColumn {
-            items(
-                items = state.promotions,
-            ) { item ->
-                PromotionView(
-                    item = item,
-                    onEvent = onEvent
-                )
-            }
-        }
+        PromotionList(
+            state.listState,
+            onEvent,
+        )
     }
-
 }

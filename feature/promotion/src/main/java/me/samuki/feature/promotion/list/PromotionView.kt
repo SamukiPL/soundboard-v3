@@ -12,11 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import me.samuki.feature.promotion.PromotionContract
+import me.samuki.core.ui.R
 import me.samuki.feature.promotion.preview.PreviewPromotionProvider
 
 @Composable
@@ -40,13 +42,14 @@ internal fun PromotionView(
             model = item.image.value,
             contentDescription = "TODO Soundboard Logo",
             modifier = Modifier.size(48.dp),
+            placeholder = painterResource(R.drawable.alpaca_logo)
         )
         Text(
             text = item.name.value,
             style = MaterialTheme.typography.headlineSmall,
             modifier = modifier
-                .animateContentSize()
                 .weight(1f)
+                .padding(horizontal = 8.dp)
         )
     }
 }

@@ -5,7 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import me.samuki.feature.promotion.PromotionNavigation
-import me.samuki.model.values.SoundboardUrl
+import me.samuki.model.values.StoreUrl
 
 internal class ProvidedPromotionNavigation(
     private val context: Context,
@@ -16,7 +16,7 @@ internal class ProvidedPromotionNavigation(
         navigator.navigateUp()
     }
 
-    override fun goToSoundboard(url: SoundboardUrl) {
+    override fun goToSoundboard(url: StoreUrl) {
         Intent(Intent.ACTION_VIEW, Uri.parse(url.value)).run {
             context.startActivity(this)
         }

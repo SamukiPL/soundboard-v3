@@ -8,6 +8,7 @@ import me.samuki.domain.params.SetType
 import me.samuki.model.Compilation
 import me.samuki.model.NoAnswer
 import javax.inject.Inject
+
 @InternalDomainApi
 public class SetCompilation @Inject constructor(
     private val setCompilationAsNotification: SetCompilationAsNotification,

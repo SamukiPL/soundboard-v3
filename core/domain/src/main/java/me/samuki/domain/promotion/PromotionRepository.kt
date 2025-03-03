@@ -6,4 +6,6 @@ import me.samuki.model.Promotion
 public interface PromotionRepository {
 
     public suspend fun getPromotions(): ListResult<Promotion>
+
+    public suspend fun getOfflinePromotions(): ListResult<Promotion>
 }
