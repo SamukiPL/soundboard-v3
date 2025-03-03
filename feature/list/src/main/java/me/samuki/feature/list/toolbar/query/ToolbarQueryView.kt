@@ -12,7 +12,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import me.samuki.feature.list.ListContract
-import me.samuki.feature.list.toolbar.QueryView
+import me.samuki.core.ui.composables.inputs.QueryView
 import me.samuki.feature.list.toolbar.ToolbarState
 import me.samuki.feature.list.toolbar.ToolbarType
 

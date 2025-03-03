@@ -22,10 +22,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import me.samuki.core.ui.composables.QueryViewState
+import me.samuki.core.ui.composables.inputs.QueryViewState
 import me.samuki.feature.compilation.presentation.CreatorContract
 import me.samuki.feature.compilation.presentation.R
-import me.samuki.feature.list.toolbar.QueryView
+import me.samuki.core.ui.composables.inputs.QueryView
 
 context(SharedTransitionScope, AnimatedVisibilityScope)
 @Composable

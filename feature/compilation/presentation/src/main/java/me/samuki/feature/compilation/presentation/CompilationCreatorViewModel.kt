@@ -105,5 +105,11 @@ internal class CompilationCreatorViewModel @Inject constructor(
         if (list.isEmpty() || finishDialogState.name.isEmpty()) return@with
 
         endCreation(finishDialogState.name)
+            .onSuccess {
+                eventChannel.send(CreatorContract.Effect.GoToSuccessScreen)
+            }
+            .onFailure {
+                TODO("Not implemented yet")
+            }
     }
 }

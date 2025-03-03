@@ -1,35 +1,36 @@
+@file:Suppress("UnstableApiUsage")
+
 package me.samuki.buildlogic.utils
 
-import com.android.build.api.dsl.ApplicationExtension
-import com.android.build.api.dsl.ApplicationProductFlavor
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.variant.AndroidComponentsExtension
 
 enum class Dimension {
-    environment
+    ENVIRONMENT;
+
+    val lowerCaseName: String get() = name.lowercase()
 }
 
-enum class Flavor(val dimension: Dimension, val idSuffix: String? = null) {
-    mock(dimension = Dimension.environment, "mock"),
-    prod(dimension = Dimension.environment)
+enum class Flavor(val dimension: Dimension) {
+    MOCK(dimension = Dimension.ENVIRONMENT),
+    PROD(dimension = Dimension.ENVIRONMENT);
+
+    val lowerCaseName: String get() = name.lowercase()
 }
 
-fun configureFlavors(
+fun configureEnvironmentFlavors(
     extension: CommonExtension<*, *, *, *>,
 ) {
     extension.apply {
         productFlavors {
-            flavorDimensions += Dimension.values().map { it.name }
-            Flavor.values().forEach {
-                create(it.name) {
-                    dimension = it.dimension.name
-                    if (this@apply is ApplicationExtension && this is ApplicationProductFlavor) {
-                        if (it.idSuffix != null) {
-                            this.applicationIdSuffix = it.idSuffix
-                        }
+            flavorDimensions += Dimension.values().map { it.lowerCaseName }
+            Flavor.values()
+                .filter { it.dimension == Dimension.ENVIRONMENT }
+                .forEach { flavor ->
+                    create(flavor.lowerCaseName) {
+                        dimension = flavor.dimension.lowerCaseName
                     }
                 }
-            }
         }
     }
 }
@@ -39,7 +40,7 @@ fun ignoreVariants(
 ) {
     extension.apply {
         beforeVariants {
-            it.enable = it.buildType != "release" || it.flavorName != Flavor.mock.name
+            it.enable = it.buildType != "release" || it.flavorName != Flavor.MOCK.lowerCaseName
         }
     }
 }

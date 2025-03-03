@@ -37,6 +37,7 @@ public fun CompilationCreatorScreen(navigation: CompilationCreatorNavigation) {
     ObserveAsEvents(viewModel.eventsFlow) {
         when (it) {
             CreatorContract.Effect.GoBackToList -> navigation.goBack()
+            CreatorContract.Effect.GoToSuccessScreen -> navigation.goToCreationSuccessScreen()
         }
     }
 

@@ -83,5 +83,7 @@ internal interface CreatorContract {
     sealed interface Effect {
 
         data object GoBackToList : Effect
+
+        data object GoToSuccessScreen : Effect
     }
 }
