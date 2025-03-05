@@ -8,7 +8,8 @@ android {
 
 dependencies {
     implementation(project(":feature:list"))
-    implementation(project(":feature:compilation:presentation"))
+    implementation(project(":feature:compilation:creation:presentation"))
+    implementation(project(":feature:compilation:success"))
     implementation(project(":feature:promotion"))
     implementation(project(":feature:rationale"))
 

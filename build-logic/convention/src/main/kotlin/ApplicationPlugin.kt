@@ -34,7 +34,7 @@ class ApplicationPlugin : Plugin<Project> {
 
                 applicationVariants.all {
                     addJavaSourceFoldersToModel(
-                        File(buildDir, "generated/ksp/$name/kotlin")
+                        File(layout.buildDirectory.asFile.get(), "generated/ksp/$name/kotlin")
                     )
                 }
             }
