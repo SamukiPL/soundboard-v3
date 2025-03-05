@@ -1,7 +1,6 @@
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import me.samuki.buildlogic.config.AndroidVersions
-import me.samuki.buildlogic.utils.configureEnvironmentFlavors
 import me.samuki.buildlogic.utils.configureKotlinAndroid
 import me.samuki.buildlogic.utils.ignoreVariants
 import me.samuki.buildlogic.utils.implementation

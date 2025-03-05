@@ -16,6 +16,7 @@ import me.samuki.model.values.Path
 import me.samuki.resource.sounds.model.ResourceRaw
 import java.lang.Integer.min
 import javax.inject.Inject
+import androidx.core.net.toUri
 
 internal class ResourceRawReader @Inject constructor(
     packageName: PackageName,
@@ -29,9 +30,9 @@ internal class ResourceRawReader @Inject constructor(
 
     internal val resourceRawFlow = MutableStateFlow<List<ResourceRaw>>(emptyList())
 
-    private val soundsCount: Int = R.raw::class.java.fields.size - 1
+    private val soundsCount: Int = R.raw::class.java.fields.size - 2
 
-    private fun getSoundPath(id: Int) = Uri.parse(soundPath + id)
+    private fun getSoundPath(id: Int) = (soundPath + id).toUri()
 
     init {
         scope.launch {
