@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "me.samuki.feature.compilation.data"
+    namespace = "me.samuki.feature.compilation.creation.data"
 }
 
 dependencies {

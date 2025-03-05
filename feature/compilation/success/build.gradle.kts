@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "me.samuki.feature.compilation.presentation"
+    namespace = "me.samuki.feature.compilation.success"
 }
 
 dependencies {

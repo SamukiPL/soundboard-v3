@@ -30,7 +30,7 @@ class LibraryPlugin : Plugin<Project> {
 
                 libraryVariants.all {
                     addJavaSourceFoldersToModel(
-                        File(buildDir, "generated/ksp/$name/kotlin")
+                        File(layout.buildDirectory.asFile.get(), "generated/ksp/$name/kotlin")
                     )
                 }
             }
