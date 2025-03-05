@@ -3,6 +3,7 @@ plugins {
     id("me.samuki.application.compose")
     id("me.samuki.hilt")
     id("me.samuki.hilt.compose")
+    id("me.samuki.flavor.environment")
 }
 
 android {

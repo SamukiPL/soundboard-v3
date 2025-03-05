@@ -1,4 +1,4 @@
-package me.samuki.core.ui.composables
+package me.samuki.core.ui.composables.inputs
 
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue

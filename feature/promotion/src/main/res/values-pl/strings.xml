@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ads_acceptation_header"><b>Reklamy</b> pod tym ostrzeżeniem</string>
+    <string name="ads_acceptation_body">Na tym ekranie pokazujemy nasze aplikacje.\nJeśli nie chcesz ich zobaczyć proszę wróć do listy dźwięków.</string>
+    <string name="ads_acceptation_button">Pokaż mi więcej waszych aplikacji!</string>
+
+    <string name="offline_text">Błąd pobierania, wersja offline</string>
+
+    <string name="error_body">W tej chwili nie możemy pokazać Ci naszych Soundboardów, proszę sprobować ponownie,</string>
+    <string name="error_button">lub zobacz nas na Google Play Store</string>
+</resources>

@@ -20,11 +20,12 @@ internal fun StorageSound.toSoundEntity(
     supplement = supplement
 )
 
-internal fun PauseEntity.toSortable(): SortableCombinable = SortableCombinable(
+internal fun SoundEntity.toSortable(): SortableCombinable = SortableCombinable(
     id = id,
     compilationId = compilation_id,
     nextCombinableId = next_combinable_id,
-    storageCombinable = StoragePause(
-        repeats = repeats
+    storageCombinable = StorageSound(
+        resourceId = resource_id,
+        supplement = supplement
     )
 )

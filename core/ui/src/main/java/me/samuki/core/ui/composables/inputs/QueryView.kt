@@ -1,4 +1,4 @@
-package me.samuki.feature.list.toolbar
+package me.samuki.core.ui.composables.inputs
 
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -24,8 +24,6 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import me.samuki.core.ui.composables.AcceptQueryEnable
-import me.samuki.core.ui.composables.QueryViewState
 import me.samuki.model.values.Query
 import me.samuki.model.values.getQueryValue
 

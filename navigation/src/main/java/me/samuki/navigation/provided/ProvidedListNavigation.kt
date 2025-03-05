@@ -6,6 +6,7 @@ import me.samuki.feature.list.ListNavigation
 import me.samuki.model.Playable
 import me.samuki.navigation.destinations.destinations.CompilationCreationDestination
 import me.samuki.navigation.destinations.destinations.RationaleDestination
+import me.samuki.navigation.destinations.destinations.PromotionDestination
 
 internal class ProvidedListNavigation(
     navigator: DestinationsNavigator
@@ -27,6 +28,8 @@ internal class ProvidedListNavigation(
     }
 
     override fun goToMoreSoundboards() {
-        TODO("Not yet implemented")
+        navigate(
+            PromotionDestination()
+        )
     }
 }

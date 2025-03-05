@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import me.samuki.feature.list.ListContract
-import me.samuki.feature.list.R
+import me.samuki.core.ui.R
 
 @Composable
 internal fun ListFabMenuItemView(

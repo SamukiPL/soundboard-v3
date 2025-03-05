@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ads_acceptation_header"><b>ADs</b> underneath this warning!</string>
+    <string name="ads_acceptation_body">On this screen, we are presenting our apps.\nIf you don\'t want to see them, just choose go back to sounds list!</string>
+    <string name="ads_acceptation_button">Show me more of Your apps!</string>
+
+    <string name="offline_text">Download error, offline version</string>
+
+    <string name="error_body">We are unable to show you our soundboard right now, please try again later,</string>
+    <string name="error_button">or go to our Google Play Store</string>
+</resources>
