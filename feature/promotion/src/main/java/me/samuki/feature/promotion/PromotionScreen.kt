@@ -20,10 +20,6 @@ public fun PromotionScreen(
 ) {
     val viewModel: PromotionViewModel = hiltViewModel()
 
-    LaunchedEffect(Unit) {
-        viewModel.onEvent(PromotionContract.Event.AcceptAds)
-    }
-
     ObserveAsEvents(viewModel.eventsFlow) {
         when (it) {
             PromotionContract.Effect.GoBackToList -> navigation.goBackToList()

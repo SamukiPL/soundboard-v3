@@ -1,5 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
 package me.samuki.buildlogic.utils
 
 import com.android.build.api.dsl.CommonExtension
