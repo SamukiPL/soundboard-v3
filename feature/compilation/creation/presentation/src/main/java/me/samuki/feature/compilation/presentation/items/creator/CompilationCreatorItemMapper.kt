@@ -3,8 +3,8 @@ package me.samuki.feature.compilation.presentation.items.creator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import me.samuki.core.ui.value.Label
+import me.samuki.feature.compilation.creation.presentation.R
 import me.samuki.feature.compilation.domain.model.CombinedCombinable
-import me.samuki.feature.compilation.presentation.R
 import me.samuki.model.Pause
 import me.samuki.model.Sound
 
