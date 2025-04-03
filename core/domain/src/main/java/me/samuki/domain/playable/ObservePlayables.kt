@@ -51,6 +51,6 @@ public class ObservePlayables @Inject constructor(
         } + playables.filter {
             it.name.value.contains(query)
         }
-        return filtered.distinctBy { it.id.value }
+        return filtered.distinctBy { it.id.value.toString() + it.supplement.value }
     }
 }

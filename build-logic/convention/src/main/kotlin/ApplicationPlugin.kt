@@ -23,9 +23,9 @@ class ApplicationPlugin : Plugin<Project> {
 
             extensions.configure<BaseAppModuleExtension> {
                 configureKotlinAndroid(this)
-                compileSdk = AndroidVersions.compileSdk
+                compileSdk = AndroidVersions.COMPILE_SDK
                 defaultConfig {
-                    targetSdk = AndroidVersions.targetSdk
+                    targetSdk = AndroidVersions.TARGET_SDK
 
                     buildTypes.getByName("debug") {
                         enableUnitTestCoverage = true

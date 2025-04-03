@@ -55,6 +55,7 @@ internal class LocalCompilationCreationFeatureRepository @Inject constructor(
                 items.value.combinables
             )
         )
+        items.update { emptyList() }
     }
 }
 

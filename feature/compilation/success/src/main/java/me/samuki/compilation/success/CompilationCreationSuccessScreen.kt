@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material3.Button
@@ -26,7 +27,9 @@ import me.samuki.model.util.EMPTY_STRING
 @Composable
 public fun CompilationCreationSuccessScreen(navigation: CompilationCreationSuccessNavigation) {
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .statusBarsPadding()
+            .fillMaxSize()
     ) {
         SimpleToolbar(
             title = Label(EMPTY_STRING),
