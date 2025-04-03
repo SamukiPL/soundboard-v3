@@ -20,7 +20,7 @@ class LibraryPlugin : Plugin<Project> {
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
                 defaultConfig.apply {
-                    targetSdk = AndroidVersions.targetSdk
+                    targetSdk = AndroidVersions.TARGET_SDK
                     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                     consumerProguardFile("consumer-rules.pro")
                     buildTypes.getByName("debug") {

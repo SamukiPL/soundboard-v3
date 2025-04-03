@@ -16,10 +16,10 @@ fun Project.configureKotlinAndroid(
             explicitApi()
         }
 
-        compileSdk = AndroidVersions.compileSdk
+        compileSdk = AndroidVersions.COMPILE_SDK
 
         defaultConfig {
-            minSdk = AndroidVersions.minSdk
+            minSdk = AndroidVersions.MIN_SDK
         }
 
         compileOptions {
