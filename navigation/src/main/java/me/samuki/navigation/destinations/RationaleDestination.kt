@@ -1,6 +1,7 @@
 package me.samuki.navigation.destinations
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -20,6 +21,9 @@ internal fun Rationale(
     RationaleScreen(
         playable = playable,
         setType = setType,
-        rationaleNavigation = ProvidedRationaleNavigation(navigator)
+        rationaleNavigation = ProvidedRationaleNavigation(
+            context = LocalContext.current,
+            navigator = navigator
+        )
     )
 }

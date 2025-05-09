@@ -22,6 +22,7 @@ internal class RationaleViewModel @Inject constructor(
 
     private val eventChannel = Channel<RationaleContract.Effect>(Channel.BUFFERED)
     val eventsFlow = eventChannel.receiveAsFlow()
+
     fun onEvent(event: RationaleContract.Event) {
         viewModelScope.launch {
             eventDispatcher(event)
@@ -32,11 +33,19 @@ internal class RationaleViewModel @Inject constructor(
         is RationaleContract.Event.SetupScreen -> _state.update {
             it.copy(
                 playable = event.playable,
+                setType = event.setType,
                 playableName = event.playable.name
             )
         }
         RationaleContract.Event.GoBack -> eventChannel.send(RationaleContract.Effect.GoBackToList)
-        RationaleContract.Event.OpenSettings -> TODO()
-        RationaleContract.Event.SetPlayable -> setPlayable(state.value.playable!!, state.value.setType!!)
+        RationaleContract.Event.OpenSettings -> eventChannel.send(RationaleContract.Effect.NavigateToSettings)
+        RationaleContract.Event.ReturnedFromSettings -> state.value.let { currentState ->
+            if (currentState.playable == null || currentState.setType == null) return@let
+            
+            setPlayable(currentState.playable, currentState.setType)
+                .onSuccess {
+                    _state.update { it.copy(screenState = RationaleContract.ScreenState.SUCCESS) }
+                }
+        }
     }
 }
