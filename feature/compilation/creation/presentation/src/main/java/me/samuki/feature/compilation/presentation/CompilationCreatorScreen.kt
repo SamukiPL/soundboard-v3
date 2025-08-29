@@ -7,6 +7,7 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.MaterialTheme
@@ -55,7 +56,7 @@ public fun CompilationCreatorScreen(navigation: CompilationCreatorNavigation) {
 private fun CompilationCreatorContent(
     state: CreatorContract.State,
     onEvent: (CreatorContract.Event) -> Unit
-) {
+) = Box {
     SharedTransitionLayout(modifier = Modifier.statusBarsPadding()) {
         AnimatedContent(
             targetState = state.showSetNameDialog,

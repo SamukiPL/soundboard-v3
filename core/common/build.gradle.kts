@@ -4,13 +4,12 @@ plugins {
 }
 
 android {
-    namespace = "me.samuki.travel.common"
+    namespace = "me.samuki.core.common"
 }
 
 dependencies {
     api(libs.kotlinx.datetime)
     api(libs.kotlinx.serialization.json)
-    api(libs.napier.logger)
 
     testImplementation(project(":core:testing"))
 }

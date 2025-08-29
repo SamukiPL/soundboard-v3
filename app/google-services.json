@@ -1,0 +1,410 @@
+{
+  "project_info": {
+    "project_number": "1073725593775",
+    "firebase_url": "https://soundboard-2d44e.firebaseio.com",
+    "project_id": "soundboard-2d44e",
+    "storage_bucket": "soundboard-2d44e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:736e9e2a66f55ddb42dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.bajojajosoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:c54bd4b17cd421e542dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.elevensoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:3d2453e4ed0390af42dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.gimpersoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:03e4304a2f330b7b42dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.gonciarzsoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:88ea92ce0de74b4642dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.hondasoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:1eaab1b30a2b68f242dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.jablonowskisoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:73ab50ecf1e5823742dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.januszsoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:7fbb011b62ede2fe42dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.klocuchsoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:da3e7d679bc2908042dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.kononsoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:361e451f8be10aa342dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.korwinsoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:ed829422899d533142dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.majorsoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:cc98ba0ce50da0d642dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.maklowiczsoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:5fbc08f11d7c589042dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.memysoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:5f27c22fa92b180242dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.owsiaksoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:6f02bbb9489e469942dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.pawelsoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:6bfc9ad3fdc1348742dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.pewdiepiesoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:84b5d5f95667872842dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.poziomkasoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:43a94935db78ee6942dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.stachusoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:d8c0f3557c0042f642dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.stonogasoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:bf024082ad74e2cf42dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.styrtasoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073725593775:android:80a27a121e15c80642dc5a",
+        "android_client_info": {
+          "package_name": "samuki.me.testovironsoundboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9dEUUzqQ0hlDRGvsExMutyScOrkHRos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

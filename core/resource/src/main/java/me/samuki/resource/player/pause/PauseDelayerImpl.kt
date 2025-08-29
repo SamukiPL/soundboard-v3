@@ -1,6 +1,6 @@
 package me.samuki.resource.player.pause
 
-import io.github.aakira.napier.Napier
+import android.util.Log
 import kotlinx.coroutines.delay
 import me.samuki.model.Pause
 import javax.inject.Inject
@@ -13,7 +13,7 @@ internal class PauseDelayerImpl @Inject constructor() : PauseDelayer {
     override suspend fun delayForPause(pause: Pause) {
         delay((pause.repeats * REPEATS_MULTIPLIER).milliseconds)
         onDelayFinished?.invoke() ?: run {
-            Napier.e("onDelayFinished should not be null, can't run compilation further")
+            Log.e(this@PauseDelayerImpl::class.simpleName, "onDelayFinished should not be null, can't run compilation further")
         }
     }
 

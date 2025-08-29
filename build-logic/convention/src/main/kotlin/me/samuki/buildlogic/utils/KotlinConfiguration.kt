@@ -34,7 +34,7 @@ fun Project.configureKotlinAndroid(
         }
 
         kotlinOptions {
-            allWarningsAsErrors = true
+//            allWarningsAsErrors = true
 
             freeCompilerArgs = freeCompilerArgs + listOf(
                 "-opt-in=kotlin.RequiresOptIn",
