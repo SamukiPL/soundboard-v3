@@ -4,13 +4,15 @@ plugins {
     id("me.samuki.hilt")
     id("me.samuki.hilt.compose")
     id("me.samuki.flavor.environment")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
     namespace = "me.samuki.soundboard"
 
     defaultConfig {
-        applicationId = "me.samuki.soundboard"
+        applicationId = "samuki.me.elevensoundboard"
         versionCode = 1
         versionName = "1.0"
 
@@ -22,6 +24,7 @@ android {
 
     buildTypes {
         getByName("release") {
+            signingConfig = signingConfigs.getByName("debug")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -43,4 +46,8 @@ dependencies {
     ksp(libs.androidx.compose.destinations.ksp)
 
     implementation(libs.settings.multiplatform)
+
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.analytics)
 }

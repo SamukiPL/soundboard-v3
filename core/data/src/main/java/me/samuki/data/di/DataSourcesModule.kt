@@ -1,10 +1,10 @@
 package me.samuki.data.di
 
+import android.util.Log
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -26,8 +26,10 @@ internal object DataSourcesModule {
         @DispatcherIO dispatcher: CoroutineDispatcher
     ): CoroutineScope =
         CoroutineScope(SupervisorJob() + dispatcher + CoroutineExceptionHandler { coroutineContext, throwable ->
-            Napier.e(throwable = throwable, tag = "TODO DATA MODULE") {
-                "TODO message for DATA MODULE $throwable $coroutineContext"
-            }
+            Log.e(
+                "TODO DATA MODULE",
+                "TODO message for DATA MODULE $throwable $coroutineContext",
+                throwable,
+            )
         })
 }

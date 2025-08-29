@@ -3,7 +3,6 @@ package me.samuki.resource.player
 import android.content.Context
 import android.media.MediaPlayer
 import dagger.hilt.android.qualifiers.ApplicationContext
-import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job

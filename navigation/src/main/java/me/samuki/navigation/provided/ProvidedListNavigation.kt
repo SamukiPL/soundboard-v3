@@ -1,12 +1,12 @@
 package me.samuki.navigation.provided
 
+import com.ramcosta.composedestinations.generated.destinations.CompilationCreationDestination
+import com.ramcosta.composedestinations.generated.destinations.PromotionDestination
+import com.ramcosta.composedestinations.generated.destinations.RationaleDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import me.samuki.domain.params.SetType
 import me.samuki.feature.list.ListNavigation
 import me.samuki.model.Playable
-import me.samuki.navigation.destinations.destinations.CompilationCreationDestination
-import me.samuki.navigation.destinations.destinations.RationaleDestination
-import me.samuki.navigation.destinations.destinations.PromotionDestination
 
 internal class ProvidedListNavigation(
     navigator: DestinationsNavigator
