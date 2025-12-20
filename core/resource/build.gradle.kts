@@ -1,6 +1,7 @@
 plugins {
     id("me.samuki.library")
     id("me.samuki.hilt")
+    id("me.samuki.flavor.sounds")
     kotlin("plugin.serialization")
 }
 

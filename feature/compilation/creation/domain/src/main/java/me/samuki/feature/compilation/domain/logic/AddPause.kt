@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 public class AddPause @Inject constructor(
     private val repository: CompilationCreationFeatureRepository,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     public suspend operator fun invoke(pause: Pause): Result<NoAnswer> =

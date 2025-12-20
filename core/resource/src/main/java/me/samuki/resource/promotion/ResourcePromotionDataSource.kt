@@ -13,7 +13,7 @@ import java.io.BufferedReader
 import javax.inject.Inject
 
 internal class ResourcePromotionDataSource @Inject constructor(
-    @ApplicationContext private val context: Context
+    @param:ApplicationContext private val context: Context
 ) : PromotionLocalDataSource {
 
     @Throws(IOException::class)

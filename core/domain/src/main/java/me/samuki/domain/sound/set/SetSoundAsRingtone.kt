@@ -11,7 +11,7 @@ import javax.inject.Inject
 @InternalDomainApi
 public class SetSoundAsRingtone @Inject constructor(
     private val setSoundRepository: SetSoundRepository,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     public suspend operator fun invoke(sound: Sound): Result<NoAnswer> =

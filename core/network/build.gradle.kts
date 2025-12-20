@@ -3,7 +3,6 @@ import me.samuki.buildlogic.utils.configureEnvironmentFlavors
 plugins {
     id("me.samuki.library")
     id("me.samuki.hilt")
-    id("me.samuki.flavor.environment")
     kotlin("plugin.serialization")
 }
 

@@ -11,7 +11,7 @@ import me.samuki.model.values.Name
 import javax.inject.Inject
 
 internal class SavedUriForFile @Inject constructor(
-    @ApplicationContext private val context: Context,
+    @param:ApplicationContext private val context: Context,
 ) {
 
     suspend fun getUri(fileName: Name): Uri? = context.dataStore.data.firstOrNull()

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Paweł Jumper Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.pawelsoundboard.fileprovider</string>
+</resources>

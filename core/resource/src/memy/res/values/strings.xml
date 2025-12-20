@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Polskie Memy Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.memysoundboard.fileprovider</string>
+</resources>

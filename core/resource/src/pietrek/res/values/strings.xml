@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Pietrek Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.pietreksoundboard2.fileprovider</string>
+</resources>

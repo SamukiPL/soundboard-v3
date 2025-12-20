@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 public class ObserveActiveListType @Inject constructor(
     private val observeAllFilters: ObserveAllFilters,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     public suspend operator fun invoke(): Flow<ListType> = withContext(coroutineDispatcher) {

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Owsiak Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.owsiaksoundboard.fileprovider</string>
+</resources>

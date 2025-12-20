@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 internal class CompilationsDao @Inject constructor(
     private val compilationQueries: CompilationQueries,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     fun getCompilations(): Flow<List<CompilationEntity>> =

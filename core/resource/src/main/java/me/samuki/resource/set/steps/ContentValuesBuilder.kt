@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 internal class ContentValuesBuilder @Inject constructor(
     private val appName: AppName,
-    @SdkVersion private val sdkVersion: Int,
+    @param:SdkVersion private val sdkVersion: Int,
 ) {
 
     fun build(

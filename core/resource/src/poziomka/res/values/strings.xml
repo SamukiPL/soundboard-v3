@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Poziomka Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.poziomkasoundboard.fileprovider</string>
+</resources>

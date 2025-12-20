@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 public class ShareCompilation @Inject constructor(
     private val shareRepository: ShareRepository,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
     public suspend operator fun invoke(compilation: Compilation): Result<NoAnswer> =
         withContext(coroutineDispatcher) {

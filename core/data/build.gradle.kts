@@ -1,7 +1,7 @@
 plugins {
     id("me.samuki.library")
     id("me.samuki.hilt")
-    id("me.samuki.flavor.environment")
+    id("me.samuki.flavor.sounds")
 }
 
 android {

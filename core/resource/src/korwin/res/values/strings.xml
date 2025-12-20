@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Korwin Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.korwinsoundboard.fileprovider</string>
+</resources>

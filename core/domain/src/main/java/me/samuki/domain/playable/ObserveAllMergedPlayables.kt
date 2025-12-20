@@ -13,7 +13,7 @@ import javax.inject.Inject
 public class ObserveAllMergedPlayables @Inject constructor(
     private val observeAllSounds: ObserveAllSounds,
     private val observeAllCompilations: ObserveAllCompilations,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     public suspend operator fun invoke(): Flow<List<Playable>> = withContext(coroutineDispatcher) {

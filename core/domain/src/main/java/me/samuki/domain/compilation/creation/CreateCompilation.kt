@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 public class CreateCompilation @Inject constructor(
     private val compilationRepository: CompilationRepository,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     public suspend operator fun invoke(params: Params): Result<NoAnswer> = withContext(coroutineDispatcher) {

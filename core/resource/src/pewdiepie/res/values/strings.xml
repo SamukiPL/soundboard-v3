@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PewDiePie Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.pewdiepiesoundboard.fileprovider</string>
+</resources>

@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 public class ObserveAllFilters @Inject constructor(
     private val filtersRepository: FiltersRepository,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     public suspend operator fun invoke(): Flow<List<Filter>> =

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Gimper Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.gimpersoundboard.fileprovider</string>
+</resources>

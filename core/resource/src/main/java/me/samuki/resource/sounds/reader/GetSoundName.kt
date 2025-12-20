@@ -8,7 +8,7 @@ import me.samuki.model.values.Name
 import javax.inject.Inject
 
 internal class GetSoundName @Inject constructor(
-    @ApplicationContext private val context: Context
+    @param:ApplicationContext private val context: Context
 ) {
     operator fun invoke(id: Int, path: Uri): Name = runCatching<String> {
         val metadataRetriever = MediaMetadataRetriever()

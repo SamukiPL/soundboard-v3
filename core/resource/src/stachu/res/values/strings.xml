@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Stachu Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.stachusoundboard.fileprovider</string>
+</resources>

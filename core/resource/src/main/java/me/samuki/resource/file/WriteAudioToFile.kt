@@ -10,7 +10,7 @@ import java.io.FileOutputStream
 import javax.inject.Inject
 
 internal class WriteAudioToFile @Inject constructor(
-    @FilesDir private val externalFile: File,
+    @param:FilesDir private val externalFile: File,
     private val contentResolver: ContentResolver,
 ) {
 

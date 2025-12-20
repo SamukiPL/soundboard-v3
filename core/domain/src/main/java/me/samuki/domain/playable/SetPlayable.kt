@@ -21,7 +21,7 @@ public class SetPlayable @Inject constructor(
     private val checkWriteSettingsPermissionStateAndThrowOnRefused: CheckWriteSettingsPermissionStateAndThrowOnRefused,
     private val setCompilation: SetCompilation,
     private val setSound: SetSound,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher,
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher,
 ) {
     public suspend operator fun invoke(playable: Playable, setType: SetType): Result<NoAnswer> =
         withContext(coroutineDispatcher) {

@@ -8,7 +8,7 @@ import me.samuki.resource.di.SilencePath
 import javax.inject.Inject
 
 internal class PathsCombiner @Inject constructor(
-    @SilencePath private val path: Path
+    @param:SilencePath private val path: Path
 ) {
 
     fun combinePaths(combinable: Array<out Combinable>): List<Path> = combinable.flatMap {

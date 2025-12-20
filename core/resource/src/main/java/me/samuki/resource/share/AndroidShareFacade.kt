@@ -10,7 +10,7 @@ import java.io.File
 import javax.inject.Inject
 
 internal class AndroidShareFacade @Inject constructor(
-    @ApplicationContext private val context: Context
+    @param:ApplicationContext private val context: Context
 ) {
 
     fun shareSound(file: File) {

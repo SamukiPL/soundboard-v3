@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 internal class PausesDao @Inject constructor(
     private val pauseQueries: PauseQueries,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     fun getAllPauses(): Flow<List<PauseEntity>> = pauseQueries.selectAll()

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Major Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.majorsoundboard.fileprovider</string>
+</resources>

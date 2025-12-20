@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 public class SearchByQuery @Inject constructor(
     private val searchRepository: SearchRepository,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     public suspend operator fun invoke(query: Query): Result<NoAnswer> =
