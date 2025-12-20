@@ -12,7 +12,7 @@ import me.samuki.resource.datastore.dataStore
 import javax.inject.Inject
 
 internal class PreferencesFavouriteProvider @Inject constructor(
-    @ApplicationContext private val context: Context
+    @param:ApplicationContext private val context: Context
 ) : FavouriteProvider {
 
     override val favouriteProvider: Flow<Map<Id, LikeState>> =

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Honda civic Kalisz 2012 Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.hondasoundboard.fileprovider</string>
+</resources>

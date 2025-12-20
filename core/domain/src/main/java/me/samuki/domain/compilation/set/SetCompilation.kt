@@ -13,7 +13,7 @@ import javax.inject.Inject
 public class SetCompilation @Inject constructor(
     private val setCompilationAsNotification: SetCompilationAsNotification,
     private val setCompilationAsRingtone: SetCompilationAsRingtone,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
     public suspend operator fun invoke(compilation: Compilation, setType: SetType): Result<NoAnswer> =
         withContext(coroutineDispatcher) {

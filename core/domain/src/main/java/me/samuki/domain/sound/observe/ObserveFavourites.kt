@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 public class ObserveFavourites @Inject constructor(
     private val soundRepository: SoundRepository,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
     public suspend operator fun invoke(): Flow<List<Playable>> = withContext(coroutineDispatcher) {
         soundRepository.observeSounds()

@@ -28,7 +28,7 @@ import javax.inject.Singleton
 internal class LocalCompilationRepository @Inject constructor(
     private val compilationsDataSource: CompilationsDataSource,
     private val soundsRepository: SoundRepository,
-    @DataCoroutinesScope private val coroutinesScope: CoroutineScope
+    @param:DataCoroutinesScope private val coroutinesScope: CoroutineScope
 ) : CompilationRepository {
 
     private var statedFlow: Flow<List<Compilation>>? = null

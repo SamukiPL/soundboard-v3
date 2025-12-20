@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Bajo jajo Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.bajojajosoundboard.fileprovider</string>
+</resources>

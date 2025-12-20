@@ -26,9 +26,9 @@ import javax.inject.Singleton
 
 @Singleton
 internal class AndroidMediaPlayer @Inject constructor(
-    @ApplicationContext private val context: Context,
+    @param:ApplicationContext private val context: Context,
     pauseDelayer: PauseDelayer,
-    @DispatcherIO private val coroutinesDispatcher: CoroutineDispatcher//TODO clean Coroutines
+    @param:DispatcherIO private val coroutinesDispatcher: CoroutineDispatcher//TODO clean Coroutines
 ) : Player,
     PauseDelayer by pauseDelayer {
 

@@ -11,7 +11,7 @@ import javax.inject.Inject
 public class ChangeFavouriteState @Inject constructor(
     private val makeSoundFavourite: MakeSoundFavourite,
     private val makeSoundNormal: MakeSoundNormal,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     public suspend operator fun invoke(likeable: Likeable): Result<NoAnswer> =

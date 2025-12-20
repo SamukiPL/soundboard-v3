@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Stachu Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.stachusoundboard.fileprovider</string>
+    <string name="app_ID" translatable="false">ca-app-pub-9630376407798380~5379597571</string>
+    <string name="banner_key" translatable="false">ca-app-pub-9630376407798380/1709135244</string>
+    <string name="interstitial_key" translatable="false">put key here</string>
+    <string name="reward_key" translatable="false">ca-app-pub-9630376407798380/4150276380</string>
+
+    <string name="adColony_appId" translatable="false">app7d0056cb6d614dc493</string>
+    <string name="adColony_interstellarZone" translatable="false">vzdd5f99f9d5434d4794</string>
+    <string name="adColony_rewardedZone" translatable="false">vz6ca86a2e70b744599f</string>
+</resources>

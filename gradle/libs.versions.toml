@@ -1,40 +1,42 @@
 [versions]
 accompanist = "0.36.0"
-androidGradlePlugin = "8.11.1"
-androidxActivityCompose = "1.10.1"
-androidxComposeBom = "2025.06.01"
+androidGradlePlugin = "8.13.2"
+androidxActivityCompose = "1.12.2"
+androidxComposeBom = "2025.09.01"
 androidxComposeCompiler = "1.5.3"
-androidxComposeMaterial3 = "1.3.2"
+androidxComposeMaterial3 = "1.4.0"
 androidxComposeRuntimeTracing = "1.0.0-alpha01"
-androidxComposeDestinations = "2.2.0"
-androidxCore = "1.16.0"
-androidxSplashscreen = "1.0.1"
-androidxLifecycle = "2.9.1"
-androidxNavigation = "2.9.1"
-androidx-test-ext-junit = "1.2.1"
+androidxComposeDestinations = "2.3.0"
+androidxCore = "1.17.0"
+androidxSplashscreen = "1.2.0"
+androidxLifecycle = "2.10.0"
+androidxNavigation = "2.9.6"
+androidx-test-ext-junit = "1.3.0"
 appcompat = "1.7.1"
-arrow = "2.1.2"
+arrow = "2.2.1.1"
 coil = "2.7.0"
-datastore = "1.1.7"
-espresso-core = "3.6.1"
-firebaseBom = "34.1.0"
-gradle = "8.0.2"
-hilt = "2.56.2"
-hiltNavigation = "1.2.0"
+datastore = "1.2.0"
+espresso-core = "3.7.0"
+firebaseBom = "34.7.0"
+gradle = "8.0.2" # build-logic do not upgrade without migrating to Kotlin DSL
+hilt = "2.57.2"
+hiltNavigation = "1.3.0"
 junit = "4.13.2"
-kotest = "5.9.1"
-kotlinGradlePlugin = "2.2.0"
+kotest = "6.0.7"
+kotlinGradlePlugin = "2.3.0"
 kotlinGradlePluginVersion = "1.8.20"
+kotlinMetadataJvm = "2.3.0"
 kotlinxDatetime = "0.7.1"
 kotlinxSerializationJson = "1.9.0"
-kspGradlePlugin = "2.2.0-2.0.2"
-ktor = "3.2.1"
-lottie = "6.6.7"
-material = "1.12.0"
-mockk = "1.14.4"
+kspGradlePlugin = "2.3.4"
+ktor = "3.3.3"
+lottie = "6.7.1"
+material = "1.13.0"
+materialIcons = "1.7.8"
+mockk = "1.14.7"
 settings = "1.3.0"
-sqldelight = "2.1.0"
-google-services = "4.4.3"
+sqldelight = "2.2.1"
+google-services = "4.4.4"
 crashlytics = "3.0.6"
 
 [libraries]
@@ -46,7 +48,7 @@ androidx-compose-destinations-core = { group = "io.github.raamcosta.compose-dest
 androidx-compose-destinations-ksp = { group = "io.github.raamcosta.compose-destinations", name = "ksp", version.ref = "androidxComposeDestinations" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout" }
-androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
+androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "materialIcons" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "androidxComposeMaterial3" }
 androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
 androidx-compose-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
@@ -81,6 +83,7 @@ kotest-runner = { group = "io.kotest", name = "kotest-runner-junit5", version.re
 kotest-assertions-core = { group = "io.kotest", name = "kotest-assertions-core", version.ref = "kotest" }
 kotest-property = { group = "io.kotest", name = "kotest-property", version.ref = "kotest" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePluginVersion" }
+kotlin-metadata-jvm = { module = "org.jetbrains.kotlin:kotlin-metadata-jvm", version.ref = "kotlinMetadataJvm" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }

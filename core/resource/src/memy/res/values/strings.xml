@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Polskie Memy Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.memysoundboard.fileprovider</string>
+	<string name="app_ID" translatable="false">ca-app-pub-9630376407798380~8585350032</string>
+    <string name="interstitial_key" translatable="false">put key here</string>
+    <string name="banner_key" translatable="false">ca-app-pub-9630376407798380/5827419552</string>
+    <string name="reward_key" translatable="false">ca-app-pub-9630376407798380/1828369992</string>
+	
+	<string name="adColony_appId" translatable="false">app40f73b611bb041a0b2</string>
+    <string name="adColony_interstellarZone" translatable="false">vz893a34645666453cbc</string>
+    <string name="adColony_rewardedZone" translatable="false">vz49bc9aba437e470eab</string>
+</resources>

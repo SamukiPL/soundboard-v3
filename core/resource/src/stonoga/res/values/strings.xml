@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Stonoga Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.stonogasoundboard.fileprovider</string>
+	<string name="app_ID" translatable="false">ca-app-pub-9630376407798380~1834613898</string>
+    <string name="interstitial_key" translatable="false">put key in here</string>
+    <string name="banner_key" translatable="false">put key in here</string>
+    <string name="reward_key" translatable="false">put key in here</string>
+	
+	<string name="adColony_appId" translatable="false">app36875f9594fd4e0ba8</string>
+    <string name="adColony_interstellarZone" translatable="false"> vz405111e052b7412784</string>
+    <string name="adColony_rewardedZone" translatable="false">put key in here</string>
+</resources>

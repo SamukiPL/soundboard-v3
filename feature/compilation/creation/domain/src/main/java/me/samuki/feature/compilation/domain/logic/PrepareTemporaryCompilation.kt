@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 public class PrepareTemporaryCompilation @Inject constructor(
     private val repository: CompilationCreationFeatureRepository,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     public suspend operator fun invoke(): Result<Compilation> =

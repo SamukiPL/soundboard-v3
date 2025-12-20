@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 public class StopPlaying @Inject constructor(
     private val playRepository: PlayRepository,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     public suspend operator fun invoke(): Result<NoAnswer> = withContext(coroutineDispatcher) {

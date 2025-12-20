@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Klocuch Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.klocuchsoundboard.fileprovider</string>
+</resources>

@@ -15,7 +15,7 @@ public class PlayPlayable @Inject constructor(
     private val stopPlaying: StopPlaying,
     private val playCompilation: PlayCompilation,
     private val playSound: PlaySound,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
     public suspend operator fun invoke(playable: Playable): Result<NoAnswer> =
         withContext(coroutineDispatcher) {

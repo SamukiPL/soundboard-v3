@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 public class AddSound @Inject constructor(
     private val repository: CompilationCreationFeatureRepository,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     public suspend operator fun invoke(sound: Sound): Result<NoAnswer> =

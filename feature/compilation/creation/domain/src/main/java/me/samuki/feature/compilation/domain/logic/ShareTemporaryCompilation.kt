@@ -11,7 +11,7 @@ import javax.inject.Inject
 public class ShareTemporaryCompilation @Inject constructor(
     private val prepareTemporaryCompilation: PrepareTemporaryCompilation,
     private val sharePlayable: SharePlayable,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher,
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher,
 ) {
 
     public suspend operator fun invoke(): Result<NoAnswer> =

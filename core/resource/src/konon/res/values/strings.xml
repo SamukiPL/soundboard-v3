@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Kononowicz Krzysztof Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.kononsoundboard.fileprovider</string>
+</resources>

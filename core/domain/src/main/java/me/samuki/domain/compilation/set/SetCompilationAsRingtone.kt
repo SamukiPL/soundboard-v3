@@ -11,7 +11,7 @@ import javax.inject.Inject
 @InternalDomainApi
 public class SetCompilationAsRingtone @Inject constructor(
     private val setCompilationRepository: SetCompilationRepository,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     public suspend operator fun invoke(compilation: Compilation): Result<NoAnswer> =
