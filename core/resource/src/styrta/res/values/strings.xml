@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Styrta Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.styrtasoundboard.fileprovider</string>
+    <string name="app_ID" translatable="false">ca-app-pub-9630376407798380~9311938842</string>
+    <string name="interstitial_key" translatable="false">ca-app-pub-9630376407798380/7464503691</string>
+    <string name="banner_key" translatable="false">ca-app-pub-9630376407798380/3676468781</string>
+    <string name="reward_key" translatable="false">ca-app-pub-9630376407798380/7067605805</string>
+	
+	<string name="adColony_appId" translatable="false">put key in here</string>
+    <string name="adColony_interstellarZone" translatable="false">put key in here</string>
+    <string name="adColony_rewardedZone" translatable="false">put key in here</string>
+</resources>

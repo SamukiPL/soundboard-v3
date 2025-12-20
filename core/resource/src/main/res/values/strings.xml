@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="provider" translatable="false">samuki.me.elevensoundboard.provider</string>
     <string name="share_text">Share sound to…</string>
 </resources>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Poziomka Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.poziomkasoundboard.fileprovider</string>
+    <string name="app_ID" translatable="false">ca-app-pub-9630376407798380~7950172550</string>
+    <string name="interstitial_key" translatable="false">ca-app-pub-9630376407798380/5029912049</string>
+    <string name="banner_key" translatable="false">ca-app-pub-9630376407798380/6253947504</string>
+    <string name="reward_key" translatable="false">ca-app-pub-9630376407798380/9810049135</string>
+	
+	<string name="adColony_appId" translatable="false">put key in here</string>
+    <string name="adColony_interstellarZone" translatable="false">put key in here</string>
+    <string name="adColony_rewardedZone" translatable="false">put key in here</string>
+</resources>

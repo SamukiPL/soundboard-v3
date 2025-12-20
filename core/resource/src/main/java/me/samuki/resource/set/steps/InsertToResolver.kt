@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 internal class InsertToResolver @Inject constructor(
     private val contentResolver: ContentResolver,
-    @ExternalContentUri private val audioCollection: Uri
+    @param:ExternalContentUri private val audioCollection: Uri
 ) {
 
     fun insert(contentValues: ContentValues): Uri {

@@ -66,9 +66,9 @@ gradlePlugin {
             implementationClass = "layers.PresentationPlugin"
         }
 
-        register("flavorEnvironmentPlugin") {
-            id = "me.samuki.flavor.environment"
-            implementationClass = "flavors.EnvironmentFlavor"
+        register("flavorsoundsPlugin") {
+            id = "me.samuki.flavor.sounds"
+            implementationClass = "flavors.SoundsFlavor"
         }
     }
 }

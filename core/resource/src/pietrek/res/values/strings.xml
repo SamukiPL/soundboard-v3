@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Pietrek Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.pietreksoundboard2.fileprovider</string>
+	<string name="app_ID" translatable="false">ca-app-pub-9630376407798380~2338093545</string>
+    <string name="banner_key" translatable="false">ca-app-pub-9630376407798380/7095063376</string>
+    <string name="reward_key" translatable="false">ca-app-pub-9630376407798380/2608813678</string>
+	
+    <string name="adColony_appId" translatable="false">app072f6972a86448f7b9</string>
+    <string name="adColony_interstellarZone" translatable="false">vz89a1035781464bac93</string>
+    <string name="adColony_rewardedZone" translatable="false">vze5801c36b02c46a9bd</string>
+</resources>

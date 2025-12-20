@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 internal class SoundsDao @Inject constructor(
     private val soundQueries: SoundQueries,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     fun getAllSounds(): Flow<List<SoundEntity>> = soundQueries.selectAll()

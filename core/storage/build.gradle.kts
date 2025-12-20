@@ -1,5 +1,3 @@
-import com.google.devtools.ksp.gradle.KspTaskJvm
-
 plugins {
     id("me.samuki.library")
     id("me.samuki.hilt")

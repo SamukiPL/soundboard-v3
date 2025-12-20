@@ -13,7 +13,7 @@ import javax.inject.Inject
 public class SetSound @Inject constructor(
     private val setSoundAsNotification: SetSoundAsNotification,
     private val setSoundAsRingtone: SetSoundAsRingtone,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
     public suspend operator fun invoke(sound: Sound, setType: SetType): Result<NoAnswer> =
         withContext(coroutineDispatcher) {

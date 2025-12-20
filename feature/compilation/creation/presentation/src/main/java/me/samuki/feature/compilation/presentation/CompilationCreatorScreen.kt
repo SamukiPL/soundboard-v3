@@ -20,7 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import me.samuki.core.presentation.events.ObserveAsEvents
 import me.samuki.feature.compilation.presentation.bottom.CompilationCreatorBottomBar
 import me.samuki.feature.compilation.presentation.controls.CompilationCreatorControlsView

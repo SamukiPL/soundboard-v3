@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 public class PlaySound @Inject constructor(
     private val playRepository: PlayRepository,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
     public suspend operator fun invoke(sound: Sound): Result<NoAnswer> =
         withContext(coroutineDispatcher) {

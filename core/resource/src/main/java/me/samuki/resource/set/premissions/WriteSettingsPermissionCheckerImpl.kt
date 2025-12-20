@@ -7,7 +7,7 @@ import me.samuki.model.PermissionState
 import javax.inject.Inject
 
 internal class WriteSettingsPermissionCheckerImpl @Inject constructor(
-    @ApplicationContext private val context: Context
+    @param:ApplicationContext private val context: Context
 ) : WriteSettingsPermissionChecker {
 
     override operator fun invoke(): PermissionState = when (Settings.System.canWrite(context)) {

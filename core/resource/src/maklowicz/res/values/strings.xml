@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Makłowicz Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.maklowiczsoundboard.fileprovider</string>
+	<string name="app_ID" translatable="false">ca-app-pub-9630376407798380~9078062172</string>
+    <string name="interstitial_key" translatable="false">put key here</string>
+    <string name="banner_key" translatable="false">ca-app-pub-9630376407798380/4232983501</string>
+    <string name="reward_key" translatable="false">ca-app-pub-9630376407798380/5194657488</string>
+	
+	<string name="adColony_appId" translatable="false">app30546b7807cb444b82</string>
+    <string name="adColony_interstellarZone" translatable="false">vzaff1e8b344a14886ba</string>
+    <string name="adColony_rewardedZone" translatable="false">vza4b5c2c7bc6f4af3a0</string>
+</resources>

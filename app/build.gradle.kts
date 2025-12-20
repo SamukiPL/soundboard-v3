@@ -3,7 +3,7 @@ plugins {
     id("me.samuki.application.compose")
     id("me.samuki.hilt")
     id("me.samuki.hilt.compose")
-    id("me.samuki.flavor.environment")
+    id("me.samuki.flavor.sounds")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
 }
@@ -12,7 +12,6 @@ android {
     namespace = "me.samuki.soundboard"
 
     defaultConfig {
-        applicationId = "samuki.me.elevensoundboard"
         versionCode = 1
         versionName = "1.0"
 

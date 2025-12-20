@@ -1,8 +1,6 @@
-import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
 import me.samuki.buildlogic.config.AndroidVersions
 import me.samuki.buildlogic.utils.configureKotlinAndroid
-import me.samuki.buildlogic.utils.ignoreVariants
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -33,10 +31,6 @@ class LibraryPlugin : Plugin<Project> {
                         File(layout.buildDirectory.asFile.get(), "generated/ksp/$name/kotlin")
                     )
                 }
-            }
-
-            extensions.configure<LibraryAndroidComponentsExtension> {
-                ignoreVariants(this)
             }
         }
     }

@@ -24,7 +24,7 @@ public class ObservePlayables @Inject constructor(
     private val observeAllSounds: ObserveAllSounds,
     private val observeFavourites: ObserveFavourites,
     private val observeCompilations: ObserveAllCompilations,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
     public suspend operator fun invoke(): Flow<List<Playable>> =
         withContext(coroutineDispatcher) {

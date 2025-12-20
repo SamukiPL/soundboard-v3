@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 public class ObserveAllCompilations @Inject constructor(
     private val compilationRepository: CompilationRepository,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
     public suspend operator fun invoke(): Flow<List<Playable>> = withContext(coroutineDispatcher) {

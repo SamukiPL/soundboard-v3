@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Eleven Soundboard</string>
+    <string name="provider" translatable="false">samuki.me.elevensoundboard.fileprovider</string>
+</resources>

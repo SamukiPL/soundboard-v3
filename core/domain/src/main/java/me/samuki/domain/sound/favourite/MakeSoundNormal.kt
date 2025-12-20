@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 public class MakeSoundNormal @Inject constructor(
     private val soundRepository: SoundRepository,
-    @DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
+    @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
     public suspend operator fun invoke(likeable: Likeable): Result<NoAnswer> =
         withContext(coroutineDispatcher) {
