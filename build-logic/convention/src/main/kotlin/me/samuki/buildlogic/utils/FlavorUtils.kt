@@ -28,7 +28,7 @@ enum class Flavor(val dimension: Dimension, val applicationId: String) {
     POZIOMKA(Dimension.SOUNDS, "samuki.me.poziomkasoundboard"),
     STACHU(Dimension.SOUNDS, "samuki.me.stachusoundboard"),
     STONOGA(Dimension.SOUNDS, "samuki.me.stonogasoundboard"),
-    STRYTA(Dimension.SOUNDS, "samuki.me.styrtasoundboard"),
+    STYRTA(Dimension.SOUNDS, "samuki.me.styrtasoundboard"),
     VIRONTESTO(Dimension.SOUNDS, "samuki.me.testovironsoundboard");
 
     val lowerCaseName: String

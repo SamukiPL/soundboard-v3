@@ -1,3 +1,7 @@
 <resources>
     <string name="list_fab_content_description">Fab icon</string>
+
+    <string name="thank_you_title">Thank you and farewell</string>
+    <string name="thank_you_message">Thank you for being with me. This application was an important step in my life and means a lot to me. This is its final version in this format – from now on, I will only be fixing bugs. This is my farewell to the soundboard format. The application\'s code is open source, so if you feel like it, you can take it over and continue developing it. Once again, thank you so much!</string>
+    <string name="thank_you_close">All the best!</string>
 </resources>

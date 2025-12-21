@@ -1,3 +1,7 @@
 <resources>
     <string name="list_fab_content_description">Ikona przycisku</string>
+
+    <string name="thank_you_title">Dziękuję i żegnam</string>
+    <string name="thank_you_message">Dziękuję, że jesteś ze mną. Ta aplikacja była ważnym krokiem w moim życiu i wiele dla mnie znaczy. To jej ostatnia wersja w tej formie – od teraz będę jedynie poprawiać błędy. To moje pożegnanie z formatem soundboardów. Kod aplikacji jest otwarty, więc jeśli masz ochotę, możesz go przejąć i tworzyć dalej. Jeszcze raz, wielkie dzięki!</string>
+    <string name="thank_you_close">Wszystkiego dobrego!</string>
 </resources>

@@ -75,6 +75,9 @@ internal interface ListContract {
 
     sealed interface Effect {
 
+        // A one-time event to show a thank you bottom sheet.
+        data object ShowThankYou : Effect
+
         data class GoToSettingsRationale(
             val playable: Playable,
             val setType: SetType

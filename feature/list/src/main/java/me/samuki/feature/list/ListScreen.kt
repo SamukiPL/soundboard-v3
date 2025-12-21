@@ -14,10 +14,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import me.samuki.core.presentation.events.ObserveAsEvents
 import me.samuki.feature.list.fab.ListFabView
 import me.samuki.feature.list.items.PlayableItem
@@ -34,6 +35,8 @@ public fun ListScreen(
         viewModel.onEvent(ListContract.Event.Init)
     }
 
+    var showThankYouSheet by remember { mutableStateOf(false) }
+
     ObserveAsEvents(viewModel.eventsFlow) {
         when (it) {
             is ListContract.Effect.GoToSettingsRationale -> navigation.goToSettingsRationale(
@@ -43,7 +46,16 @@ public fun ListScreen(
 
             ListContract.Effect.GoToCompilationCreation -> navigation.goToCompilationCreation()
             ListContract.Effect.GoToMoreSoundboards -> navigation.goToMoreSoundboards()
+            ListContract.Effect.ShowThankYou -> {
+                showThankYouSheet = true
+            }
         }
+    }
+
+    if (showThankYouSheet) {
+        ThankYouBottomSheet(
+            onDismiss = { showThankYouSheet = false }
+        )
     }
 
     val state = remember { viewModel.state }

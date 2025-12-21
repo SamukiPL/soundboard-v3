@@ -36,8 +36,8 @@ android {
     }
 
     defaultConfig {
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 20251221
+        versionName = "3.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -61,6 +61,16 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+play {
+    track = "beta"
+    releaseStatus = com.github.triplet.gradle.androidpublisher.ReleaseStatus.COMPLETED
+    defaultToAppBundles = true
+
+    resolutionStrategy = com.github.triplet.gradle.androidpublisher.ResolutionStrategy.IGNORE
+
+    serviceAccountCredentials = file("key.json")
 }
 
 dependencies {
