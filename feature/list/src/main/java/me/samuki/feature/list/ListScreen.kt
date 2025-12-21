@@ -40,6 +40,7 @@ public fun ListScreen(
                 it.playable,
                 it.setType
             )
+
             ListContract.Effect.GoToCompilationCreation -> navigation.goToCompilationCreation()
             ListContract.Effect.GoToMoreSoundboards -> navigation.goToMoreSoundboards()
         }
@@ -88,7 +89,8 @@ private fun ListContent(
     }
     ListFabView(
         onEvent = onEvent,
-        modifier = Modifier.align(Alignment.BottomEnd)
+        modifier = Modifier
+            .align(Alignment.BottomEnd)
             .padding(16.dp)
     )
 }

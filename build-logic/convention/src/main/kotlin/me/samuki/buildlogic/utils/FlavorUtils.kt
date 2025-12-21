@@ -1,8 +1,6 @@
 package me.samuki.buildlogic.utils
 
 import com.android.build.api.dsl.CommonExtension
-import com.android.build.api.variant.AndroidComponentsExtension
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 
 enum class Dimension {
     SOUNDS;

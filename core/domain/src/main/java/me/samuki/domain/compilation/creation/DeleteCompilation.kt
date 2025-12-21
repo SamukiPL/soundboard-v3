@@ -11,9 +11,10 @@ import javax.inject.Inject
 public class DeleteCompilation @Inject constructor(
     private val compilationRepository: CompilationRepository,
     @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
-){
+) {
 
-    public suspend operator fun invoke(id: Id): Result<NoAnswer> = withContext(coroutineDispatcher) {
-        compilationRepository.deleteCompilation(id)
-    }
+    public suspend operator fun invoke(id: Id): Result<NoAnswer> =
+        withContext(coroutineDispatcher) {
+            compilationRepository.deleteCompilation(id)
+        }
 }

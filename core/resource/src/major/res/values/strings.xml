@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Major Soundboard</string>
     <string name="provider" translatable="false">samuki.me.majorsoundboard.fileprovider</string>
-	<string name="app_ID" translatable="false">ca-app-pub-9630376407798380~9789165503</string>
+    <string name="app_ID" translatable="false">ca-app-pub-9630376407798380~9789165503</string>
     <string name="interstitial_key" translatable="false">ca-app-pub-9630376407798380/2427514024</string>
     <string name="banner_key" translatable="false">ca-app-pub-9630376407798380/8241593197</string>
     <string name="reward_key" translatable="false">ca-app-pub-9630376407798380/5849920496</string>
-	
-	<string name="adColony_appId" translatable="false">put key in here</string>
+
+    <string name="adColony_appId" translatable="false">put key in here</string>
     <string name="adColony_interstellarZone" translatable="false">put key in here</string>
     <string name="adColony_rewardedZone" translatable="false">put key in here</string>
 </resources>

@@ -56,6 +56,7 @@ internal class ListViewModel @Inject constructor(
             playablesFlow = observePlayables(),
             filtersFlow = observeAllFilters(),
         )
+
         is ListContract.Event.Play -> playPlayable(event.playable)
         ListContract.Event.StopPlaying -> stopPlaying()
         is ListContract.Event.ChangeFavouriteState -> favouriteState(event.likeable)
@@ -64,20 +65,24 @@ internal class ListViewModel @Inject constructor(
             playable = event.playable,
             setType = event.setType
         )
+
         is ListContract.Event.ChangeFilter -> changeFilterSelectionState(event.filter)
         is ListContract.Event.OpenQueryToolbar -> listStateCombiner.openQueryToolbar(
             query = event.query,
         )
+
         is ListContract.Event.AcceptQuery -> listStateCombiner.closeQueryToolbar()
         ListContract.Event.RemoveQuery -> {
             searchByQuery(Query.Empty)
             listStateCombiner.updateQuery(Query.Empty)
             listStateCombiner.closeQueryToolbar(true)
         }
+
         is ListContract.Event.SetQuery -> {
             listStateCombiner.updateQuery(event.query)
             searchByQuery(event.query)
         }
+
         ListContract.Event.AddCompilation -> eventChannel.send(ListContract.Effect.GoToCompilationCreation)
         ListContract.Event.GetMoreSoundboards -> eventChannel.send(ListContract.Effect.GoToMoreSoundboards)
     }

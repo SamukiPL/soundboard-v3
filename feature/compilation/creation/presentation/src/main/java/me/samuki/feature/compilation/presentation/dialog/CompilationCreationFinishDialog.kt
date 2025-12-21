@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
@@ -72,6 +71,9 @@ internal fun CompilationCreatorFinishDialog(
             modifier = Modifier
                 .height(62.dp)
         )
+        CompilationCreatorErrorField(
+            state.showErrorOnDialog,
+        )
         CompilationCreatorNameField(
             state.name,
             state.showNamePlaceholder,
@@ -103,7 +105,9 @@ private fun DialogPreview() {
         AnimatedVisibility(true) {
             CompilationCreatorFinishDialog(
                 emptyList(),
-                FinishDialogState()
+                FinishDialogState(
+                    showErrorOnDialog = true,
+                )
             ) { }
         }
     }

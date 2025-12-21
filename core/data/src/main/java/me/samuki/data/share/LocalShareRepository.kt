@@ -1,7 +1,7 @@
 package me.samuki.data.share
 
-import me.samuki.domain.rail.runNoAnswer
 import me.samuki.domain.ShareRepository
+import me.samuki.domain.rail.runNoAnswer
 import me.samuki.model.Compilation
 import me.samuki.model.NoAnswer
 import me.samuki.model.Sound

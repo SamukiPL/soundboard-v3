@@ -5,8 +5,8 @@
     <string name="interstitial_key" translatable="false">ca-app-pub-9630376407798380/3844338090</string>
     <string name="banner_key" translatable="false">ca-app-pub-9630376407798380/8833759137</string>
     <string name="reward_key" translatable="false">ca-app-pub-9630376407798380/7592011410</string>
-	
-	<string name="adColony_appId" translatable="false">put key in here</string>
+
+    <string name="adColony_appId" translatable="false">put key in here</string>
     <string name="adColony_interstellarZone" translatable="false">put key in here</string>
     <string name="adColony_rewardedZone" translatable="false">put key in here</string>
 </resources>

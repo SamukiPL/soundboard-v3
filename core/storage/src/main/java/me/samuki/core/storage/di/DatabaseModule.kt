@@ -30,7 +30,7 @@ internal object DatabaseModule {
         compilationAdapter: CompilationEntity.Adapter
     ): Database =
         Database.invoke(
-            AndroidSqliteDriver(Database.Schema, context, "TODO.db"),
+            AndroidSqliteDriver(Database.Schema, context, DATABASE_NAME),
             compilationAdapter,
             pauseAdapter,
             soundAdapter,
@@ -57,4 +57,6 @@ internal object DatabaseModule {
         compilation_idAdapter = IdAdapter(),
         next_combinable_idAdapter = StorageCombinableIdAdapter(),
     )
+
+    private const val DATABASE_NAME = "soundboard.db"
 }

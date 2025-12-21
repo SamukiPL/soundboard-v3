@@ -12,7 +12,7 @@ import org.gradle.kotlin.dsl.dependencies
 
 class PresentationPlugin : Plugin<Project> {
     override fun apply(target: Project) {
-        with (target) {
+        with(target) {
             with(pluginManager) {
                 apply(LibraryPlugin::class.java)
                 apply(LibraryComposePlugin::class.java)
