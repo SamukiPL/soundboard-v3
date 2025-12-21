@@ -10,7 +10,8 @@ import javax.inject.Inject
 internal class GetSoundName @Inject constructor(
     @param:ApplicationContext private val context: Context
 ) {
-    operator fun invoke(id: Int, path: Uri): Name = runCatching<String> {
+
+    operator fun invoke(id: Int, path: Uri): Name = runCatching {
         val metadataRetriever = MediaMetadataRetriever()
         metadataRetriever.setDataSource(context, path)
 
