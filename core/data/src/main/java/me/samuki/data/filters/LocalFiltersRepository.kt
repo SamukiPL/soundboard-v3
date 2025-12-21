@@ -5,15 +5,14 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.update
-import me.samuki.domain.rail.runNoAnswer
 import me.samuki.data.filters.listType.ListTypeFiltersDataSource
 import me.samuki.data.filters.query.QueryFilterDataSource
 import me.samuki.domain.filters.FiltersRepository
+import me.samuki.domain.rail.runNoAnswer
 import me.samuki.model.NoAnswer
 import me.samuki.model.filters.Filter
 import me.samuki.model.values.FilterSelected
 import javax.inject.Inject
-import javax.inject.Singleton
 
 @ViewModelScoped
 internal class LocalFiltersRepository @Inject constructor(

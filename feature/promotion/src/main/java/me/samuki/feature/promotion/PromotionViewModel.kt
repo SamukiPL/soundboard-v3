@@ -42,6 +42,7 @@ internal class PromotionViewModel @Inject constructor(
                         DataOrigin.ONLINE -> PromotionListState.Online(
                             result.list.map { it.toItem() }
                         )
+
                         DataOrigin.OFFLINE -> PromotionListState.Offline(
                             result.list.map { it.toItem() }
                         )
@@ -58,6 +59,7 @@ internal class PromotionViewModel @Inject constructor(
                 event.url
             )
         )
+
         PromotionContract.Event.ShowStoreProfile -> eventChannel.send(
             PromotionContract.Effect.GoToPromotion(
                 StoreUrl(GOOGLE_PLAY_STORE_URL)

@@ -73,6 +73,7 @@ private fun RationaleContent(
         RationaleContract.ScreenState.PERMISSION_REQUEST -> RationalePermissionContent(
             onEvent = onEvent
         )
+
         RationaleContract.ScreenState.SUCCESS -> RationaleSuccessContent(
             onEvent = onEvent
         )

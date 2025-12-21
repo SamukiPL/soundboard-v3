@@ -37,11 +37,12 @@ internal class RationaleViewModel @Inject constructor(
                 playableName = event.playable.name
             )
         }
+
         RationaleContract.Event.GoBack -> eventChannel.send(RationaleContract.Effect.GoBackToList)
         RationaleContract.Event.OpenSettings -> eventChannel.send(RationaleContract.Effect.NavigateToSettings)
         RationaleContract.Event.ReturnedFromSettings -> state.value.let { currentState ->
             if (currentState.playable == null || currentState.setType == null) return@let
-            
+
             setPlayable(currentState.playable, currentState.setType)
                 .onSuccess {
                     _state.update { it.copy(screenState = RationaleContract.ScreenState.SUCCESS) }

@@ -7,7 +7,10 @@ package me.samuki.common.algorithm
  *
  * @throws IllegalStateException when relations have not been preserved
  */
-public fun <TYPE> List<TYPE>.linkedSort(key: (TYPE) -> String, nextKey: (TYPE) -> String?): List<TYPE> {
+public fun <TYPE> List<TYPE>.linkedSort(
+    key: (TYPE) -> String,
+    nextKey: (TYPE) -> String?
+): List<TYPE> {
     val map = associateBy { nextKey(it) }
     return buildList<TYPE> {
         var item = map[null]

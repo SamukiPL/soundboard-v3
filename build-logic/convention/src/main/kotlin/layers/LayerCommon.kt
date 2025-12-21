@@ -13,6 +13,7 @@ fun Project.implementDomainLayer() {
             implementation(domain)
         } ?: rootProject.findProject(CORE_DOMAIN_NAME)?.let { coreDomain ->
             implementation(coreDomain)
-        } ?: throw IllegalStateException("You must have a \"domain\" layer in :core module or inside feature")
+        }
+        ?: throw IllegalStateException("You must have a \"domain\" layer in :core module or inside feature")
     }
 }

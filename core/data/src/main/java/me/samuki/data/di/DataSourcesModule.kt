@@ -27,8 +27,8 @@ internal object DataSourcesModule {
     ): CoroutineScope =
         CoroutineScope(SupervisorJob() + dispatcher + CoroutineExceptionHandler { coroutineContext, throwable ->
             Log.e(
-                "TODO DATA MODULE",
-                "TODO message for DATA MODULE $throwable $coroutineContext",
+                "CORE DATA MODULE",
+                "Something went wrong with coroutine $throwable $coroutineContext",
                 throwable,
             )
         })

@@ -25,6 +25,7 @@ import me.samuki.core.presentation.events.ObserveAsEvents
 import me.samuki.feature.compilation.presentation.bottom.CompilationCreatorBottomBar
 import me.samuki.feature.compilation.presentation.controls.CompilationCreatorControlsView
 import me.samuki.feature.compilation.presentation.dialog.CompilationCreatorFinishDialog
+import me.samuki.feature.compilation.presentation.dialog.SetNameDialogState
 import me.samuki.feature.compilation.presentation.items.creator.CompilationCreatorItemsRow
 import me.samuki.feature.compilation.presentation.items.sounds.CompilationCreatorSoundsColumn
 import me.samuki.feature.compilation.presentation.preview.PreviewCreatorContractStateProvider
@@ -61,40 +62,45 @@ private fun CompilationCreatorContent(
         AnimatedContent(
             targetState = state.showSetNameDialog,
             label = "Dialog animation"
-        ) { showSetNameDialog ->
-            if (!showSetNameDialog) {
-                Column {
-                    CompilationCreatorItemsRow(
-                        itemsList = state.list,
-                        onEvent = onEvent,
-                    )
-                    CompilationCreatorControlsView(
-                        showCreateButton = state.showCreateButton,
-                        volumeEnabled = state.volumeEnabled,
-                        onEvent = onEvent,
-                        modifier = Modifier
-                            .background(MaterialTheme.colorScheme.primaryContainer)
-                    )
-                    CompilationCreatorSoundsColumn(
-                        sounds = state.sounds,
-                        onEvent = onEvent,
-                        modifier = Modifier.weight(1f)
-                    )
-                    CompilationCreatorBottomBar(
-                        state = state.bottomBarState,
+        ) { setNameDialogState ->
+            when (setNameDialogState) {
+                SetNameDialogState.Hidden -> {
+                    Column {
+                        CompilationCreatorItemsRow(
+                            itemsList = state.list,
+                            onEvent = onEvent,
+                        )
+                        CompilationCreatorControlsView(
+                            showCreateButton = state.showCreateButton,
+                            volumeEnabled = state.volumeEnabled,
+                            onEvent = onEvent,
+                            modifier = Modifier
+                                .background(MaterialTheme.colorScheme.primaryContainer)
+                        )
+                        CompilationCreatorSoundsColumn(
+                            sounds = state.sounds,
+                            onEvent = onEvent,
+                            modifier = Modifier.weight(1f)
+                        )
+                        CompilationCreatorBottomBar(
+                            state = state.bottomBarState,
+                            onEvent = onEvent
+                        )
+                    }
+                }
+
+                SetNameDialogState.Visible -> {
+                    CompilationCreatorFinishDialog(
+                        combinables = state.list,
+                        state = state.finishDialogState,
                         onEvent = onEvent
                     )
                 }
-            } else {
-                CompilationCreatorFinishDialog(
-                    combinables = state.list,
-                    state = state.finishDialogState,
-                    onEvent = onEvent
-                )
             }
         }
     }
 }
+
 
 @Preview
 @Composable

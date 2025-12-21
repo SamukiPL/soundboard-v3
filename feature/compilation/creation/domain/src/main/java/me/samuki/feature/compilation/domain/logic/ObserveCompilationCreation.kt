@@ -13,7 +13,8 @@ public class ObserveCompilationCreation @Inject constructor(
     @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
 
-    public suspend operator fun invoke(): Flow<List<CombinedCombinable>> = withContext(coroutineDispatcher) {
-        repository.items
-    }
+    public suspend operator fun invoke(): Flow<List<CombinedCombinable>> =
+        withContext(coroutineDispatcher) {
+            repository.items
+        }
 }

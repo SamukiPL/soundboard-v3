@@ -7,7 +7,6 @@ import me.samuki.domain.search.SearchRepository
 import me.samuki.model.NoAnswer
 import me.samuki.model.values.Query
 import javax.inject.Inject
-import javax.inject.Singleton
 
 @ViewModelScoped
 internal class LocalSearchRepository @Inject constructor() : SearchRepository {

@@ -19,6 +19,7 @@ internal class QueryFilterUpdateStrategy @Inject constructor() : FilterUpdateStr
             else
                 filter
         }
+
         false -> filters.filter { it !is QueryFilter }
     }
 }

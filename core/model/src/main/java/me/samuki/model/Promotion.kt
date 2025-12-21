@@ -2,8 +2,8 @@ package me.samuki.model
 
 import me.samuki.model.values.DataOrigin
 import me.samuki.model.values.ImageUrl
-import me.samuki.model.values.StoreUrl
 import me.samuki.model.values.Name
+import me.samuki.model.values.StoreUrl
 
 public data class PromotionResult(
     val type: DataOrigin,

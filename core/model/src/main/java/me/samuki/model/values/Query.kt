@@ -10,7 +10,7 @@ public sealed interface Query {
     @JvmInline
     public value class Text(
         public val value: String
-    ): Query
+    ) : Query
 }
 
 public fun Query.getQueryValue(): String = when (this) {

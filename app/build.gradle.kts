@@ -1,5 +1,5 @@
-import java.util.Properties
 import java.nio.charset.StandardCharsets
+import java.util.Properties
 
 plugins {
     id("me.samuki.application")
@@ -50,7 +50,10 @@ android {
             signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     packaging {

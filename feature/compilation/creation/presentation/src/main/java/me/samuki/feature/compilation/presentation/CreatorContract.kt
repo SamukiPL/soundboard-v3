@@ -9,16 +9,15 @@ import me.samuki.feature.compilation.domain.model.CombinedCombinable
 import me.samuki.feature.compilation.presentation.bottom.BottomBarState
 import me.samuki.feature.compilation.presentation.bottom.pause.PausePickerItem
 import me.samuki.feature.compilation.presentation.dialog.FinishDialogState
+import me.samuki.feature.compilation.presentation.dialog.SetNameDialogState
 import me.samuki.feature.compilation.presentation.items.creator.CompilationCreatorItem
 import me.samuki.feature.compilation.presentation.items.sounds.CompilationCreatorSound
 import me.samuki.model.Sound
-import me.samuki.model.util.emptyName
 import me.samuki.model.values.Name
 import me.samuki.model.values.Query
 
 internal typealias CreateButtonVisible = Boolean
 internal typealias VolumeEnabled = Boolean
-internal typealias SetNameDialogVisible = Boolean
 
 internal interface CreatorContract {
 
@@ -29,7 +28,7 @@ internal interface CreatorContract {
         showCreateButton: CreateButtonVisible = false,
         volumeEnabled: VolumeEnabled = true,
         bottomBarState: BottomBarState = BottomBarState(),
-        showSetNameDialog: SetNameDialogVisible = false, //TODO change to enum
+        setNameDialogState: SetNameDialogState = SetNameDialogState.Hidden,
         finishDialogState: FinishDialogState = FinishDialogState(),
     ) {
         var sounds: List<CompilationCreatorSound> by mutableStateOf(sounds)
@@ -37,7 +36,7 @@ internal interface CreatorContract {
         var showCreateButton: CreateButtonVisible by mutableStateOf(showCreateButton)
         var volumeEnabled: VolumeEnabled by mutableStateOf(volumeEnabled)
         val bottomBarState: BottomBarState by mutableStateOf(bottomBarState)
-        var showSetNameDialog: SetNameDialogVisible by mutableStateOf(showSetNameDialog) //TODO change to enum
+        var showSetNameDialog: SetNameDialogState by mutableStateOf(setNameDialogState)
         val finishDialogState: FinishDialogState by mutableStateOf(finishDialogState)
     }
 

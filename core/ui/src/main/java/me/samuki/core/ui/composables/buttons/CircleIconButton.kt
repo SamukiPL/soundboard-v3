@@ -41,11 +41,13 @@ public fun CircleIconButton(
                 contentDescription = contentDescription,
                 tint = tint,
             )
+
             painter != null -> Icon(
                 painter = painter,
                 contentDescription = contentDescription,
                 tint = tint,
             )
+
             else -> error("imageVector and painter cannot be both null")
         }
     }
