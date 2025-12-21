@@ -22,6 +22,8 @@ import me.samuki.resource.sounds.favourite.FavouriteProvider
 import me.samuki.resource.sounds.favourite.PreferencesFavouriteProvider
 import me.samuki.resource.sounds.provider.ResourceSoundsDataSource
 import me.samuki.resource.sounds.provider.SoundsDataSource
+import me.samuki.resource.thankyou.ThankYouPreferenceProvider
+import me.samuki.resource.thankyou.ThankYouProvider
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -53,4 +55,7 @@ internal abstract class ResourceModule {
 
     @Binds
     abstract fun promotionDataSource(resourcePromotionDataSource: ResourcePromotionDataSource): PromotionLocalDataSource
+
+    @Binds
+    abstract fun bindThankYouProvider(impl: ThankYouPreferenceProvider): ThankYouProvider
 }

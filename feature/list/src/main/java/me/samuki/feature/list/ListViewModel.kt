@@ -19,6 +19,7 @@ import me.samuki.domain.playable.SharePlayable
 import me.samuki.domain.playable.StopPlaying
 import me.samuki.domain.search.SearchByQuery
 import me.samuki.domain.sound.favourite.ChangeFavouriteState
+import me.samuki.domain.thankyou.ShouldShowThankYou
 import me.samuki.model.Playable
 import me.samuki.model.exceptions.WriteSettingsPermissionNotGrantedException
 import me.samuki.model.values.Query
@@ -34,7 +35,8 @@ internal class ListViewModel @Inject constructor(
     private val setPlayable: SetPlayable,
     private val searchByQuery: SearchByQuery,
     private val observeAllFilters: ObserveAllFilters,
-    private val changeFilterSelectionState: ChangeFilterSelectionState
+    private val changeFilterSelectionState: ChangeFilterSelectionState,
+    private val shouldShowThankYou: ShouldShowThankYou
 ) : ViewModel() {
 
     internal var state: ListContract.State by mutableStateOf(ListContract.State())
@@ -52,10 +54,15 @@ internal class ListViewModel @Inject constructor(
     }
 
     private suspend fun eventDispatcher(event: ListContract.Event): Any = when (event) {
-        ListContract.Event.Init -> listStateCombiner.manageStateForPlayablesAndFilters(
-            playablesFlow = observePlayables(),
-            filtersFlow = observeAllFilters(),
-        )
+        ListContract.Event.Init -> {
+            if (shouldShowThankYou()) {
+                eventChannel.send(ListContract.Effect.ShowThankYou)
+            }
+            listStateCombiner.manageStateForPlayablesAndFilters(
+                playablesFlow = observePlayables(),
+                filtersFlow = observeAllFilters(),
+            )
+        }
 
         is ListContract.Event.Play -> playPlayable(event.playable)
         ListContract.Event.StopPlaying -> stopPlaying()
