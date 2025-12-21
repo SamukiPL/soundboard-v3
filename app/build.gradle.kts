@@ -1,3 +1,6 @@
+import java.util.Properties
+import java.nio.charset.StandardCharsets
+
 plugins {
     id("me.samuki.application")
     id("me.samuki.application.compose")
@@ -6,10 +9,31 @@ plugins {
     id("me.samuki.flavor.sounds")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
+    alias(libs.plugins.play.publisher)
+}
+
+val localProperties = Properties().apply {
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        localPropertiesFile.reader(StandardCharsets.UTF_8).use { reader ->
+            load(reader)
+        }
+    }
 }
 
 android {
     namespace = "me.samuki.soundboard"
+
+    signingConfigs {
+        create("release") {
+            localProperties.getProperty("keystore.path")?.let {
+                storeFile = file(it)
+            }
+            storePassword = localProperties.getProperty("keystore.password")
+            keyAlias = localProperties.getProperty("key.alias")
+            keyPassword = localProperties.getProperty("key.password")
+        }
+    }
 
     defaultConfig {
         versionCode = 1
@@ -23,7 +47,7 @@ android {
 
     buildTypes {
         getByName("release") {
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")

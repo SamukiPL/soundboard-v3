@@ -1,6 +1,5 @@
 package me.samuki.resource.sounds.reader
 
-import android.net.Uri
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async

@@ -38,6 +38,7 @@ settings = "1.3.0"
 sqldelight = "2.2.1"
 google-services = "4.4.4"
 crashlytics = "3.0.6"
+play-publisher = "3.9.0"
 
 [libraries]
 accompanist-pager = { group = "com.google.accompanist", name = "accompanist-pager", version.ref = "accompanist" }
@@ -110,3 +111,4 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
 crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "crashlytics" }
+play-publisher = { id = "com.github.triplet.play", version.ref = "play-publisher" }
