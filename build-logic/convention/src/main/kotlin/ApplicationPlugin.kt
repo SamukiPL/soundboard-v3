@@ -1,6 +1,6 @@
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import me.samuki.buildlogic.config.AndroidVersions
-import me.samuki.buildlogic.utils.configureEnvironmentFlavors
+import me.samuki.buildlogic.utils.configureCrashlytics
 import me.samuki.buildlogic.utils.configureKotlinAndroid
 import me.samuki.buildlogic.utils.implementation
 import org.gradle.api.Plugin
@@ -39,6 +39,7 @@ class ApplicationPlugin : Plugin<Project> {
             }
 
             configureAppDependencies()
+            configureCrashlytics()
         }
     }
 

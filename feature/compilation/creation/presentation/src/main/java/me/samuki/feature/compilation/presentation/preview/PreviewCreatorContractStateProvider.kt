@@ -4,6 +4,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import me.samuki.core.ui.composables.inputs.QueryViewState
 import me.samuki.feature.compilation.presentation.CreatorContract
 import me.samuki.feature.compilation.presentation.bottom.BottomBarState
+import me.samuki.feature.compilation.presentation.dialog.SetNameDialogState
 import me.samuki.model.values.Id
 import me.samuki.model.values.Query
 
@@ -29,7 +30,7 @@ internal class PreviewCreatorContractStateProvider(
                 showCreateButton = true,
                 volumeEnabled = false,
                 bottomBarState = BottomBarState(),
-                showSetNameDialog = false,
+                setNameDialogState = SetNameDialogState.Hidden,
             ),
             CreatorContract.State(
                 sounds = listOf(),
@@ -42,7 +43,7 @@ internal class PreviewCreatorContractStateProvider(
                         showQueryPlaceholder = false,
                     ),
                 ),
-                showSetNameDialog = false,
+                setNameDialogState = SetNameDialogState.Hidden,
             )
         )
 }

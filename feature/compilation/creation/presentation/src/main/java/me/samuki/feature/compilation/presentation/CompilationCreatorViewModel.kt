@@ -5,6 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.Firebase
+import com.google.firebase.crashlytics.crashlytics
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -22,6 +24,7 @@ import me.samuki.feature.compilation.domain.logic.PlayTemporaryCompilation
 import me.samuki.feature.compilation.domain.logic.RemoveCombinable
 import me.samuki.feature.compilation.domain.logic.ShareTemporaryCompilation
 import me.samuki.feature.compilation.presentation.bottom.pause.pause
+import me.samuki.feature.compilation.presentation.dialog.SetNameDialogState
 import me.samuki.feature.compilation.presentation.items.creator.toItem
 import me.samuki.feature.compilation.presentation.items.sounds.toItem
 import me.samuki.model.Sound
@@ -79,8 +82,8 @@ internal class CompilationCreatorViewModel @Inject constructor(
     }
 
     private suspend fun handleBack() = when (state.showSetNameDialog) {
-        false -> eventChannel.send(CreatorContract.Effect.GoBackToList)
-        true -> state.showSetNameDialog = false
+        SetNameDialogState.Visible -> state.showSetNameDialog = SetNameDialogState.Hidden
+        SetNameDialogState.Hidden -> eventChannel.send(CreatorContract.Effect.GoBackToList)
     }
 
     private suspend fun updateQuery(newQuery: Query) {
@@ -92,7 +95,7 @@ internal class CompilationCreatorViewModel @Inject constructor(
     }
 
     private fun startSettingName() {
-        state.showSetNameDialog = true
+        state.showSetNameDialog = SetNameDialogState.Visible
     }
 
     private fun updateName(name: Name) = state.finishDialogState.apply {
@@ -109,7 +112,8 @@ internal class CompilationCreatorViewModel @Inject constructor(
                 eventChannel.send(CreatorContract.Effect.GoToSuccessScreen)
             }
             .onFailure {
-                TODO("Not implemented yet")
+                state.finishDialogState.showErrorOnDialog = true
+                Firebase.crashlytics.recordException(it)
             }
     }
 }

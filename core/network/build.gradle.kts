@@ -1,5 +1,3 @@
-import me.samuki.buildlogic.utils.configureEnvironmentFlavors
-
 plugins {
     id("me.samuki.library")
     id("me.samuki.hilt")

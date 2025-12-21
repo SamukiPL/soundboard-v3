@@ -1,8 +1,8 @@
 package me.samuki.domain.rail
 
-import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.withContext
 import me.samuki.model.NoAnswer
+import kotlin.coroutines.CoroutineContext
 
 public typealias ListResult<T> = Result<List<T>>
 

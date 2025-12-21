@@ -53,6 +53,7 @@ internal fun PlayableFilters(
                         onEvent = onEvent,
                         modifier = Modifier.padding(horizontal = 4.dp)
                     )
+
                     is ListTypeFilterItem -> ListTypeFilterView(
                         item = it,
                         onEvent = onEvent,

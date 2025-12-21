@@ -1,6 +1,5 @@
 package me.samuki.feature.promotion.list
 
-import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -17,8 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import me.samuki.feature.promotion.PromotionContract
 import me.samuki.core.ui.R
+import me.samuki.feature.promotion.PromotionContract
 import me.samuki.feature.promotion.preview.PreviewPromotionProvider
 
 @Composable
@@ -40,7 +39,7 @@ internal fun PromotionView(
     ) {
         AsyncImage(
             model = item.image.value,
-            contentDescription = "TODO Soundboard Logo",
+            contentDescription = "${item.name.value} Soundboard Logo",
             modifier = Modifier.size(48.dp),
             placeholder = painterResource(R.drawable.alpaca_logo)
         )

@@ -19,10 +19,10 @@ internal fun CompilationCreatorItemsRow(
 ) {
     LazyRow(
         modifier =
-        Modifier
-            .padding(horizontal = 16.dp, vertical = 4.dp)
-            .fillMaxWidth()
-            .height(48.dp),
+            Modifier
+                .padding(horizontal = 16.dp, vertical = 4.dp)
+                .fillMaxWidth()
+                .height(48.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         items(itemsList, key = { it.id.toString() }) {

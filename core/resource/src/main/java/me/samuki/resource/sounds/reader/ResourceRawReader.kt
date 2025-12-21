@@ -1,5 +1,6 @@
 package me.samuki.resource.sounds.reader
 
+import androidx.core.net.toUri
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
@@ -15,7 +16,6 @@ import me.samuki.model.values.Path
 import me.samuki.resource.sounds.model.ResourceRaw
 import java.lang.Integer.min
 import javax.inject.Inject
-import androidx.core.net.toUri
 
 internal class ResourceRawReader @Inject constructor(
     packageName: PackageName,

@@ -20,6 +20,7 @@ internal val CompilationCreatorItem.label: Label
             id = R.string.pause_combinable_chip,
             combinable.repeats * REPEAT_SECOND_VALUE
         )
+
         is Sound -> combinable.name.value
     }.let { labelString ->
         Label(labelString)

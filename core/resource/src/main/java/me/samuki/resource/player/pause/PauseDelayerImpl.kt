@@ -13,7 +13,10 @@ internal class PauseDelayerImpl @Inject constructor() : PauseDelayer {
     override suspend fun delayForPause(pause: Pause) {
         delay((pause.repeats * REPEATS_MULTIPLIER).milliseconds)
         onDelayFinished?.invoke() ?: run {
-            Log.e(this@PauseDelayerImpl::class.simpleName, "onDelayFinished should not be null, can't run compilation further")
+            Log.e(
+                this@PauseDelayerImpl::class.simpleName,
+                "onDelayFinished should not be null, can't run compilation further"
+            )
         }
     }
 

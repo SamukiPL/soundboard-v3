@@ -31,6 +31,7 @@ internal fun PromotionList(
             PromotionListState.AdsAcceptation -> PromotionAdsAcceptationView(
                 onEvent = onEvent
             )
+
             PromotionListState.Loading -> PromotionLoadingView()
             is PromotionListState.Offline -> Column {
                 OfflineLabel()
@@ -39,10 +40,12 @@ internal fun PromotionList(
                     onEvent = onEvent,
                 )
             }
+
             is PromotionListState.Online -> PromotionLazyList(
                 items = it.promotions,
                 onEvent = onEvent,
             )
+
             PromotionListState.Error -> PromotionErrorView(
                 onEvent = onEvent
             )

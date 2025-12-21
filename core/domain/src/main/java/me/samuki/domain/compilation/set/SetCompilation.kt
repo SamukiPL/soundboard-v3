@@ -15,7 +15,10 @@ public class SetCompilation @Inject constructor(
     private val setCompilationAsRingtone: SetCompilationAsRingtone,
     @param:DispatcherIO private val coroutineDispatcher: CoroutineDispatcher
 ) {
-    public suspend operator fun invoke(compilation: Compilation, setType: SetType): Result<NoAnswer> =
+    public suspend operator fun invoke(
+        compilation: Compilation,
+        setType: SetType
+    ): Result<NoAnswer> =
         withContext(coroutineDispatcher) {
             when (setType) {
                 SetType.Notification -> setCompilationAsNotification(compilation)

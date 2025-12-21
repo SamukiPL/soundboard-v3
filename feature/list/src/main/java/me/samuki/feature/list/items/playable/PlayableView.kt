@@ -53,6 +53,7 @@ internal fun PlayableView(
                 onEvent = onEvent,
                 openOptions = { optionsState = OptionsState.Open },
             )
+
             OptionsState.Open -> OptionsChooser(
                 playable = playableItem.playable,
                 onEvent = onEvent,

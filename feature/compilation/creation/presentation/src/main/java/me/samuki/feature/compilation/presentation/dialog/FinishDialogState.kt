@@ -9,14 +9,18 @@ import me.samuki.model.values.Name
 
 internal typealias ShowNamePlaceholder = Boolean
 internal typealias FinishCreationEnabled = Boolean
+internal typealias ShowErrorOnDialog = Boolean
+
 
 @Stable
 internal class FinishDialogState(
     name: Name = emptyName(),
     showNamePlaceholder: ShowNamePlaceholder = true,
-    finishCreationEnabled: FinishCreationEnabled = false
+    finishCreationEnabled: FinishCreationEnabled = false,
+    showErrorOnDialog: ShowErrorOnDialog = false,
 ) {
     var name: Name by mutableStateOf(name)
     var showNamePlaceholder: ShowNamePlaceholder by mutableStateOf(showNamePlaceholder)
     var finishCreationEnabled: FinishCreationEnabled by mutableStateOf(finishCreationEnabled)
+    var showErrorOnDialog: ShowErrorOnDialog by mutableStateOf(showErrorOnDialog)
 }

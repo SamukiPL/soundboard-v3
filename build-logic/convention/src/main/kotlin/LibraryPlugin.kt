@@ -1,5 +1,6 @@
 import com.android.build.gradle.LibraryExtension
 import me.samuki.buildlogic.config.AndroidVersions
+import me.samuki.buildlogic.utils.configureCrashlytics
 import me.samuki.buildlogic.utils.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -31,6 +32,7 @@ class LibraryPlugin : Plugin<Project> {
                         File(layout.buildDirectory.asFile.get(), "generated/ksp/$name/kotlin")
                     )
                 }
+                configureCrashlytics()
             }
         }
     }

@@ -58,6 +58,7 @@ internal fun CompilationCreationFinalList(
                             )
                         }
                     }
+
                     is Sound -> {
                         Text(
                             text = combinable.name.value,

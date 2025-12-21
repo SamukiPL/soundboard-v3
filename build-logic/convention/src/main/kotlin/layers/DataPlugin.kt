@@ -10,7 +10,7 @@ import org.gradle.kotlin.dsl.dependencies
 
 class DataPlugin : Plugin<Project> {
     override fun apply(target: Project) {
-        with (target) {
+        with(target) {
             with(pluginManager) {
                 apply(LibraryPlugin::class.java)
                 apply(FeaturePlugin::class.java)

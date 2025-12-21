@@ -40,6 +40,7 @@ internal fun ListToolbar(
                 state = toolbarState,
                 onEvent = onEvent
             )
+
             ToolbarType.QueryInput -> ToolbarQueryView(
                 state = toolbarState,
                 onEvent = onEvent
@@ -67,12 +68,14 @@ private fun ListToolbarPreview() {
                         type = ToolbarType.QueryInput
                     )
                 }
+
                 ListContract.Event.RemoveQuery,
                 is ListContract.Event.SetQuery -> {
                     mutableState.value = ToolbarState(
                         type = ToolbarType.Filters
                     )
                 }
+
                 else -> Unit
             }
         },

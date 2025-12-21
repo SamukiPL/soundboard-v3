@@ -15,8 +15,8 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import me.samuki.feature.list.ListContract
 import me.samuki.core.ui.R
+import me.samuki.feature.list.ListContract
 
 @Composable
 internal fun ListFabMenuItemView(
@@ -51,6 +51,7 @@ internal fun ListFabMenuItemView(
                     contentDescription = "TODO",
                     imageVector = icon,
                 )
+
                 is Painter -> Icon(
                     contentDescription = "TODO",
                     painter = icon

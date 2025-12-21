@@ -37,6 +37,7 @@ private fun StorageCombinable.toEntity(
         compilationId = compilationId,
         nextCombinableId = nextCombinableId
     )
+
     is StorageSound -> toSoundEntity(
         id = id,
         compilationId = compilationId,
